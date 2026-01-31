@@ -1,0 +1,23 @@
+using System.Collections;
+using UnityEngine;
+
+public class MusicLoader : MonoBehaviour
+{
+    [SerializeField] AudioClip _musicClip;
+    [SerializeField] bool _isLooping = true;
+    void OnEnable() {
+        Audio.SetMusicSourceVolume(1);
+        if(_musicClip == Audio.GetCurrentMusicClip()) { // Same music
+            Audio.ToggleLoop(true);
+        } else if(_musicClip != null) { // Different music
+            Audio.ToggleLoop(_isLooping);
+            Audio.PlayMusic(_musicClip);
+        } else { // No music
+            Audio.ToggleLoop(true);
+            Audio.StopMusic();
+        }
+    }
+    AudioManager Audio => AudioManager.Instance;
+    public void FadeOutMusic() => Audio.MusicFadeOut(0.5f);
+    public void FadeInMusic() => Audio.MusicFadeIn(0.5f);
+}
