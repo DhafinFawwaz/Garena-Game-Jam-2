@@ -19,8 +19,11 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         _notDropableArea = notDropableArea;
     }
     
+    bool _isDragging = false;
+    public bool IsDragging => _isDragging;
     public void OnBeginDrag(PointerEventData e)
     {
+        _isDragging = true;
         _originalPosition = _rt.anchoredPosition;
         _originalParent = transform.parent;
         
@@ -29,7 +32,6 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         
         transform.SetParent(_canvas.transform);
     }
-    
     public void OnDrag(PointerEventData e)
     {
         _rt.anchoredPosition += e.delta / _canvas.scaleFactor;
@@ -37,6 +39,7 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     
     public void OnEndDrag(PointerEventData e)
     {
+        _isDragging = false;
         _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;
         

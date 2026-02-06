@@ -28,6 +28,7 @@ public class ConveyorBelt : MonoBehaviour
     void MoveConveyorBelt() {
         for (int i = _activeSignDragables.Count - 1; i >= 0; i--) {
             if (_activeSignDragables[i] != null) {
+                if(_activeSignDragables[i].IsDragging) continue;
                 RectTransform rt = _activeSignDragables[i].GetComponent<RectTransform>();
                 rt.anchoredPosition += Vector2.left * _speed * Time.deltaTime * 100f;
             }
