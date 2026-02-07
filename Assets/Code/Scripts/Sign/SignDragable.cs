@@ -5,18 +5,20 @@ using UnityEngine.InputSystem;
 public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] Sign _signPrefab;
+    public Sign SignPrefab => _signPrefab;
     [SerializeField] Canvas _canvas;
     [SerializeField] CanvasGroup _canvasGroup;
-    
+
     [SerializeField] RectTransform _rt;
     Vector2 _originalPosition;
     Transform _originalParent;
     RectTransform _notDropableArea;
-    
-    public void Init(Canvas canvas, RectTransform notDropableArea)
+
+    public void Init(Canvas canvas, RectTransform notDropableArea, Sign signPrefab)
     {
         _canvas = canvas;
         _notDropableArea = notDropableArea;
+        _signPrefab = signPrefab;
     }
     
     bool _isDragging = false;

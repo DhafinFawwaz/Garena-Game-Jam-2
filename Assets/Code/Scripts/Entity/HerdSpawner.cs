@@ -129,6 +129,21 @@ public class HerdSpawner : MonoBehaviour
         return herd;
     }
 
+    public void SpawnAdditionalEnemyHerd()
+    {
+        if (_enemyHerdDataList.Count == 0) return;
+
+        List<Vector2> usedPositions = new List<Vector2>();
+        if (_playerHerd != null) usedPositions.Add(_playerHerd.transform.position);
+        foreach (var h in _enemyHerds)
+            if (h != null) usedPositions.Add(h.transform.position);
+
+        HerdData data = _enemyHerdDataList[UnityEngine.Random.Range(0, _enemyHerdDataList.Count)];
+        Vector2 pos = GetRandomSpawnPosition(usedPositions);
+        var herd = SpawnHerd(data, pos, false);
+        _enemyHerds.Add(herd);
+    }
+
     public bool AreAllEnemyHerdsEmpty()
     {
         foreach (var herd in _enemyHerds)
