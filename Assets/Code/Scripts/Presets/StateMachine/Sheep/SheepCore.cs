@@ -18,6 +18,7 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
         _moveSpeed = data.MoveSpeed;
     }
 
+    public EntityVFX VFX;
     void Awake()
     {
         States = new SheepStates(this);

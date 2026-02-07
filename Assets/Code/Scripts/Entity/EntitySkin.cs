@@ -55,4 +55,5 @@ public class EntitySkin : MonoBehaviour
         return -4f * (x - 0.5f) * (x - 0.5f) + 1f;
     }
     
+    
 }

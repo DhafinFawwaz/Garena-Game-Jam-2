@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ConveyorBelt : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ConveyorBelt : MonoBehaviour
     [SerializeField] RectTransform _spawnPointRt;
     [SerializeField] RectTransform _notDropableArea;
     [SerializeField] Canvas _canvas;
+    [SerializeField] RawImage _conveyorBeltImage;
     
     List<SignDragable> _activeSignDragables = new();
     float _spawnTimer;
@@ -25,6 +27,7 @@ public class ConveyorBelt : MonoBehaviour
         DestroyOutOfBounds();
     }
     
+    [SerializeField] float _conveyorSpeedMultiplier = 1f;
     void MoveConveyorBelt() {
         for (int i = _activeSignDragables.Count - 1; i >= 0; i--) {
             if (_activeSignDragables[i] != null) {
@@ -36,6 +39,8 @@ public class ConveyorBelt : MonoBehaviour
                 _activeSignDragables.RemoveAt(i);
             }
         }
+
+        _conveyorBeltImage.uvRect = new Rect(_conveyorBeltImage.uvRect.x + (_conveyorSpeedMultiplier * Time.deltaTime), 0f, 1f, 1f);
     }
     
     void HandleSpawning() {
