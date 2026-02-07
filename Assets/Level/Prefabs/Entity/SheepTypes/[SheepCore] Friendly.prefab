@@ -83,6 +83,273 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EntityDetector
   _sheepCores: []
   _attackRange: 1.5
+--- !u!1 &778210385518264902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7307721937534834302}
+  - component: {fileID: 3469463616475325110}
+  m_Layer: 0
+  m_Name: '[AnimationUI] Fall'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7307721937534834302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778210385518264902}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5000373543606377515}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3469463616475325110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778210385518264902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17dbaed680fd7194d9cc7297932b7691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DhafinFawwaz.AnimationUI.AnimationUI
+  PlayOnStart: 0
+  IgnoreTimeScale: 0
+  CurrentAnimationTime: 1.75
+  _sequence:
+  - rid: 8059579814261555296
+  - rid: 8059579814261555287
+  - rid: 8059579814261555291
+  - rid: 8059579814261555289
+  - rid: 8059579814261555293
+  - rid: 8059579814261555297
+  references:
+    version: 2
+    RefIds:
+    - rid: 8059579814261555287
+      type: {class: LocalPositionTween, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [[Anchor] Alert] [1s]'
+        Target: {fileID: 197762034516683725}
+        Duration: 1
+        EaseType: 0
+        From: {x: 0, y: 40, z: 0}
+        To: {x: 0, y: 0, z: 0}
+    - rid: 8059579814261555289
+      type: {class: SquishTween, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '1.00 s [[Anchor] Alert] [0.75s]'
+        Target: {fileID: 197762034516683725}
+        Duration: 0.75
+        EaseType: 11
+        From: {x: 1, y: 1, z: 1}
+        To: {x: 1, y: 1, z: 1}
+        XCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0.0013004765
+            value: 1.0005472
+            inSlope: -1.87
+            outSlope: -1.87
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.031853497
+            value: 1.4859238
+            inSlope: -3.066359
+            outSlope: -3.066359
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.123782426
+            value: 1.09
+            inSlope: -1.7078625
+            outSlope: -1.7078625
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.2133817
+          - serializedVersion: 3
+            time: 0.4068225
+            value: 0.91
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.574932
+            value: 0.97
+            inSlope: 0.44366723
+            outSlope: 0.44366723
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.3353836
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.7503369
+            value: 1.32
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        YCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0.0016528368
+            value: 0.74
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.3761411
+            value: 1.0037051
+            inSlope: 1.7740409
+            outSlope: 1.7740409
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.2021716
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.50285155
+            value: 1.27
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.7502063
+            value: 0.9
+            inSlope: 1.32
+            outSlope: 1.32
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        ZCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+    - rid: 8059579814261555291
+      type: {class: Wait, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [1s]'
+        Duration: 1
+    - rid: 8059579814261555293
+      type: {class: Wait, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '1.00 s [0.75s]'
+        Duration: 0.75
+    - rid: 8059579814261555296
+      type: {class: Event, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [UnityEvent]'
+        UnityEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 8634446891496813783}
+              m_TargetAssemblyTypeName: SheepCore, Assembly-CSharp
+              m_MethodName: SetActiveCore
+              m_Mode: 6
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+    - rid: 8059579814261555297
+      type: {class: Event, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '1.75 s [UnityEvent]'
+        UnityEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 8634446891496813783}
+              m_TargetAssemblyTypeName: SheepCore, Assembly-CSharp
+              m_MethodName: SetActiveCore
+              m_Mode: 6
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 1
+              m_CallState: 2
 --- !u!1 &802752603744356112
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +417,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 197762034516683725}
+  - {fileID: 3018743269729138541}
   - {fileID: 5878441626408024206}
   - {fileID: 7398274341129784621}
   - {fileID: 7958213092925738560}
@@ -205,6 +473,8 @@ MonoBehaviour:
   _rb: {fileID: 1351680296256201129}
   _moveSpeed: 5
   _currentSigns: []
+  _col: {fileID: 6035925408210202595}
+  _fallFromSkyAUI: {fileID: 3469463616475325110}
 --- !u!114 &4721154989096651954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +490,8 @@ MonoBehaviour:
   State: 2
   TeamID: 0
   AttackDamage: 10
+  MaxHealth: 100
+  CurrentHealth: 100
 --- !u!114 &5805668069641406738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -868,6 +1140,97 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &4706745956077758461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3018743269729138541}
+  - component: {fileID: 5230749335641061038}
+  m_Layer: 0
+  m_Name: '[Shadow]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3018743269729138541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4706745956077758461}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.089999914, z: 0}
+  m_LocalScale: {x: 1.3134, y: 0.3455, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 4439867342597909761}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5230749335641061038
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4706745956077758461}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: -2413806693520163455, guid: fd0fa35f974cde545a85cc059caaf1d5, type: 3}
+  m_Color: {r: 0.00046097554, g: 0.16981131, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
 --- !u!1 &4722710849005058999
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +1322,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6698758480394502377}
+  - {fileID: 7307721937534834302}
   m_Father: {fileID: 4439867342597909761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6372480266097712585
@@ -10932,7 +11296,7 @@ GameObject:
   - component: {fileID: 6698758480394502377}
   - component: {fileID: 4415302464815243112}
   m_Layer: 0
-  m_Name: AnimationUI
+  m_Name: '[AnimationUI] Cliff'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
