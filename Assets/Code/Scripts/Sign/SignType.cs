@@ -3,5 +3,6 @@ public enum SignType
     DontGoHere, GoHere,
     NoNoise,
     Cannibal,
-    Combat
+    Combat,
+    Recycle
 }

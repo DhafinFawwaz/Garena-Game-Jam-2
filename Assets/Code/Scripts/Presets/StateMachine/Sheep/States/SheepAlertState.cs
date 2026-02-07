@@ -55,7 +55,7 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
         }
 
         if(trust >= _minimumTrustToChase) {
-            
+
         }
 
 

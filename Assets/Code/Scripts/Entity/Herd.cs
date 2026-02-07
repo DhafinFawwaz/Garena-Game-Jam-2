@@ -124,4 +124,32 @@ public class Herd : MonoBehaviour, IHungerable
     {
         return _hungerLevel / _maxHunger;
     }
+
+    [Header("Recycle Settings")]
+    [SerializeField] float _recycleRatio = 0.2f;
+    [SerializeField] float _recycleDamageBonus = 5f;
+    [SerializeField] float _recycleHealthBonus = 20f;
+
+    public void Recycle()
+    {
+        int sacrificeCount = Mathf.Max(1, Mathf.FloorToInt(_members.Count * _recycleRatio));
+        if (_members.Count <= sacrificeCount) return;
+
+        for (int i = 0; i < sacrificeCount; i++)
+        {
+            var victim = _members[_members.Count - 1];
+            RemoveMember(victim);
+            victim.Die();
+        }
+
+        foreach (var member in _members)
+        {
+            member.Stats.AttackDamage += _recycleDamageBonus;
+            member.Stats.MaxHealth += _recycleHealthBonus;
+            member.Stats.CurrentHealth = Mathf.Min(member.Stats.CurrentHealth + _recycleHealthBonus, member.Stats.MaxHealth);
+        }
+
+        _hungerLevel = _maxHunger;
+        BroadcastHungerChanged();
+    }
 }

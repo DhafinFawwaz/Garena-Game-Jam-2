@@ -16,20 +16,6 @@ public class EventUnlock
     public GameEvent Event;
 }
 
-[Serializable]
-public class EnemyWave
-{
-    public float TimeThreshold;
-    public int AdditionalHerds = 1;
-}
-
-[Serializable]
-public class NeutralSpawnConfig
-{
-    public float TimeThreshold;
-    public float SpawnInterval = 5f;
-}
-
 public class SignProgression : MonoBehaviour
 {
     [Header("Sign Unlocks (conveyor belt cards)")]
@@ -38,12 +24,6 @@ public class SignProgression : MonoBehaviour
     [Header("Random Event Unlocks")]
     [SerializeField] RandomEventScheduler _eventScheduler;
     [SerializeField] List<EventUnlock> _eventUnlocks = new();
-
-    [Header("Enemy Waves")]
-    [SerializeField] List<EnemyWave> _enemyWaves = new();
-
-    [Header("Neutral Spawning")]
-    [SerializeField] List<NeutralSpawnConfig> _neutralSpawnConfigs = new();
 
     [Header("Conveyor Belt Scaling")]
     [SerializeField] float _initialSpawnInterval = 3f;
@@ -56,8 +36,6 @@ public class SignProgression : MonoBehaviour
     float _elapsedTime;
     int _nextUnlockIndex;
     int _nextEventUnlockIndex;
-    int _nextEnemyWaveIndex;
-    int _nextNeutralConfigIndex;
     bool _isActive;
 
     void OnEnable()
@@ -79,8 +57,6 @@ public class SignProgression : MonoBehaviour
     {
         _unlocks.Sort((a, b) => a.TimeThreshold.CompareTo(b.TimeThreshold));
         _eventUnlocks.Sort((a, b) => a.TimeThreshold.CompareTo(b.TimeThreshold));
-        _enemyWaves.Sort((a, b) => a.TimeThreshold.CompareTo(b.TimeThreshold));
-        _neutralSpawnConfigs.Sort((a, b) => a.TimeThreshold.CompareTo(b.TimeThreshold));
 
         if (ConveyorBelt.Instance != null)
         {
@@ -97,8 +73,6 @@ public class SignProgression : MonoBehaviour
 
         HandleSignUnlocks();
         HandleEventUnlocks();
-        HandleEnemyWaves();
-        HandleNeutralSpawning();
         HandleSpawnIntervalDecay();
         HandleMaxSignsScaling();
     }
@@ -122,33 +96,6 @@ public class SignProgression : MonoBehaviour
         {
             _eventScheduler.AddEvent(_eventUnlocks[_nextEventUnlockIndex].Event);
             _nextEventUnlockIndex++;
-        }
-    }
-
-    void HandleEnemyWaves()
-    {
-        var spawner = HerdSpawner.Instance;
-        if (spawner == null) return;
-
-        while (_nextEnemyWaveIndex < _enemyWaves.Count && _elapsedTime >= _enemyWaves[_nextEnemyWaveIndex].TimeThreshold)
-        {
-            int count = _enemyWaves[_nextEnemyWaveIndex].AdditionalHerds;
-            for (int i = 0; i < count; i++)
-                spawner.SpawnAdditionalEnemyHerd();
-            _nextEnemyWaveIndex++;
-        }
-    }
-
-    void HandleNeutralSpawning()
-    {
-        var spawner = NeutralSpawner.Instance;
-        if (spawner == null) return;
-
-        while (_nextNeutralConfigIndex < _neutralSpawnConfigs.Count && _elapsedTime >= _neutralSpawnConfigs[_nextNeutralConfigIndex].TimeThreshold)
-        {
-            spawner.EnableSpawning();
-            spawner.SetSpawnInterval(_neutralSpawnConfigs[_nextNeutralConfigIndex].SpawnInterval);
-            _nextNeutralConfigIndex++;
         }
     }
 

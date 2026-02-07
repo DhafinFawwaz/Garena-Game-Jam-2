@@ -16,7 +16,6 @@ public class NeutralSpawner : MonoBehaviour
 
     float _spawnTimer;
     bool _isActive;
-    bool _spawningEnabled;
 
     void Awake()
     {
@@ -45,7 +44,7 @@ public class NeutralSpawner : MonoBehaviour
 
     void Update()
     {
-        if (!_isActive || !_spawningEnabled) return;
+        if (!_isActive) return;
 
         _spawnTimer += Time.deltaTime;
         if (_spawnTimer >= _spawnInterval)
@@ -89,15 +88,5 @@ public class NeutralSpawner : MonoBehaviour
         }
 
         return (Vector2)bounds.center;
-    }
-
-    public void SetSpawnInterval(float interval)
-    {
-        _spawnInterval = interval;
-    }
-
-    public void EnableSpawning()
-    {
-        _spawningEnabled = true;
     }
 }
