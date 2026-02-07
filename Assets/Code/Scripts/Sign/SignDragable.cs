@@ -67,7 +67,8 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             worldPosition.z = 0;
             
             if (_signPrefab != null) {
-                Instantiate(_signPrefab, worldPosition, Quaternion.identity);
+                var obj = Instantiate(_signPrefab, worldPosition, Quaternion.identity);
+                obj.gameObject.SetActive(true);
             }
             
             Destroy(gameObject);
