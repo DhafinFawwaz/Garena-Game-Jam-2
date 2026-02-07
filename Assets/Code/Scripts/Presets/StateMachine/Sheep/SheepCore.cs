@@ -6,6 +6,18 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
 {
     public EntitySkin Skin;
     public EntityStats Stats;
+
+    Herd _herd;
+    public Herd Herd => _herd;
+
+    public void SetHerd(Herd herd) {
+        _herd = herd;
+    }
+
+    public void Init(HerdData data) {
+        _moveSpeed = data.MoveSpeed;
+    }
+
     void Awake()
     {
         States = new SheepStates(this);

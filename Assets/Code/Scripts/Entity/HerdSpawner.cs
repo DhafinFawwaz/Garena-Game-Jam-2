@@ -9,7 +9,7 @@ public class HerdSpawner : MonoBehaviour
     public static HerdSpawner Instance { get; private set; }
 
     [Header("Prefabs")]
-    [SerializeField] Entity _entityPrefab;
+    [SerializeField] SheepCore _entityPrefab;
     [SerializeField] Herd _herdPrefab;
 
     [Header("Herd Data")]
@@ -118,7 +118,8 @@ public class HerdSpawner : MonoBehaviour
         for (int i = 0; i < data.InitialMemberCount; i++)
         {
             Vector2 spawnPos = position + UnityEngine.Random.insideUnitCircle * data.SpawnRadius;
-            Entity entity = Instantiate(_entityPrefab, spawnPos, Quaternion.identity, herd.transform);
+            SheepCore entity = Instantiate(_entityPrefab, spawnPos, Quaternion.identity, herd.transform);
+            entity.gameObject.SetActive(true);
             entity.Init(data);
             herd.AddMember(entity);
         }

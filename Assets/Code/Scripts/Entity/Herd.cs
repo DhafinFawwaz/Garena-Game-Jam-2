@@ -8,6 +8,7 @@ public class Herd : MonoBehaviour, IHungerable
     public static Action<HungerEvent> S_OnHungerDepleted;
     public static Action<Herd> S_OnMemberConsumed;
     public static Action<Herd> S_OnHerdEmpty;
+    public static Action<MemberCountEvent> S_OnMemberCountChanged;
 
     [SerializeField] [ReadOnly] bool _isPlayerHerd;
     public bool IsPlayerHerd { get => _isPlayerHerd; }
@@ -23,8 +24,8 @@ public class Herd : MonoBehaviour, IHungerable
 
     float _hungerDecayRate;
 
-    [SerializeField] [ReadOnly] List<Entity> _members = new List<Entity>();
-    public List<Entity> Members { get => _members; }
+    [SerializeField] [ReadOnly] List<SheepCore> _members = new List<SheepCore>();
+    public List<SheepCore> Members { get => _members; }
     public int MemberCount { get => _members.Count; }
 
     public event Action OnHungerDepleted;
@@ -38,23 +39,26 @@ public class Herd : MonoBehaviour, IHungerable
         _hungerDecayRate = data.HungerDecayRate;
     }
 
-    public void AddMember(Entity entity) {
+    public void AddMember(SheepCore entity) {
         _members.Add(entity);
         entity.SetHerd(this);
         entity.OnDeath += HandleMemberDeath;
+        BroadcastMemberCountChanged();
     }
 
-    public void RemoveMember(Entity entity) {
+    public void RemoveMember(SheepCore entity) {
         entity.OnDeath -= HandleMemberDeath;
         _members.Remove(entity);
+        BroadcastMemberCountChanged();
         if(_members.Count == 0) {
             OnHerdEmpty?.Invoke(this);
             S_OnHerdEmpty?.Invoke(this);
         }
     }
 
-    void HandleMemberDeath(Entity entity) {
+    void HandleMemberDeath(SheepCore entity) {
         _members.Remove(entity);
+        BroadcastMemberCountChanged();
         if(_members.Count == 0) {
             OnHerdEmpty?.Invoke(this);
             S_OnHerdEmpty?.Invoke(this);
@@ -79,6 +83,10 @@ public class Herd : MonoBehaviour, IHungerable
             S_OnHungerDepleted?.Invoke(new HungerEvent { Herd = this, HungerNormalized = 0f });
             ConsumeOneMember();
         }
+    }
+
+    void BroadcastMemberCountChanged() {
+        S_OnMemberCountChanged?.Invoke(new MemberCountEvent { Herd = this, Count = _members.Count });
     }
 
     void BroadcastHungerChanged() {

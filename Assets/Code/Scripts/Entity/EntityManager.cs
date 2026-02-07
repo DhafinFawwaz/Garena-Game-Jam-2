@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EntityManager : MonoBehaviour
 {
-    [SerializeField] [ReadOnly] List<Entity> _entities = new List<Entity>();
+    [SerializeField] [ReadOnly] List<SheepCore> _entities = new List<SheepCore>();
     [SerializeField] [ReadOnly] List<Herd> _herds = new List<Herd>();
     [SerializeField] [ReadOnly] bool _isActive;
 
@@ -29,7 +29,7 @@ public class EntityManager : MonoBehaviour
         }
     }
 
-    void RegisterEntity(Entity entity) {
+    void RegisterEntity(SheepCore entity) {
         _entities.Add(entity);
         entity.OnDeath += HandleEntityDeath;
     }
@@ -39,17 +39,15 @@ public class EntityManager : MonoBehaviour
         foreach(var herd in _herds) {
             herd.DoUpdate();
         }
+        foreach(var entity in _entities) {
+            entity.DoUpdate();
+        }
     }
 
     void FixedUpdate() {
         if(!_isActive) return;
         foreach(var entity in _entities) {
             entity.DoFixedUpdate();
-        }
-    }
-    void Update() {
-        foreach(var entity in _entities) {
-            entity.DoUpdate();
         }
     }
 
