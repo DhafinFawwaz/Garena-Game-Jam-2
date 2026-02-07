@@ -1,4 +1,3 @@
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,13 +7,13 @@ public class CameraController : MonoBehaviour
     [SerializeField] float _panSpeed = 0.5f;
 
     [Header("Zoom")]
-    [SerializeField] [Range(0.01f, 0.5f)] float _zoomStep = 0.1f;
+    [SerializeField][Range(0.01f, 0.5f)] float _zoomStep = 0.1f;
     [SerializeField] float _minZoom = 10f;
     [SerializeField] float _maxZoom = 500f;
     [SerializeField] float _zoomSmoothSpeed = 10f;
 
-    [Header("References")]
-    [SerializeField] CinemachineCamera _virtualCamera;
+    [Header("Confiner")]
+    [SerializeField] Collider2D _boundaryCollider;
 
     Camera _cam;
     float _targetZoom;
@@ -23,10 +22,7 @@ public class CameraController : MonoBehaviour
     void Awake()
     {
         _cam = Camera.main;
-        if (_virtualCamera != null)
-            _targetZoom = _virtualCamera.Lens.OrthographicSize;
-        else
-            _targetZoom = _cam.orthographicSize;
+        _targetZoom = _cam.orthographicSize;
     }
 
     void OnEnable()
@@ -68,8 +64,7 @@ public class CameraController : MonoBehaviour
 
         if (moveDir != Vector3.zero)
         {
-            float currentSize = _virtualCamera != null ? _virtualCamera.Lens.OrthographicSize : _cam.orthographicSize;
-            transform.position += moveDir.normalized * _panSpeed * currentSize * Time.deltaTime;
+            transform.position += moveDir.normalized * _panSpeed * _cam.orthographicSize * Time.deltaTime;
         }
     }
 
@@ -85,15 +80,25 @@ public class CameraController : MonoBehaviour
             _targetZoom = Mathf.Clamp(_targetZoom, _minZoom, _maxZoom);
         }
 
-        if (_virtualCamera != null)
-        {
-            var lens = _virtualCamera.Lens;
-            lens.OrthographicSize = Mathf.Lerp(lens.OrthographicSize, _targetZoom, Time.deltaTime * _zoomSmoothSpeed);
-            _virtualCamera.Lens = lens;
-        }
-        else
-        {
-            _cam.orthographicSize = Mathf.Lerp(_cam.orthographicSize, _targetZoom, Time.deltaTime * _zoomSmoothSpeed);
-        }
+        _cam.orthographicSize = Mathf.Lerp(_cam.orthographicSize, _targetZoom, Time.deltaTime * _zoomSmoothSpeed);
+    }
+
+    void LateUpdate()
+    {
+        if (_boundaryCollider == null) return;
+        ConfineCamera();
+    }
+
+    void ConfineCamera()
+    {
+        float camHeight = _cam.orthographicSize;
+        float camWidth = camHeight * _cam.aspect;
+
+        Bounds bounds = _boundaryCollider.bounds;
+
+        float clampedX = Mathf.Clamp(transform.position.x, bounds.min.x + camWidth, bounds.max.x - camWidth);
+        float clampedY = Mathf.Clamp(transform.position.y, bounds.min.y + camHeight, bounds.max.y - camHeight);
+
+        transform.position = new Vector3(clampedX, clampedY, transform.position.z);
     }
 }

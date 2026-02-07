@@ -155,6 +155,42 @@ public class RandomEventScheduler : MonoBehaviour
                         if (member != null) member.MoveSpeedMultiplier = 1f;
                 }
                 break;
+
+            case GameEventEffect.SpawnSign:
+                SpawnSignsNearHerds(evt, targetHerds);
+                break;
+
+            case GameEventEffect.SpawnEnemyHerd:
+                if (spawner != null)
+                    spawner.SpawnAdditionalEnemyHerd();
+                break;
+        }
+    }
+
+    public void AddEvent(GameEvent evt)
+    {
+        if (!_eventPool.Contains(evt))
+            _eventPool.Add(evt);
+    }
+
+    void SpawnSignsNearHerds(GameEvent evt, List<Herd> herds)
+    {
+        if (evt.SignPrefabs == null || evt.SignPrefabs.Count == 0) return;
+
+        foreach (var herd in herds)
+        {
+            if (herd == null) continue;
+            Vector2 herdPos = herd.transform.position;
+
+            for (int i = 0; i < evt.SpawnCount; i++)
+            {
+                Sign prefab = evt.SignPrefabs[UnityEngine.Random.Range(0, evt.SignPrefabs.Count)];
+                if (prefab == null) continue;
+
+                Vector2 offset = UnityEngine.Random.insideUnitCircle * evt.SignSpawnRadius;
+                Vector3 spawnPos = new Vector3(herdPos.x + offset.x, herdPos.y + offset.y, 0f);
+                Instantiate(prefab, spawnPos, Quaternion.identity);
+            }
         }
     }
 }

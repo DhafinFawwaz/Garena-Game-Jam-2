@@ -7,7 +7,8 @@ public class ConveyorBelt : MonoBehaviour
     public static ConveyorBelt Instance { get; private set; }
 
     [Header("Prefabs")]
-    [SerializeField] List<SignDragable> _signDragablePrefabs = new();
+    [SerializeField] SignDragable _signDragableTemplate;
+    [SerializeField] List<Sign> _signPrefabs = new();
 
     [Header("Settings")]
     [SerializeField] float _speed = 2f;
@@ -53,7 +54,7 @@ public class ConveyorBelt : MonoBehaviour
     }
     
     void HandleSpawning() {
-        if (_signDragablePrefabs.Count == 0 || _spawnPointRt == null) return;
+        if (_signPrefabs.Count == 0 || _spawnPointRt == null || _signDragableTemplate == null) return;
         if (_activeSignDragables.Count >= _maxActiveSigns) return;
 
         _spawnTimer += Time.deltaTime;
@@ -63,20 +64,18 @@ public class ConveyorBelt : MonoBehaviour
             SpawnRandomSignDragable();
         }
     }
-    
+
     void SpawnRandomSignDragable()
     {
-        int randomIndex = Random.Range(0, _signDragablePrefabs.Count);
-        SignDragable prefab = _signDragablePrefabs[randomIndex];
-        
-        SignDragable spawnedObj = Instantiate(prefab, transform);
+        int randomIndex = Random.Range(0, _signPrefabs.Count);
+        Sign signPrefab = _signPrefabs[randomIndex];
+
+        SignDragable spawnedObj = Instantiate(_signDragableTemplate, transform);
         RectTransform rt = spawnedObj.GetComponent<RectTransform>();
         rt.anchoredPosition = _spawnPointRt.anchoredPosition;
-        
-        if (spawnedObj.TryGetComponent<SignDragable>(out SignDragable signDragable)) {
-            _activeSignDragables.Add(signDragable);
-            signDragable.Init(_canvas, _notDropableArea);
-        }
+
+        _activeSignDragables.Add(spawnedObj);
+        spawnedObj.Init(_canvas, _notDropableArea, signPrefab);
     }
     
     void DestroyOutOfBounds() {
@@ -97,10 +96,10 @@ public class ConveyorBelt : MonoBehaviour
         }
     }
 
-    public void AddSignPrefab(SignDragable prefab)
+    public void AddSignPrefab(Sign prefab)
     {
-        if (!_signDragablePrefabs.Contains(prefab))
-            _signDragablePrefabs.Add(prefab);
+        if (!_signPrefabs.Contains(prefab))
+            _signPrefabs.Add(prefab);
     }
 
     public void SetSpawnInterval(float interval)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum GameEventEffect
@@ -7,7 +8,9 @@ public enum GameEventEffect
     SpawnIntervalMultiplier,
     MoveSpeedMultiplier,
     InstantHungerDrain,
-    InstantHungerRestore
+    InstantHungerRestore,
+    SpawnSign,
+    SpawnEnemyHerd
 }
 
 [CreateAssetMenu(fileName = "NewGameEvent", menuName = "Game/GameEvent")]
@@ -35,4 +38,14 @@ public class GameEvent : ScriptableObject
 
     [SerializeField] bool _affectsPlayerOnly = false;
     public bool AffectsPlayerOnly => _affectsPlayerOnly;
+
+    [Header("Sign Spawning (for SpawnSign effect)")]
+    [SerializeField] List<Sign> _signPrefabs = new();
+    public List<Sign> SignPrefabs => _signPrefabs;
+
+    [SerializeField] int _spawnCount = 1;
+    public int SpawnCount => _spawnCount;
+
+    [SerializeField] float _signSpawnRadius = 5f;
+    public float SignSpawnRadius => _signSpawnRadius;
 }
