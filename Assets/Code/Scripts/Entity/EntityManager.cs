@@ -53,8 +53,15 @@ public class EntityManager : MonoBehaviour
         }
     }
 
+    [SerializeField] float _trustDecreaseOnDeath = 5f;
     void HandleEntityDeath(SheepCore entity) {
         _entities.Remove(entity);
+        // Decrease trust of all other friendly sheep
+        foreach(var otherEntity in _entities) {
+            if(otherEntity.Stats.TeamID == entity.Stats.TeamID) {
+                otherEntity.DecreaseTrust(_trustDecreaseOnDeath);
+            }
+        }
     }
 
     void HandleHerdEmpty(Herd herd) {

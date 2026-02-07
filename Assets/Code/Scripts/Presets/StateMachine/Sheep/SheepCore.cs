@@ -61,6 +61,8 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
     public void DoUpdate() {
         if(CurrentState == null) return;
         CurrentState.StateUpdate();
+
+        Stats.CurrentHunger -= Stats.HungerDecreasePerSecond * Time.deltaTime;
     }
 
     [SerializeField] [ReadOnly] List<Sign> _currentSigns = new ();
@@ -106,6 +108,9 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
     public void IncreaseTrust(float amount) {
         Stats.CurrentTrust += amount;
         // TODO: play some VFX or SFX
+    }
+    public void DecreaseTrust(float amount) { // called when friendly sheep die
+        Stats.CurrentTrust -= amount;
     }
 
     public void ConvertToEnemy() {
