@@ -220,7 +220,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: fd0fa35f974cde545a85cc059caaf1d5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.078431375}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -307,8 +307,9 @@ GameObject:
   - component: {fileID: 2566067412215125903}
   - component: {fileID: 3110188136303710372}
   - component: {fileID: 7987947627656193008}
+  - component: {fileID: 6452943413336891421}
   m_Layer: 0
-  m_Name: '[Sign]'
+  m_Name: '[Sign] DontGoHere'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,7 +345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f77d1571a9bda34fbeb515e5253cbcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sign
-  _lifeTime: 3
+  Type: 4
+  _maxLifetime: 10
   _lifetimePreviewer: {fileID: 4933799450050976616}
 --- !u!50 &7987947627656193008
 Rigidbody2D:
@@ -373,6 +375,42 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &6452943413336891421
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3046674469451426049}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!1 &4373463757392832220
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,8 +469,8 @@ Transform:
   m_GameObject: {fileID: 8740456743622326756}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.4999998, z: 0}
-  m_LocalScale: {x: 0.5, y: 5.000068, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2566067412215125903}

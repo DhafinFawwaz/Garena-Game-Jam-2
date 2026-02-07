@@ -47,8 +47,13 @@ public class EntityManager : MonoBehaviour
             entity.DoFixedUpdate();
         }
     }
+    void Update() {
+        foreach(var entity in _entities) {
+            entity.DoUpdate();
+        }
+    }
 
-    void HandleEntityDeath(Entity entity) {
+    void HandleEntityDeath(SheepCore entity) {
         _entities.Remove(entity);
     }
 

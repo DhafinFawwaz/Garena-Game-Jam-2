@@ -31,10 +31,27 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         _canvasGroup.blocksRaycasts = false;
         
         transform.SetParent(_canvas.transform);
+        _ghostViewer.SpawnGhost(GetWorldPositionFromMousePosition());
     }
+
+
+    Camera _mainCamCache = null;
+    Camera _mainCam { get {
+        if(_mainCamCache == null) {
+            _mainCamCache = Camera.main;
+        }
+        return _mainCamCache;
+    }}
+    Vector2 GetWorldPositionFromMousePosition() {
+        Vector3 worldPosition = _mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        worldPosition.z = 0;
+        return worldPosition;
+    }
+
     public void OnDrag(PointerEventData e)
     {
         _rt.anchoredPosition += e.delta / _canvas.scaleFactor;
+        _ghostViewer.MoveGhost(GetWorldPositionFromMousePosition());
     }
     
     public void OnEndDrag(PointerEventData e)
@@ -57,6 +74,8 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             transform.SetParent(_originalParent);
             _rt.anchoredPosition = _originalPosition;
         }
+
+        _ghostViewer.DestroyGhost();
     }
     
     bool IsInNotDropableArea() {
@@ -66,4 +85,7 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             _canvas.worldCamera
         );
     }
+
+
+    [SerializeField] SignDragableGhost _ghostViewer;
 }
