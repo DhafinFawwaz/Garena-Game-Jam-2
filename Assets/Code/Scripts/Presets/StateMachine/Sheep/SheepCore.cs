@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DhafinFawwaz.AnimationUI;
 using UnityEngine;
 
 public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
@@ -87,5 +88,33 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
         Destroy(gameObject);
     }
 
-    
+    public void ConvertToEnemy() {
+        Stats.State = EntityType.Enemy;
+        // TODO: change visual
+    }
+    public void ConvertToFriendly() {
+        Stats.State = EntityType.Friendly;
+        // TODO: change visual
+    }
+
+    [SerializeField] Collider2D _col;
+    public void SetActiveCore(bool isActive) {
+        if(isActive) {
+            _rb.bodyType = RigidbodyType2D.Dynamic;
+            _col.enabled = true;
+            States = new SheepStates(this);
+            CurrentState = States.Wander;
+            CurrentState.StateEnter();
+        }
+        else {
+            _rb.bodyType = RigidbodyType2D.Kinematic;
+            _col.enabled = false;
+        }
+    }
+
+    [SerializeField] AnimationUI _fallFromSkyAUI;
+    [ContextMenu("Play Fall From Sky Animation")]
+    public void PlayFallFromSkyAnimation() {
+        _fallFromSkyAUI.Play();
+    }
 }
