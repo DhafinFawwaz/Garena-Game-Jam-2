@@ -23,6 +23,8 @@ public class Herd : MonoBehaviour, IHungerable
     public float HungerLevel { get => _hungerLevel; }
 
     float _hungerDecayRate;
+    float _hungerDecayMultiplier = 1f;
+    public float HungerDecayMultiplier { get => _hungerDecayMultiplier; set => _hungerDecayMultiplier = value; }
 
     [SerializeField] [ReadOnly] List<SheepCore> _members = new List<SheepCore>();
     public List<SheepCore> Members { get => _members; }
@@ -67,7 +69,7 @@ public class Herd : MonoBehaviour, IHungerable
 
     public void DoUpdate() {
         if(_members.Count == 0) return;
-        DecreaseHunger(_hungerDecayRate * Time.deltaTime);
+        DecreaseHunger(_hungerDecayRate * _hungerDecayMultiplier * Time.deltaTime);
     }
 
     public void IncreaseHunger(float amount) {

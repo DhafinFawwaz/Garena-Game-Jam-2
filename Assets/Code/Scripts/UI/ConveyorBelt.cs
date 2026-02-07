@@ -4,12 +4,16 @@ using UnityEngine.UI;
 
 public class ConveyorBelt : MonoBehaviour
 {
+    public static ConveyorBelt Instance { get; private set; }
+
     [Header("Prefabs")]
     [SerializeField] List<SignDragable> _signDragablePrefabs = new();
-    
+
     [Header("Settings")]
     [SerializeField] float _speed = 2f;
     [SerializeField] float _spawnInterval = 2f;
+    [SerializeField] int _maxActiveSigns = 5;
+    float _spawnIntervalMultiplier = 1f;
     
     [Header("References")]
     [SerializeField] RectTransform _deletePosRt; // if the EntityDragable is at the left of this, destroy
@@ -20,6 +24,11 @@ public class ConveyorBelt : MonoBehaviour
     
     List<SignDragable> _activeSignDragables = new();
     float _spawnTimer;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     void Update() {
         MoveConveyorBelt();
@@ -45,10 +54,11 @@ public class ConveyorBelt : MonoBehaviour
     
     void HandleSpawning() {
         if (_signDragablePrefabs.Count == 0 || _spawnPointRt == null) return;
-            
+        if (_activeSignDragables.Count >= _maxActiveSigns) return;
+
         _spawnTimer += Time.deltaTime;
-        
-        if (_spawnTimer >= _spawnInterval) {
+
+        if (_spawnTimer >= _spawnInterval * _spawnIntervalMultiplier) {
             _spawnTimer = 0f;
             SpawnRandomSignDragable();
         }
@@ -85,5 +95,31 @@ public class ConveyorBelt : MonoBehaviour
                 _activeSignDragables.RemoveAt(i);
             }
         }
+    }
+
+    public void AddSignPrefab(SignDragable prefab)
+    {
+        if (!_signDragablePrefabs.Contains(prefab))
+            _signDragablePrefabs.Add(prefab);
+    }
+
+    public void SetSpawnInterval(float interval)
+    {
+        _spawnInterval = interval;
+    }
+
+    public void SetMaxActiveSigns(int max)
+    {
+        _maxActiveSigns = max;
+    }
+
+    public float GetSpawnInterval()
+    {
+        return _spawnInterval;
+    }
+
+    public void SetSpawnIntervalMultiplier(float multiplier)
+    {
+        _spawnIntervalMultiplier = multiplier;
     }
 }

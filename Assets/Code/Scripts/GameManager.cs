@@ -5,6 +5,7 @@ public enum GameState
 {
     Idle,
     Playing,
+    Paused,
     Win,
     Lose
 }
@@ -53,6 +54,23 @@ public class GameManager : MonoBehaviour
         if (_currentState == newState) return;
         _currentState = newState;
         S_OnGameStateChanged?.Invoke(_currentState);
+    }
+
+    GameState _stateBeforePause;
+
+    public void PauseGame()
+    {
+        if (_currentState != GameState.Playing) return;
+        _stateBeforePause = _currentState;
+        Time.timeScale = 0f;
+        SetState(GameState.Paused);
+    }
+
+    public void ResumeGame()
+    {
+        if (_currentState != GameState.Paused) return;
+        Time.timeScale = 1f;
+        SetState(_stateBeforePause);
     }
 
     void HandleHerdEmpty(Herd herd)

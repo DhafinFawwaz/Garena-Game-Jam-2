@@ -39,7 +39,9 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
     [SerializeField] Rigidbody2D _rb;
     public Rigidbody2D Rb => _rb;
     [SerializeField] float _moveSpeed = 5f;
-    public float MoveSpeed => _moveSpeed;
+    float _moveSpeedMultiplier = 1f;
+    public float MoveSpeedMultiplier { get => _moveSpeedMultiplier; set => _moveSpeedMultiplier = value; }
+    public float MoveSpeed => _moveSpeed * _moveSpeedMultiplier;
 
     public void DoFixedUpdate() {
         if(CurrentState == null) return;

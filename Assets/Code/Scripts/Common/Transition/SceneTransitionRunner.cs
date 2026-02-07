@@ -33,4 +33,10 @@ public class SceneTransitionRunner : MonoBehaviour
         }
         _transitionPrefab.LoadScene(UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(previousBuildIndex));
     }
+
+    public void RestartCurrentScene() {
+        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        SceneTransition transition = Instantiate(_transitionPrefab);
+        transition.LoadScene(currentSceneName);
+    }
 }
