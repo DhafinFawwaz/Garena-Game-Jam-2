@@ -24,14 +24,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802752603744356112}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 754781920813149875}
   - {fileID: 4398222506468336066}
-  m_Father: {fileID: 197762034516683725}
+  m_Father: {fileID: 8576424834842846371}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &859246075378049005
 GameObject:
@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1351680296256201129}
   - component: {fileID: 8634446891496813783}
   - component: {fileID: 4721154989096651954}
+  - component: {fileID: 5805668069641406738}
   m_Layer: 0
   m_Name: '[SheepCore] Friendly'
   m_TagString: Untagged
@@ -69,6 +70,7 @@ Transform:
   - {fileID: 5878441626408024206}
   - {fileID: 7398274341129784621}
   - {fileID: 7958213092925738560}
+  - {fileID: 5000373543606377515}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1351680296256201129
@@ -129,6 +131,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
   State: 2
+--- !u!114 &5805668069641406738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859246075378049005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d773ba376fab795499715226f60ee70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityCliff
+  _cliffCollider: {fileID: 6035925408210202595}
+  _rb: {fileID: 1351680296256201129}
+  _fallAUI: {fileID: 4415302464815243112}
 --- !u!1 &1310285408994992832
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +314,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 435163359544245281}
+  - {fileID: 8576424834842846371}
   m_Father: {fileID: 4439867342597909761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1749131941669854810
@@ -312,8 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619b60a15dd72334e8edf9529aa2872d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntitySkin
-  _rightDownSR: {fileID: 6508987712515940887, guid: f11faf7d5d970e149acc886021f5ad32, type: 3}
-  _rightUpSR: {fileID: 6508987712515940887, guid: f11faf7d5d970e149acc886021f5ad32, type: 3}
+  _rightDownSR: {fileID: 21300000, guid: f11faf7d5d970e149acc886021f5ad32, type: 3}
+  _rightUpSR: {fileID: 21300000, guid: f11faf7d5d970e149acc886021f5ad32, type: 3}
   _renderer: {fileID: 1925681052867277654}
   _skin: {fileID: 435163359544245281}
   _skinAlertAnchor: {fileID: 197762034516683725}
@@ -402,12 +419,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 6508987712515940887, guid: f11faf7d5d970e149acc886021f5ad32, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f11faf7d5d970e149acc886021f5ad32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -503,6 +520,38 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &5368641235066236495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5000373543606377515}
+  m_Layer: 0
+  m_Name: '[AnimationUIs]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5000373543606377515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368641235066236495}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6698758480394502377}
+  m_Father: {fileID: 4439867342597909761}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6372480266097712585
 GameObject:
   m_ObjectHideFlags: 0
@@ -5424,6 +5473,38 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!1 &6620820752998085022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8576424834842846371}
+  m_Layer: 0
+  m_Name: '[Anchor] Cliff'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8576424834842846371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620820752998085022}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 435163359544245281}
+  m_Father: {fileID: 197762034516683725}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7354360081589470457
 GameObject:
   m_ObjectHideFlags: 0
@@ -10431,3 +10512,77 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!1 &7628834550593456824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6698758480394502377}
+  - component: {fileID: 4415302464815243112}
+  m_Layer: 0
+  m_Name: AnimationUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6698758480394502377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7628834550593456824}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5000373543606377515}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4415302464815243112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7628834550593456824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17dbaed680fd7194d9cc7297932b7691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DhafinFawwaz.AnimationUI.AnimationUI
+  PlayOnStart: 0
+  IgnoreTimeScale: 0
+  CurrentAnimationTime: 0
+  _sequence:
+  - rid: 8059579814261555278
+  - rid: 8059579814261555280
+  references:
+    version: 2
+    RefIds:
+    - rid: 8059579814261555278
+      type: {class: LocalScaleTween, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [[Anchor] Cliff] [0.5s]'
+        Target: {fileID: 8576424834842846371}
+        Duration: 0.5
+        EaseType: 7
+        From: {x: 1, y: 1, z: 1}
+        To: {x: 0, y: 0, z: 0}
+    - rid: 8059579814261555280
+      type: {class: SpriteFlipbookTween, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [[Skin]] [0.1s]'
+        Target: {fileID: 1925681052867277654}
+        Duration: 0.1
+        EaseType: 11
+        From: 0
+        To: 1
+        Sprites:
+        - {fileID: 21300000, guid: f11faf7d5d970e149acc886021f5ad32, type: 3}
+        - {fileID: 21300000, guid: 090e8954bbda5ca4ba00239d48181254, type: 3}

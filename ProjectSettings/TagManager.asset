@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Entity
+  - Cliff
   layers:
   - Default
   - TransparentFX
