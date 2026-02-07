@@ -6,6 +6,8 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
 {
     public EntitySkin Skin;
     public EntityStats Stats;
+    public EntityAttack Attack;
+    public EntityDetector Detector;
 
     Herd _herd;
     public Herd Herd => _herd;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Sign : MonoBehaviour
@@ -11,16 +12,20 @@ public class Sign : MonoBehaviour
     }
 
     [SerializeField] LifetimePreviewer _lifetimePreviewer;
+
+    List<ISignInteractable> _sheepCores = new ();
     void OnTriggerEnter2D(Collider2D other) {
         if(other.attachedRigidbody == null) return;
         if(!other.attachedRigidbody.TryGetComponent<ISignInteractable>(out var entity)) return;
         entity.OnSignEnter(this);
+        _sheepCores.Add(entity);
     }
 
     void OnTriggerExit2D(Collider2D other) {
         if(other.attachedRigidbody == null) return;
         if(!other.attachedRigidbody.TryGetComponent<ISignInteractable>(out var entity)) return;
         entity.OnSignExit(this);
+        _sheepCores.Remove(entity);
     }
 
     void Update() {

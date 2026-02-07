@@ -7,6 +7,7 @@ public class EntityStats : MonoBehaviour
     public float CurrentTrust { get => _currentTrust; set => _currentTrust = Mathf.Clamp(value, 0f, MaxTrust); }
     public float CurrentHunger { get => _currentHunger; set => _currentHunger = Mathf.Clamp(value, 0f, MaxHunger); }
     public EntityType State = EntityType.Neutral;
+    public int TeamID = 0; // If in the future we found bug, might be because we haven't set this properly
 
 
     public const float MaxTrust = 100f;
@@ -22,4 +23,9 @@ public class EntityStats : MonoBehaviour
     public void Eat(float amount) {
         CurrentHunger += amount;
     }
+
+
+
+    [Header("Combat Stats")]
+    public float AttackDamage = 10f;
 }

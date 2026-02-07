@@ -27,23 +27,38 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
 
         if(_timer >= _alertDuration && Core.CurrentSigns.Count > 0) {
             _timer = 0f;
-            handleSignType(sign1, trust, () => { Core.SwitchState(States.Chase); }, () => { Core.SwitchState(States.Wander); });
+            handleSignType(sign1, trust, 
+                () => { Core.SwitchState(States.Chase); }, 
+                () => { Core.SwitchState(States.Wander); },
+                () => { Core.SwitchState(States.Rush); }
+            );
         }
         Core.Skin.AlertJump(Mathf.Min(1f, _timer * _alertSpeed));
 
         handleSignType(sign1, trust);
     }
 
-    void handleSignType(Sign sign1, float trust, Action onChase = null, Action onWander = null) {
-        if(sign1 != null && sign1.Type == SignType.DontGoHere) {
-            if(trust >= _minimumTrustToChase) {
+    void handleSignType(Sign sign1, float trust, Action onChase = null, Action onWander = null, Action onRush = null) {
+        if(sign1 == null) return;
+
+        if(trust >= _minimumTrustToChase) {
+            Core.VFX.PlayAlertVFX();
+
+            if(sign1.Type == SignType.DontGoHere) {
                 onChase?.Invoke();
-                Core.VFX.PlayAlertVFX();
-            } else {
-                onWander?.Invoke();
-                Core.VFX.PlayAlertConfusedVFX();
+            } else if(sign1.Type == SignType.Combat) {
+                onRush?.Invoke();
             }
+        } else {
+            onWander?.Invoke();
+            Core.VFX.PlayAlertConfusedVFX();
         }
+
+        if(trust >= _minimumTrustToChase) {
+            
+        }
+
+
     }
 
 
