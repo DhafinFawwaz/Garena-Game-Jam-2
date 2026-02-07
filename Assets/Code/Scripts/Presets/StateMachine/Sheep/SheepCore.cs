@@ -43,7 +43,6 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
     public void OnSignEnter(Sign sign) {
         _currentSigns.Add(sign);
         if(_currentSigns.Count >= 1) {
-            Debug.Log("SheepCore: Sign entered, switching to Alert state");
             SwitchState(States.Alert);
         }
     }

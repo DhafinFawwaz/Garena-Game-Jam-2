@@ -18,4 +18,8 @@ public class EntityStats : MonoBehaviour
         _currentTrust = InitialTrust;
         _currentHunger = InitialHunger;
     }
+
+    public void Eat(float amount) {
+        CurrentHunger += amount;
+    }
 }
