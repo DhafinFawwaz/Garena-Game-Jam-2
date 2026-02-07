@@ -77,14 +77,14 @@ namespace DhafinFawwaz.AnimationUI {
 
         public void SetFromAsTargetValueSafe() {
             if(Target == null) {
-                Debug.LogErrorFormat($"Target is null. Please assign a target first.", Target);
+                // Debug.LogErrorFormat($"Target is null. Please assign a target first.", Target);
                 return;
             }
             SetFromAsTargetValue();
         }
         public void SetToAsTargetValueSafe() {
             if(Target == null) {
-                Debug.LogErrorFormat($"Target is null. Please assign a target first.", Target);
+                // Debug.LogErrorFormat($"Target is null. Please assign a target first.", Target);
                 return;
             }
             SetToAsTargetValue();
