@@ -346,8 +346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fbba13b8ae283428e939e299128d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConveyorBelt
-  _signDragableTemplate: {fileID: 0}
-  _signPrefabs: []
+  _signDragableTemplate: {fileID: 2177774490252466749, guid: 75c33b73bdf90894da4b426301abddc8, type: 3}
+  _signPrefabs:
+  - {fileID: 1322822299}
   _speed: 2
   _spawnInterval: 2
   _maxActiveSigns: 5
@@ -1132,6 +1133,17 @@ MonoBehaviour:
   - {fileID: 494592529}
   - {fileID: 1946146397}
   - {fileID: 1763688274}
+--- !u!114 &1322822299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3110188136303710372, guid: f9f0c235b9aaa9b4f8c9f72c9dd6dc3c, type: 3}
+  m_PrefabInstance: {fileID: 1218730496}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f77d1571a9bda34fbeb515e5253cbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sign
 --- !u!1001 &1539215768
 PrefabInstance:
   m_ObjectHideFlags: 0
