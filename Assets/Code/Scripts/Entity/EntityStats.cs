@@ -30,4 +30,5 @@ public class EntityStats : MonoBehaviour
     public float AttackDamage = 10f;
     public float MaxHealth = 100f;
     public float CurrentHealth = 100f;
+    public float AttackDelay = 1f;
 }
