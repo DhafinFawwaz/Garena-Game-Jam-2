@@ -17,9 +17,9 @@ public class HerdSpawner : MonoBehaviour
     [SerializeField] List<HerdData> _enemyHerdDataList = new List<HerdData>();
 
     [Header("Spawn Settings")]
+    [SerializeField] Collider2D _spawnBoundary;
     [SerializeField] float _spawnPadding = 2f;
     [SerializeField] float _minHerdDistance = 5f;
-    [SerializeField] float _bottomPadding = 4f;
 
     [SerializeField][ReadOnly] Herd _playerHerd;
     public Herd PlayerHerd { get => _playerHerd; }
@@ -74,15 +74,12 @@ public class HerdSpawner : MonoBehaviour
 
     Vector2 GetRandomSpawnPosition(List<Vector2> usedPositions)
     {
-        Camera cam = Camera.main;
-        float camHeight = cam.orthographicSize;
-        float camWidth = camHeight * cam.aspect;
-        Vector2 camPos = cam.transform.position;
+        Bounds bounds = _spawnBoundary.bounds;
 
-        float minX = camPos.x - camWidth + _spawnPadding;
-        float maxX = camPos.x + camWidth - _spawnPadding;
-        float minY = camPos.y - camHeight + _spawnPadding + _bottomPadding;
-        float maxY = camPos.y + camHeight - _spawnPadding;
+        float minX = bounds.min.x + _spawnPadding;
+        float maxX = bounds.max.x - _spawnPadding;
+        float minY = bounds.min.y + _spawnPadding;
+        float maxY = bounds.max.y - _spawnPadding;
 
         for (int attempt = 0; attempt < 50; attempt++)
         {
@@ -90,6 +87,8 @@ public class HerdSpawner : MonoBehaviour
                 UnityEngine.Random.Range(minX, maxX),
                 UnityEngine.Random.Range(minY, maxY)
             );
+
+            if (!_spawnBoundary.OverlapPoint(candidate)) continue;
 
             bool tooClose = false;
             foreach (var pos in usedPositions)
@@ -104,10 +103,7 @@ public class HerdSpawner : MonoBehaviour
             if (!tooClose) return candidate;
         }
 
-        return new Vector2(
-            UnityEngine.Random.Range(minX, maxX),
-            UnityEngine.Random.Range(minY, maxY)
-        );
+        return (Vector2)bounds.center;
     }
 
     Herd SpawnHerd(HerdData data, Vector2 position, bool isPlayer)

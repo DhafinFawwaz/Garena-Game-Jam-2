@@ -8,12 +8,21 @@ public class RandomEventScheduler : MonoBehaviour
     public static Action<GameEvent> S_OnEventTriggered;
 
     [Header("Event Pool")]
-    [SerializeField] List<GameEvent> _eventPool = new();
+    [SerializeField][ReadOnly] List<GameEvent> _eventPool = new();
 
     [Header("Scheduling")]
     [SerializeField] float _initialInterval = 30f;
     [SerializeField] float _minInterval = 10f;
     [SerializeField] float _intervalDecayRate = 0.5f;
+
+    [Header("Multi-Event Scaling")]
+    [SerializeField] int _initialEventCount = 1;
+    [SerializeField] int _maxEventCount = 3;
+    [SerializeField] float _eventCountScaleTime = 180f;
+
+    [Header("Spawn Boundary")]
+    [SerializeField] Collider2D _spawnBoundary;
+    [SerializeField] float _spawnPadding = 2f;
 
     [Header("Display")]
     [SerializeField] PopUp _eventPopup;
@@ -45,7 +54,7 @@ public class RandomEventScheduler : MonoBehaviour
 
     void Update()
     {
-        if (!_isActive) return;
+        if (!_isActive || _eventPool.Count == 0) return;
 
         _elapsedTime += Time.deltaTime;
 
@@ -60,19 +69,28 @@ public class RandomEventScheduler : MonoBehaviour
     {
         if (_eventPool.Count == 0) return;
 
-        int index = UnityEngine.Random.Range(0, _eventPool.Count);
-        GameEvent evt = _eventPool[index];
-
-        S_OnEventTriggered?.Invoke(evt);
-
-        if (_eventPopup != null)
+        int count = GetCurrentEventCount();
+        for (int e = 0; e < count; e++)
         {
-            _eventPopup.SetData(evt.EventName, evt.Description);
-            _eventPopup.Show();
-            StartCoroutine(HidePopupAfterDelay());
-        }
+            int index = UnityEngine.Random.Range(0, _eventPool.Count);
+            GameEvent evt = _eventPool[index];
 
-        ApplyEffect(evt);
+            S_OnEventTriggered?.Invoke(evt);
+            SpawnSigns(evt);
+
+            if (_eventPopup != null && e == 0)
+            {
+                _eventPopup.SetData(evt.EventName, evt.Description);
+                _eventPopup.Show();
+                StartCoroutine(HidePopupAfterDelay());
+            }
+        }
+    }
+
+    int GetCurrentEventCount()
+    {
+        float t = Mathf.Clamp01(_elapsedTime / _eventCountScaleTime);
+        return Mathf.RoundToInt(Mathf.Lerp(_initialEventCount, _maxEventCount, t));
     }
 
     IEnumerator HidePopupAfterDelay()
@@ -88,109 +106,57 @@ public class RandomEventScheduler : MonoBehaviour
         _nextEventTime = _elapsedTime + currentInterval;
     }
 
-    void ApplyEffect(GameEvent evt)
+    void SpawnSigns(GameEvent evt)
     {
-        StartCoroutine(ApplyTimedEffect(evt));
+        if (evt.SignPrefabs == null || evt.SignPrefabs.Count == 0) return;
+
+        for (int i = 0; i < evt.SpawnCount; i++)
+        {
+            Sign prefab = evt.SignPrefabs[UnityEngine.Random.Range(0, evt.SignPrefabs.Count)];
+            if (prefab == null) continue;
+
+            Vector2 pos = GetRandomPositionInBounds();
+            Instantiate(prefab, pos, Quaternion.identity);
+        }
     }
 
-    IEnumerator ApplyTimedEffect(GameEvent evt)
+    Vector2 GetRandomPositionInBounds()
     {
-        var spawner = HerdSpawner.Instance;
-        if (spawner == null) yield break;
+        if (_spawnBoundary == null)
+            return Vector2.zero;
 
-        List<Herd> targetHerds = new List<Herd>();
-        if (evt.AffectsPlayerOnly)
+        Bounds bounds = _spawnBoundary.bounds;
+
+        float minX = bounds.min.x + _spawnPadding;
+        float maxX = bounds.max.x - _spawnPadding;
+        float minY = bounds.min.y + _spawnPadding;
+        float maxY = bounds.max.y - _spawnPadding;
+
+        for (int attempt = 0; attempt < 50; attempt++)
         {
-            if (spawner.PlayerHerd != null)
-                targetHerds.Add(spawner.PlayerHerd);
+            Vector2 candidate = new Vector2(
+                UnityEngine.Random.Range(minX, maxX),
+                UnityEngine.Random.Range(minY, maxY)
+            );
+
+            if (_spawnBoundary.OverlapPoint(candidate))
+                return candidate;
         }
-        else
-        {
-            if (spawner.PlayerHerd != null)
-                targetHerds.Add(spawner.PlayerHerd);
-            targetHerds.AddRange(spawner.EnemyHerds);
-        }
 
-        switch (evt.Effect)
-        {
-            case GameEventEffect.HungerDecayMultiplier:
-                foreach (var herd in targetHerds)
-                    if (herd != null) herd.HungerDecayMultiplier = evt.EffectValue;
-                yield return new WaitForSeconds(evt.Duration);
-                foreach (var herd in targetHerds)
-                    if (herd != null) herd.HungerDecayMultiplier = 1f;
-                break;
-
-            case GameEventEffect.SpawnIntervalMultiplier:
-                if (ConveyorBelt.Instance != null)
-                {
-                    ConveyorBelt.Instance.SetSpawnIntervalMultiplier(evt.EffectValue);
-                    yield return new WaitForSeconds(evt.Duration);
-                    ConveyorBelt.Instance.SetSpawnIntervalMultiplier(1f);
-                }
-                break;
-
-            case GameEventEffect.InstantHungerDrain:
-                foreach (var herd in targetHerds)
-                    if (herd != null) herd.DecreaseHunger(evt.EffectValue);
-                break;
-
-            case GameEventEffect.InstantHungerRestore:
-                foreach (var herd in targetHerds)
-                    if (herd != null) herd.IncreaseHunger(evt.EffectValue);
-                break;
-
-            case GameEventEffect.MoveSpeedMultiplier:
-                foreach (var herd in targetHerds)
-                {
-                    if (herd == null) continue;
-                    foreach (var member in herd.Members)
-                        if (member != null) member.MoveSpeedMultiplier = evt.EffectValue;
-                }
-                yield return new WaitForSeconds(evt.Duration);
-                foreach (var herd in targetHerds)
-                {
-                    if (herd == null) continue;
-                    foreach (var member in herd.Members)
-                        if (member != null) member.MoveSpeedMultiplier = 1f;
-                }
-                break;
-
-            case GameEventEffect.SpawnSign:
-                SpawnSignsNearHerds(evt, targetHerds);
-                break;
-
-            case GameEventEffect.SpawnEnemyHerd:
-                if (spawner != null)
-                    spawner.SpawnAdditionalEnemyHerd();
-                break;
-        }
+        return (Vector2)bounds.center;
     }
 
     public void AddEvent(GameEvent evt)
     {
-        if (!_eventPool.Contains(evt))
-            _eventPool.Add(evt);
-    }
+        if (_eventPool.Contains(evt)) return;
 
-    void SpawnSignsNearHerds(GameEvent evt, List<Herd> herds)
-    {
-        if (evt.SignPrefabs == null || evt.SignPrefabs.Count == 0) return;
+        bool wasEmpty = _eventPool.Count == 0;
+        _eventPool.Add(evt);
 
-        foreach (var herd in herds)
+        if (wasEmpty)
         {
-            if (herd == null) continue;
-            Vector2 herdPos = herd.transform.position;
-
-            for (int i = 0; i < evt.SpawnCount; i++)
-            {
-                Sign prefab = evt.SignPrefabs[UnityEngine.Random.Range(0, evt.SignPrefabs.Count)];
-                if (prefab == null) continue;
-
-                Vector2 offset = UnityEngine.Random.insideUnitCircle * evt.SignSpawnRadius;
-                Vector3 spawnPos = new Vector3(herdPos.x + offset.x, herdPos.y + offset.y, 0f);
-                Instantiate(prefab, spawnPos, Quaternion.identity);
-            }
+            _elapsedTime = 0f;
+            _nextEventTime = _initialInterval;
         }
     }
 }

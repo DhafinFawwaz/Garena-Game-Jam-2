@@ -1,17 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum GameEventEffect
-{
-    HungerDecayMultiplier,
-    SpawnIntervalMultiplier,
-    MoveSpeedMultiplier,
-    InstantHungerDrain,
-    InstantHungerRestore,
-    SpawnSign,
-    SpawnEnemyHerd
-}
 
 [CreateAssetMenu(fileName = "NewGameEvent", menuName = "Game/GameEvent")]
 public class GameEvent : ScriptableObject
@@ -26,20 +14,7 @@ public class GameEvent : ScriptableObject
     [SerializeField] Sprite _icon;
     public Sprite Icon => _icon;
 
-    [Header("Effect")]
-    [SerializeField] GameEventEffect _effect;
-    public GameEventEffect Effect => _effect;
-
-    [SerializeField] float _effectValue = 1f;
-    public float EffectValue => _effectValue;
-
-    [SerializeField] float _duration = 10f;
-    public float Duration => _duration;
-
-    [SerializeField] bool _affectsPlayerOnly = false;
-    public bool AffectsPlayerOnly => _affectsPlayerOnly;
-
-    [Header("Sign Spawning (for SpawnSign effect)")]
+    [Header("Sign Spawning")]
     [SerializeField] List<Sign> _signPrefabs = new();
     public List<Sign> SignPrefabs => _signPrefabs;
 
