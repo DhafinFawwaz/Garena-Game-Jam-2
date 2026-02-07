@@ -35,6 +35,9 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
         Stats.CurrentHealth -= hitRequest.Damage;
         if(Stats.CurrentHealth <= 0) {
             Die();
+            if(hitRequest.Element == Element.Bomb) {
+                ApplyTrustToWitness();
+            }
         }
         return new HitResult();
     }
@@ -88,6 +91,23 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
         Destroy(gameObject);
     }
 
+
+    [Header("Witness Trust Settings")]
+    [SerializeField] float _trustOnWitnessDeath = 10f; // TODO: edit this
+    [SerializeField] float _witnessRadius = 5f;
+    void ApplyTrustToWitness() {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _witnessRadius);
+        foreach(var hit in hits) {
+            if(hit.TryGetComponent<SheepCore>(out var playerCore)) {
+                playerCore.IncreaseTrust(_trustOnWitnessDeath);
+            }
+        }
+    }
+    public void IncreaseTrust(float amount) {
+        Stats.CurrentTrust += amount;
+        // TODO: play some VFX or SFX
+    }
+
     public void ConvertToEnemy() {
         Stats.State = EntityType.Enemy;
         // TODO: change visual
@@ -116,5 +136,6 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
     [ContextMenu("Play Fall From Sky Animation")]
     public void PlayFallFromSkyAnimation() {
         _fallFromSkyAUI.Play();
+        ApplyTrustToWitness();
     }
 }
