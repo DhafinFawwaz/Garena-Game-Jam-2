@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,9 +17,23 @@ public class SheepRushState : BaseState<SheepCore, SheepStates>
     {
         
     }
+
+    Func<int, SheepCore> GetClosestSheepCore(SignType type) {
+        if(type == SignType.Combat) {
+            return Core.Detector.GetClosestSheepCoreWithDifferentTeamID;
+        } else if(type == SignType.Cannibal) {
+            return Core.Detector.GetClosestSheepCoreWithSameTeamID;
+        }
+        return null;
+    }
+
     public override void StateFixedUpdate()
     {
-        var closestDetectedSheep = Core.Detector.GetClosestSheepCoreWithDifferentTeamID(Core.Stats.TeamID);
+        var sign = Core.GetLatestSign();
+        var func = GetClosestSheepCore(sign.Type);
+        if(func == null) return;
+
+        var closestDetectedSheep = func(Core.Stats.TeamID);
         if(closestDetectedSheep != null) {
             Vector2 direction = (closestDetectedSheep.transform.position - Core.transform.position).normalized;
             direction.y *= 0.5f;

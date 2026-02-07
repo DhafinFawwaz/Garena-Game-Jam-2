@@ -29,6 +29,19 @@ public class EntityDetector : MonoBehaviour
         }
         return closestSheepCore;
     }
+    public SheepCore GetClosestSheepCoreWithSameTeamID(int teamID) {
+        SheepCore closestSheepCore = null;
+        float closestDistance = float.MaxValue;
+        foreach(var sheepCore in _sheepCores) {
+            if(sheepCore.Stats.TeamID != teamID) continue;
+            float distance = Vector2.Distance(transform.position, sheepCore.transform.position);
+            if(distance < closestDistance) {
+                closestDistance = distance;
+                closestSheepCore = sheepCore;
+            }
+        }
+        return closestSheepCore;
+    }
 
     [SerializeField] float _attackRange = 1.5f;
     public bool IsCloseEnoughToAttack(SheepCore target) {

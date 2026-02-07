@@ -46,7 +46,7 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
 
             if(sign1.Type == SignType.DontGoHere) {
                 onChase?.Invoke();
-            } else if(sign1.Type == SignType.Combat) {
+            } else if(sign1.Type == SignType.Combat || sign1.Type == SignType.Cannibal) {
                 onRush?.Invoke();
             }
         } else {

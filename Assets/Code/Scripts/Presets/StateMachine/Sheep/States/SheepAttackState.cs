@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -18,9 +19,31 @@ public class SheepAttackState : BaseState<SheepCore, SheepStates>
     public override void StateUpdate()
     {
     }
+
+    Func<int, SheepCore> GetClosestSheepCore(SignType type) {
+        if(type == SignType.Combat) {
+            return Core.Detector.GetClosestSheepCoreWithDifferentTeamID;
+        } else if(type == SignType.Cannibal) {
+            return Core.Detector.GetClosestSheepCoreWithSameTeamID;
+        }
+        return null;
+    }
+    Func<int, HitRequest, SheepCore> GetAttackTargetFunc(SignType type) {
+        if(type == SignType.Combat) {
+            return Core.Attack.HitClosestSheepCoreWithDifferent;
+        } else if(type == SignType.Cannibal) {
+            return Core.Attack.HitClosestSheepCoreWithSameTeamID;
+        }
+        return null;
+    }
+    
     public override void StateFixedUpdate()
     {
-        var closestDetectedSheep = Core.Detector.GetClosestSheepCoreWithDifferentTeamID(Core.Stats.TeamID);
+        var sign = Core.GetLatestSign();
+        var func = GetClosestSheepCore(sign.Type);
+        if(func == null) return;
+
+        var closestDetectedSheep = func(Core.Stats.TeamID);
         if(closestDetectedSheep != null) {
             Vector2 direction = (closestDetectedSheep.transform.position - Core.transform.position).normalized;
             direction.y *= 0.5f;
@@ -37,7 +60,7 @@ public class SheepAttackState : BaseState<SheepCore, SheepStates>
 
         _attackCooldown += Time.deltaTime;
         if(_attackCooldown >= _attackMaxCooldown) {
-            Core.Attack.HitClosestSheepCore(Core.Stats.TeamID, new HitRequest{
+            GetAttackTargetFunc(sign.Type)(Core.Stats.TeamID, new HitRequest{
                 Damage=Core.Stats.AttackDamage,
                 Direction=(Core.Skin.ForwardDirection),
             });

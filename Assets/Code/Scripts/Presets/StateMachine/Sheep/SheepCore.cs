@@ -59,6 +59,10 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
 
     [SerializeField] [ReadOnly] List<Sign> _currentSigns = new ();
     public List<Sign> CurrentSigns => _currentSigns;
+    public Sign GetLatestSign() {
+        if(_currentSigns.Count == 0) return null;
+        return _currentSigns[_currentSigns.Count-1];
+    }
     public void OnSignEnter(Sign sign) {
         _currentSigns.Add(sign);
         if(_currentSigns.Count >= 1) {
