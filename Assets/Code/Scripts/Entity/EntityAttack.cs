@@ -43,9 +43,10 @@ public class EntityAttack : MonoBehaviour
     }
 
     
-    public void HitClosestSheepCore(int teamID, HitRequest hitRequest) {
+    public SheepCore HitClosestSheepCore(int teamID, HitRequest hitRequest) {
         var closestSheepCore = GetClosestSheepCoreWithDifferentTeamID(teamID);
-        if(closestSheepCore == null) return;
+        if(closestSheepCore == null) return null;
         closestSheepCore.OnHurt(hitRequest);
+        return closestSheepCore;
     }
 }

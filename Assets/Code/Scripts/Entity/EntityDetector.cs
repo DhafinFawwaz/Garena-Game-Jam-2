@@ -29,4 +29,10 @@ public class EntityDetector : MonoBehaviour
         }
         return closestSheepCore;
     }
+
+    [SerializeField] float _attackRange = 1.5f;
+    public bool IsCloseEnoughToAttack(SheepCore target) {
+        float distance = Vector2.Distance(transform.position, target.transform.position);
+        return distance <= _attackRange;
+    }
 }

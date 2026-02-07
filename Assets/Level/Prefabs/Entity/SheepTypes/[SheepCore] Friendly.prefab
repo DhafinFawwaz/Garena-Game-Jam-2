@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 457804609244176849}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -68,7 +68,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 8
 --- !u!114 &9058793084870693442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityDetector
   _sheepCores: []
+  _attackRange: 1.5
 --- !u!1 &802752603744356112
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +310,7 @@ Transform:
   m_GameObject: {fileID: 1918089786422080116}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -472,11 +473,219 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DhafinFawwaz.AnimationUI.AnimationUI
   PlayOnStart: 0
   IgnoreTimeScale: 0
-  CurrentAnimationTime: 0
-  _sequence: []
+  CurrentAnimationTime: 0.5
+  _sequence:
+  - rid: 8059579814261555283
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8059579814261555283
+      type: {class: SquishTween, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [[Anchor] Alert] [0.5s]'
+        Target: {fileID: 197762034516683725}
+        Duration: 0.5
+        EaseType: 0
+        From: {x: 1, y: 1, z: 1}
+        To: {x: 1, y: 1, z: 1}
+        XCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0.9
+            inSlope: -1.1
+            outSlope: -1.1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.09
+            value: 0.85
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.22
+            value: 0.97
+            inSlope: 2.4
+            outSlope: 2.4
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.313
+            value: 1.2273971
+            inSlope: 6.7
+            outSlope: 6.7
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.403
+            value: 1.3673971
+            inSlope: -1.87
+            outSlope: -1.87
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.46
+            value: 1.09
+            inSlope: -3.67
+            outSlope: -3.67
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.57
+            value: 0.91
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.68
+            value: 0.97
+            inSlope: 1.6
+            outSlope: 1.6
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.78
+            value: 1.1958011
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        YCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1.0907793
+            inSlope: 4.9
+            outSlope: 4.9
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.09
+            value: 1.2907794
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.22
+            value: 1.03
+            inSlope: -3.74
+            outSlope: -3.74
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.37
+            value: 0.74
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.49
+            value: 0.89437747
+            inSlope: 4.89
+            outSlope: 4.89
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.58
+            value: 1.0859867
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.82
+            value: 0.9
+            inSlope: 1.32
+            outSlope: 1.32
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        ZCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
 --- !u!1 &4177770049392048009
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +712,7 @@ Transform:
   m_GameObject: {fileID: 4177770049392048009}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.064, y: 0.65, z: 0}
+  m_LocalPosition: {x: 0.064, y: 1.15, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -705,11 +914,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DhafinFawwaz.AnimationUI.AnimationUI
   PlayOnStart: 0
   IgnoreTimeScale: 0
-  CurrentAnimationTime: 0
-  _sequence: []
+  CurrentAnimationTime: 0.5
+  _sequence:
+  - rid: 8059579814261555285
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8059579814261555285
+      type: {class: LocalScaleTween, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [[Anchor] Alert] [0.25s]'
+        Target: {fileID: 197762034516683725}
+        Duration: 0.25
+        EaseType: 11
+        From: {x: 2, y: 1, z: 1}
+        To: {x: 1, y: 1, z: 1}
 --- !u!1 &5368641235066236495
 GameObject:
   m_ObjectHideFlags: 0
@@ -10804,7 +11023,7 @@ Transform:
   m_GameObject: {fileID: 8749669539695004938}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10847,7 +11066,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 2
 --- !u!114 &7118953085566842807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10861,6 +11080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityDetector
   _sheepCores: []
+  _attackRange: 1.5
 --- !u!114 &1259460322296534772
 MonoBehaviour:
   m_ObjectHideFlags: 0

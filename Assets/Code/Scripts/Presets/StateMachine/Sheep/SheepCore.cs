@@ -30,6 +30,11 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
 
     public override HitResult OnHurt(HitRequest hitRequest)
     {
+        Attack.PlayHurtAnimation();
+        Stats.CurrentHealth -= hitRequest.Damage;
+        if(Stats.CurrentHealth <= 0) {
+            Die();
+        }
         return new HitResult();
     }
 

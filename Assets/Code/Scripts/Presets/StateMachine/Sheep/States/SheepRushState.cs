@@ -9,7 +9,7 @@ public class SheepRushState : BaseState<SheepCore, SheepStates>
 
     public override void StateEnter()
     {
-        
+        Core.Skin.IsMoving = true;
     }
 
     public override void StateUpdate()
@@ -30,6 +30,9 @@ public class SheepRushState : BaseState<SheepCore, SheepStates>
             }
 
             Core.Skin.LookDirection(Core.Rb.linearVelocity);
+            if(Core.Detector.IsCloseEnoughToAttack(closestDetectedSheep)) {
+                SwitchState(States.Attack);
+            }
         } else {
             SwitchState(States.Wander);
         }
@@ -37,7 +40,7 @@ public class SheepRushState : BaseState<SheepCore, SheepStates>
 
     public override void StateExit()
     {
-        
+        Core.Skin.IsMoving = false;
     }
     public override HitResult OnHurt(HitRequest hitRequest)
     {
