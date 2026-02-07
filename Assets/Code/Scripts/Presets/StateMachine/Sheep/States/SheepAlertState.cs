@@ -23,7 +23,7 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
             _timer = 0f;
             Core.SwitchState(States.Chase);
         }
-        Core.EntitySkin.AlertJump(Mathf.Min(1f, _timer * _alertSpeed));
+        Core.Skin.AlertJump(Mathf.Min(1f, _timer * _alertSpeed));
     }
     public override void StateFixedUpdate()
     {

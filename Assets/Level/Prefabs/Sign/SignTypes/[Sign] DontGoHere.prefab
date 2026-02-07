@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 3110188136303710372}
   - component: {fileID: 7987947627656193008}
   m_Layer: 0
-  m_Name: '[Sign]'
+  m_Name: '[Sign] DontGoHere'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f77d1571a9bda34fbeb515e5253cbcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sign
+  Type: 4
   _lifeTime: 3
   _lifetimePreviewer: {fileID: 4933799450050976616}
 --- !u!50 &7987947627656193008

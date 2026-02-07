@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class Sign : MonoBehaviour
 {
+    public SignType Type = SignType.DontGoHere;
     [SerializeField] float _lifeTime = 10f;
     [SerializeField] LifetimePreviewer _lifetimePreviewer;
     void OnTriggerEnter2D(Collider2D other) {
         if(other.attachedRigidbody == null) return;
-        Debug.Log("Trigger entered by " + other.attachedRigidbody.name);
         if(!other.attachedRigidbody.TryGetComponent<ISignInteractable>(out var entity)) return;
-        Debug.Log("Sign entered by " + other.attachedRigidbody.name);
         entity.OnSignEnter(this);
     }
 

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
 {
-    public EntitySkin EntitySkin;
+    public EntitySkin Skin;
+    public EntityStats Stats;
     void Awake()
     {
         States = new SheepStates(this);
@@ -39,7 +40,6 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
     [SerializeField] [ReadOnly] List<Sign> _currentSigns = new ();
     public List<Sign> CurrentSigns => _currentSigns;
     public void OnSignEnter(Sign sign) {
-        Debug.Log("SheepCore OnSignEnter");
         _currentSigns.Add(sign);
         if(_currentSigns.Count >= 1) {
             SwitchState(States.Alert);
@@ -47,7 +47,6 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
     }
 
     public void OnSignExit(Sign sign) {
-        Debug.Log("SheepCore OnSignExit");
         _currentSigns.Remove(sign);
         if(_currentSigns.Count == 0) {
             _rb.linearVelocity = Vector2.zero;
