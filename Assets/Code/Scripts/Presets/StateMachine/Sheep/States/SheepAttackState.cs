@@ -10,7 +10,6 @@ public class SheepAttackState : BaseState<SheepCore, SheepStates>
     }
 
     float _attackCooldown = 0f;
-    const float _attackMaxCooldown = 1f;
     public override void StateEnter()
     {
         
@@ -59,7 +58,7 @@ public class SheepAttackState : BaseState<SheepCore, SheepStates>
 
 
         _attackCooldown += Time.deltaTime;
-        if(_attackCooldown >= _attackMaxCooldown) {
+        if(_attackCooldown >= Core.Stats.AttackDelay) {
             GetAttackTargetFunc(sign.Type)(Core.Stats.TeamID, new HitRequest{
                 Damage=Core.Stats.AttackDamage,
                 Direction=(Core.Skin.ForwardDirection),

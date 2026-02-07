@@ -23,6 +23,9 @@ public class EntityStats : MonoBehaviour
     public void Eat(float amount) {
         CurrentHunger += amount;
     }
+    public void Trust(float amount) {
+        CurrentTrust += amount;
+    }
 
 
 
@@ -30,4 +33,8 @@ public class EntityStats : MonoBehaviour
     public float AttackDamage = 10f;
     public float MaxHealth = 100f;
     public float CurrentHealth = 100f;
+    public float AttackDelay = 1f;
+
+    [Header("Hunger Settings")]
+    public float HungerDecreasePerSecond = 2f;
 }

@@ -1,4 +1,4 @@
 public enum Element
 {
-    Normal, Fire, Ice, Lightning, Earth, Wind, Water, Light, Dark
+    Normal, Fire, Ice, Lightning, Earth, Wind, Water, Light, Dark, Bomb, Fall
 }

@@ -17,6 +17,7 @@ public class Bomb : MonoBehaviour
             sheep.OnHurt(new HitRequest{
                 Damage=10000,
                 Direction=(sheep.transform.position - transform.position).normalized,
+                Element=Element.Bomb,
             });
         }
         _explosionVFX.transform.parent = null;
