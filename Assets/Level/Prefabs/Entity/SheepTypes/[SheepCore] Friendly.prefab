@@ -1,5 +1,91 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &258698244938927024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6162999547308766548}
+  - component: {fileID: 5454472238051129556}
+  m_Layer: 0
+  m_Name: '[AnimationUI] Die'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6162999547308766548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258698244938927024}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5000373543606377515}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5454472238051129556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258698244938927024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17dbaed680fd7194d9cc7297932b7691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DhafinFawwaz.AnimationUI.AnimationUI
+  PlayOnStart: 0
+  IgnoreTimeScale: 0
+  CurrentAnimationTime: 0
+  _sequence:
+  - rid: 8059579814261555301
+  - rid: 8059579814261555303
+  - rid: 8059579814261555280
+  references:
+    version: 2
+    RefIds:
+    - rid: 8059579814261555280
+      type: {class: SpriteFlipbookTween, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [[Skin]] [0.1s]'
+        Target: {fileID: 1925681052867277654}
+        Duration: 0.1
+        EaseType: 11
+        From: 0
+        To: 1
+        Sprites:
+        - {fileID: 21300000, guid: f11faf7d5d970e149acc886021f5ad32, type: 3}
+        - {fileID: 21300000, guid: 538e3db86d3b8514a8c53038e5ee9d6e, type: 3}
+    - rid: 8059579814261555301
+      type: {class: ThrownLocalTween, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [[Anchor] Cliff] [1s]'
+        Target: {fileID: 8576424834842846371}
+        Duration: 1
+        EaseType: 0
+        From: {x: 0, y: 0, z: 0}
+        To: {x: 11, y: -18, z: 0}
+        Height: 12
+        Power: 2
+    - rid: 8059579814261555303
+      type: {class: EulerAnglesTween, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [[Anchor] Cliff] [1s]'
+        Target: {fileID: 8576424834842846371}
+        Duration: 1
+        EaseType: 11
+        From: {x: -0, y: 0, z: 0}
+        To: {x: -0, y: 0, z: 360}
 --- !u!1 &457804609244176849
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +559,15 @@ MonoBehaviour:
   _rb: {fileID: 1351680296256201129}
   _moveSpeed: 5
   _currentSigns: []
-  _col: {fileID: 6035925408210202595}
+  _trustOnWitnessDeath: 10
+  _witnessRadius: 5
+  _col:
+  - {fileID: 6035925408210202595}
+  - {fileID: 7666057148887872216}
+  - {fileID: 1813501736274556773}
+  - {fileID: 4813162210329356041}
+  _objs:
+  - {fileID: 4706745956077758461}
   _fallFromSkyAUI: {fileID: 3469463616475325110}
 --- !u!114 &4721154989096651954
 MonoBehaviour:
@@ -492,6 +586,8 @@ MonoBehaviour:
   AttackDamage: 10
   MaxHealth: 100
   CurrentHealth: 100
+  AttackDelay: 1
+  HungerDecreasePerSecond: 2
 --- !u!114 &5805668069641406738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,8 +786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619b60a15dd72334e8edf9529aa2872d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntitySkin
-  _rightDownSR: {fileID: 21300000, guid: f11faf7d5d970e149acc886021f5ad32, type: 3}
-  _rightUpSR: {fileID: 21300000, guid: f11faf7d5d970e149acc886021f5ad32, type: 3}
+  _rightDownSR: {fileID: 21300000, guid: 3604c5e4ce6d2c7419507e0183bddba5, type: 3}
+  _rightUpSR: {fileID: 21300000, guid: 1ba6d98e0ad8f5d4c93d79d145665c69, type: 3}
   _renderer: {fileID: 1925681052867277654}
   _skin: {fileID: 435163359544245281}
   _skinAlertAnchor: {fileID: 197762034516683725}
@@ -699,6 +795,95 @@ MonoBehaviour:
   _jumpSpeed: 5
   _jumpTreshold: 0.1
   _alertJump: 0.5
+  _eatAUI: {fileID: 9211953998114267633}
+  _attackAUI: {fileID: 6423870078529318064}
+  _deathAUI: {fileID: 5454472238051129556}
+--- !u!1 &3224709216406143384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7550200662487117078}
+  - component: {fileID: 6423870078529318064}
+  m_Layer: 0
+  m_Name: '[AnimationUI] Attack'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7550200662487117078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224709216406143384}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5000373543606377515}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6423870078529318064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224709216406143384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17dbaed680fd7194d9cc7297932b7691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DhafinFawwaz.AnimationUI.AnimationUI
+  PlayOnStart: 0
+  IgnoreTimeScale: 0
+  CurrentAnimationTime: 1
+  _sequence:
+  - rid: 8059579814261555280
+  references:
+    version: 2
+    RefIds:
+    - rid: 8059579814261555280
+      type: {class: SpriteFlipbookTween, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [[Skin]] [0.9s]'
+        Target: {fileID: 1925681052867277654}
+        Duration: 0.9
+        EaseType: 0
+        From: 0
+        To: 23
+        Sprites:
+        - {fileID: 21300000, guid: 3604c5e4ce6d2c7419507e0183bddba5, type: 3}
+        - {fileID: 21300000, guid: 852f2c4a43f0c95438eacbb5fac3977f, type: 3}
+        - {fileID: 21300000, guid: 555fc94fe6a0a524098afaa305613d8d, type: 3}
+        - {fileID: 21300000, guid: c57c8776fead6f647ad83d020d46b8cd, type: 3}
+        - {fileID: 21300000, guid: 8466f3ae3e181b0479b8f981bef5e345, type: 3}
+        - {fileID: 21300000, guid: 0f0d8a67b12609f4a841464e4bd78433, type: 3}
+        - {fileID: 21300000, guid: fbaae6640ca2d0c40bac27dad8e58e99, type: 3}
+        - {fileID: 21300000, guid: 0f1fbac1096bba1498cd7d9390f621db, type: 3}
+        - {fileID: 21300000, guid: fe50c563f40a22749ace5b1a75543537, type: 3}
+        - {fileID: 21300000, guid: 4023728936b007a4ba6dfffb16e10020, type: 3}
+        - {fileID: 21300000, guid: be79d9cf9b1f3ce4ea31f7faf0b05f10, type: 3}
+        - {fileID: 21300000, guid: fc6754b18533768499bba3e4c6a55d1c, type: 3}
+        - {fileID: 21300000, guid: 66749ebcdd8b06448a92d4e16001bf04, type: 3}
+        - {fileID: 21300000, guid: 761b1394fb8002d459f79c8737e9e41f, type: 3}
+        - {fileID: 21300000, guid: af8f63a733c89564090732cecd9d06ba, type: 3}
+        - {fileID: 21300000, guid: 8eb942978a7479b42b12cb8da72cc2be, type: 3}
+        - {fileID: 21300000, guid: 56ad6be0cf2698a478a775e12406ae99, type: 3}
+        - {fileID: 21300000, guid: 96e7f41d6f0e918409e5e2ca5a490704, type: 3}
+        - {fileID: 21300000, guid: 5e0c99511d1b3eb48b75cc1a0a954d7b, type: 3}
+        - {fileID: 21300000, guid: 177b8a53d34c77240802215674c179a6, type: 3}
+        - {fileID: 21300000, guid: fc230d324eb92c0468fb4a9456485675, type: 3}
+        - {fileID: 21300000, guid: 2487742a8cf494643a53a839c94c449d, type: 3}
+        - {fileID: 21300000, guid: 5f81d5a74c7ddb24484752f2dd1257c4, type: 3}
+        - {fileID: 21300000, guid: 3604c5e4ce6d2c7419507e0183bddba5, type: 3}
 --- !u!1 &3944695344382654688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1351,7 @@ Transform:
   m_GameObject: {fileID: 4706745956077758461}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.089999914, z: 0}
+  m_LocalPosition: {x: 0, y: 0.067, z: 0}
   m_LocalScale: {x: 1.3134, y: 0.3455, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1292,6 +1477,94 @@ MonoBehaviour:
         EaseType: 11
         From: {x: 2, y: 1, z: 1}
         To: {x: 1, y: 1, z: 1}
+--- !u!1 &4760977770136036943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 642140683615100054}
+  - component: {fileID: 9211953998114267633}
+  m_Layer: 0
+  m_Name: '[AnimationUI] Eat'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &642140683615100054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4760977770136036943}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5000373543606377515}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9211953998114267633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4760977770136036943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17dbaed680fd7194d9cc7297932b7691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DhafinFawwaz.AnimationUI.AnimationUI
+  PlayOnStart: 0
+  IgnoreTimeScale: 0
+  CurrentAnimationTime: 1
+  _sequence:
+  - rid: 8059579814261555280
+  references:
+    version: 2
+    RefIds:
+    - rid: 8059579814261555280
+      type: {class: SpriteFlipbookTween, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [[Skin]] [1s]'
+        Target: {fileID: 1925681052867277654}
+        Duration: 1
+        EaseType: 0
+        From: 0
+        To: 25
+        Sprites:
+        - {fileID: 21300000, guid: 3604c5e4ce6d2c7419507e0183bddba5, type: 3}
+        - {fileID: 21300000, guid: 09c19de61a3f6434da200b873ee770a2, type: 3}
+        - {fileID: 21300000, guid: 8c54c56ea17040d46b86286247d3aafd, type: 3}
+        - {fileID: 21300000, guid: a49cf14d57a74e34d8d59344488e6552, type: 3}
+        - {fileID: 21300000, guid: 59e6c0c78b11c944f8ba22102af67a4d, type: 3}
+        - {fileID: 21300000, guid: 8474ec99dc0ae7d4d8d506e9645d4702, type: 3}
+        - {fileID: 21300000, guid: af3fca13e5c52564a85709f3c2a2f061, type: 3}
+        - {fileID: 21300000, guid: 9253cb157ce7d4b4c826fb3514ec4357, type: 3}
+        - {fileID: 21300000, guid: ee67ab703dd79894ca530f2a0f667215, type: 3}
+        - {fileID: 21300000, guid: 95b2947726fce294ba0efd7aa9f92224, type: 3}
+        - {fileID: 21300000, guid: 760b0c16a55122d469de9ba9f4b4caab, type: 3}
+        - {fileID: 21300000, guid: adf1e7facff92ba428e413dea9eb6a3c, type: 3}
+        - {fileID: 21300000, guid: 933621a2ea5347646ae8510f4e25b568, type: 3}
+        - {fileID: 21300000, guid: 3cc1f9eb6ec53f74f9ebf9864f80597a, type: 3}
+        - {fileID: 21300000, guid: 55da2cd51aeed644c81abdc28f2fe14e, type: 3}
+        - {fileID: 21300000, guid: 8a7e5534bfee16947a60e83781ac17b9, type: 3}
+        - {fileID: 21300000, guid: bebc57aceb0f3334caf1a656794e83c3, type: 3}
+        - {fileID: 21300000, guid: ebf3f34e220af1d4d82d08ecfc321635, type: 3}
+        - {fileID: 21300000, guid: 0b0fc97d4078600449f0173e0d26f500, type: 3}
+        - {fileID: 21300000, guid: 96a776b1fe9bd7944952df8b524c1ba2, type: 3}
+        - {fileID: 21300000, guid: 93654931343c8ac42b02917b091ff613, type: 3}
+        - {fileID: 21300000, guid: ef63e0406735bc74088001f4442fa25b, type: 3}
+        - {fileID: 21300000, guid: 47f161c403cc6df4e9f0476d289b6604, type: 3}
+        - {fileID: 21300000, guid: a2e245b7c300b9843a745516972b4c84, type: 3}
+        - {fileID: 21300000, guid: 3c6ddbdc0cb57c44f8c1ffd8088ebbbf, type: 3}
+        - {fileID: 21300000, guid: 3604c5e4ce6d2c7419507e0183bddba5, type: 3}
 --- !u!1 &5368641235066236495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,6 +1595,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6698758480394502377}
+  - {fileID: 6162999547308766548}
+  - {fileID: 642140683615100054}
+  - {fileID: 7550200662487117078}
   - {fileID: 7307721937534834302}
   m_Father: {fileID: 4439867342597909761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6270,7 +6546,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6620820752998085022}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11358,7 +11634,7 @@ MonoBehaviour:
         To: 1
         Sprites:
         - {fileID: 21300000, guid: f11faf7d5d970e149acc886021f5ad32, type: 3}
-        - {fileID: 21300000, guid: 090e8954bbda5ca4ba00239d48181254, type: 3}
+        - {fileID: 21300000, guid: 538e3db86d3b8514a8c53038e5ee9d6e, type: 3}
 --- !u!1 &8749669539695004938
 GameObject:
   m_ObjectHideFlags: 0
@@ -11458,5 +11734,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityAttack
   _sheepCores: []
-  _attackAUI: {fileID: 1399728432799354254}
+  _attackAUI: {fileID: 6423870078529318064}
   _hurtAUI: {fileID: 7462788693398275436}

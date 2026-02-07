@@ -87,10 +87,15 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
     }
 
     public Action<SheepCore> OnDeath;
+    bool _isDead = false;
     public void Die() {
+        if(_isDead) return;
+        _isDead = true;
+        SetActiveCore(false);
         SwitchState(States.Death);
         OnDeath?.Invoke(this);
-        Destroy(gameObject);
+        Skin.PlayDeathAnimation();
+        Destroy(gameObject, 5f);
     }
 
 
@@ -122,18 +127,29 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
         // TODO: change visual
     }
 
-    [SerializeField] Collider2D _col;
+    [SerializeField] Collider2D[] _col;
+    [SerializeField] GameObject[] _objs;
     public void SetActiveCore(bool isActive) {
         if(isActive) {
             _rb.bodyType = RigidbodyType2D.Dynamic;
-            _col.enabled = true;
+            foreach(var col in _col) {
+                col.enabled = true;
+            }
+            foreach(var obj in _objs) {
+                obj.SetActive(true);
+            }
             States = new SheepStates(this);
             CurrentState = States.Wander;
             CurrentState.StateEnter();
         }
         else {
             _rb.bodyType = RigidbodyType2D.Kinematic;
-            _col.enabled = false;
+            foreach(var col in _col) {
+                col.enabled = false;
+            }
+            foreach(var obj in _objs) {
+                obj.SetActive(false);
+            }
         }
     }
 
