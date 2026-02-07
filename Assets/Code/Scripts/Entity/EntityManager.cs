@@ -4,9 +4,10 @@ using UnityEngine;
 public class EntityManager : MonoBehaviour
 {
     [SerializeField] EntitySpawner _entitySpawner;
-    [SerializeField] List<Entity> _entities = new List<Entity>();
+    [SerializeField] List<SheepCore> _entities = new ();
+    [SerializeField] int _spawnCount = 1;
     void Awake() {
-        var newEntities = _entitySpawner.SpawnEntity(Vector2.zero, 10, 5f);
+        var newEntities = _entitySpawner.SpawnEntity(Vector2.zero, _spawnCount, 5f);
         _entities.AddRange(newEntities);
         foreach(var entity in _entities) {
             entity.OnDeath += HandleEntityDeath;
@@ -18,8 +19,13 @@ public class EntityManager : MonoBehaviour
             entity.DoFixedUpdate();
         }
     }
+    void Update() {
+        foreach(var entity in _entities) {
+            entity.DoUpdate();
+        }
+    }
 
-    void HandleEntityDeath(Entity entity) {
+    void HandleEntityDeath(SheepCore entity) {
         _entities.Remove(entity);
     }
 }
