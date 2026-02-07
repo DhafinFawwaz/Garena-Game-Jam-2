@@ -71,9 +71,17 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
         if(_currentSigns.Count == 0) return null;
         return _currentSigns[_currentSigns.Count-1];
     }
+
+
+
+    Sign _lastSignThatCausedAlert = null;
+    public Sign LastSignThatCausedAlert { get => _lastSignThatCausedAlert; set => _lastSignThatCausedAlert = value; }
     public void OnSignEnter(Sign sign) {
         _currentSigns.Add(sign);
         if(_currentSigns.Count >= 1) {
+            // if alert twice with same sign, ignore
+            if(_lastSignThatCausedAlert == sign) return;
+            _lastSignThatCausedAlert = sign;
             SwitchState(States.Alert);
         }
     }

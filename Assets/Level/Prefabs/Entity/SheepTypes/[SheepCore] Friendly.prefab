@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 8634446891496813783}
   - component: {fileID: 4721154989096651954}
   - component: {fileID: 5805668069641406738}
+  - component: {fileID: 5914595925693175835}
   m_Layer: 10
   m_Name: '[SheepCore] Friendly'
   m_TagString: Untagged
@@ -603,6 +604,24 @@ MonoBehaviour:
   _cliffCollider: {fileID: 6035925408210202595}
   _rb: {fileID: 1351680296256201129}
   _fallAUI: {fileID: 4415302464815243112}
+  _sheepCore: {fileID: 8634446891496813783}
+--- !u!114 &5914595925693175835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859246075378049005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17db00a1cfcc1d4683222486590866c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityConverter
+  DepanBawah: []
+  DepanAtas: []
+  Fall: []
+  Attack: []
+  Eat: []
 --- !u!1 &1310285408994992832
 GameObject:
   m_ObjectHideFlags: 0
