@@ -10,7 +10,7 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
     public override void StateEnter()
     {
         _timer = 0f;
-        _alertDuration += Random.Range(-0.2f, 0.2f);
+        _alertDuration += Random.Range(-0.2f, 0f);
     }
 
     float _timer = 0f;

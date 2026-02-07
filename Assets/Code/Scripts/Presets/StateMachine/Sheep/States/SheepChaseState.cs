@@ -22,6 +22,7 @@ public class SheepChaseState : BaseState<SheepCore, SheepStates>
         Core.EntitySkin.IsMoving = true;
         var sign = Core.CurrentSigns[0];
         Vector2 direction = (sign.transform.position - Core.transform.position).normalized;
+        direction.y *= 0.5f;
         Core.Rb.linearVelocity = direction * Core.MoveSpeed;
         if(Core.Rb.linearVelocity.sqrMagnitude < 0.01f) {
             Core.EntitySkin.IsMoving = false;
