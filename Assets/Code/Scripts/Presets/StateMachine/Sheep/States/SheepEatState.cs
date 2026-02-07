@@ -13,12 +13,8 @@ public class SheepEatState : BaseState<SheepCore, SheepStates>
     float _maxEatAmount = 15f;
     public override void StateEnter()
     {
-        _eatTimer = 0f;
-        float amount = Random.Range(_minEatAmount, _maxEatAmount);
-        Core.Stats.Eat(amount);
-        if (Core.Herd != null) {
-            Core.Herd.IncreaseHunger(amount);
-        }
+        _eatTimer = Random.Range(0f, 0.5f);
+        Core.Stats.Eat(Random.Range(_minEatAmount, _maxEatAmount));
     }
 
     public override void StateUpdate()
