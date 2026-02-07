@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sign
   Type: 0
-  _maxLifetime: 60
+  _maxLifetime: 10
   _lifetimePreviewer: {fileID: 4933799450050976616}
 --- !u!50 &7987947627656193008
 Rigidbody2D:
