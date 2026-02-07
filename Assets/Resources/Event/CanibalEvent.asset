@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad26e3095f60844492567250c86b1b5, type: 3}
+  m_Name: CanibalEvent
+  m_EditorClassIdentifier: Assembly-CSharp::GameEvent
+  _eventName: Combat Event
+  _description: Combat Fight Happened
+  _icon: {fileID: -7591481145884017682, guid: 18cfae2d1deed3b498645afa64078d78, type: 3}
+  _signPrefabs:
+  - {fileID: 3065312850938921284, guid: 991b219981e5fe645b87a26ae0960273, type: 3}
+  _spawnCount: 1
+  _signSpawnRadius: 5

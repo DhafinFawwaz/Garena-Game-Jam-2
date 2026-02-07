@@ -25,13 +25,30 @@ public class ConveyorBelt : MonoBehaviour
     
     List<SignDragable> _activeSignDragables = new();
     float _spawnTimer;
+    bool _isActive;
 
     void Awake()
     {
         Instance = this;
     }
 
+    void OnEnable()
+    {
+        GameManager.S_OnGameStateChanged += HandleGameStateChanged;
+    }
+
+    void OnDisable()
+    {
+        GameManager.S_OnGameStateChanged -= HandleGameStateChanged;
+    }
+
+    void HandleGameStateChanged(GameState state)
+    {
+        _isActive = state == GameState.Playing;
+    }
+
     void Update() {
+        if (!_isActive) return;
         MoveConveyorBelt();
         HandleSpawning();
         DestroyOutOfBounds();

@@ -23,6 +23,13 @@ public class EnemyWave
     public int AdditionalHerds = 1;
 }
 
+[Serializable]
+public class NeutralSpawnConfig
+{
+    public float TimeThreshold;
+    public float SpawnInterval = 5f;
+}
+
 public class SignProgression : MonoBehaviour
 {
     [Header("Sign Unlocks (conveyor belt cards)")]
@@ -34,6 +41,9 @@ public class SignProgression : MonoBehaviour
 
     [Header("Enemy Waves")]
     [SerializeField] List<EnemyWave> _enemyWaves = new();
+
+    [Header("Neutral Spawning")]
+    [SerializeField] List<NeutralSpawnConfig> _neutralSpawnConfigs = new();
 
     [Header("Conveyor Belt Scaling")]
     [SerializeField] float _initialSpawnInterval = 3f;
@@ -47,6 +57,7 @@ public class SignProgression : MonoBehaviour
     int _nextUnlockIndex;
     int _nextEventUnlockIndex;
     int _nextEnemyWaveIndex;
+    int _nextNeutralConfigIndex;
     bool _isActive;
 
     void OnEnable()
@@ -69,6 +80,7 @@ public class SignProgression : MonoBehaviour
         _unlocks.Sort((a, b) => a.TimeThreshold.CompareTo(b.TimeThreshold));
         _eventUnlocks.Sort((a, b) => a.TimeThreshold.CompareTo(b.TimeThreshold));
         _enemyWaves.Sort((a, b) => a.TimeThreshold.CompareTo(b.TimeThreshold));
+        _neutralSpawnConfigs.Sort((a, b) => a.TimeThreshold.CompareTo(b.TimeThreshold));
 
         if (ConveyorBelt.Instance != null)
         {
@@ -86,6 +98,7 @@ public class SignProgression : MonoBehaviour
         HandleSignUnlocks();
         HandleEventUnlocks();
         HandleEnemyWaves();
+        HandleNeutralSpawning();
         HandleSpawnIntervalDecay();
         HandleMaxSignsScaling();
     }
@@ -123,6 +136,19 @@ public class SignProgression : MonoBehaviour
             for (int i = 0; i < count; i++)
                 spawner.SpawnAdditionalEnemyHerd();
             _nextEnemyWaveIndex++;
+        }
+    }
+
+    void HandleNeutralSpawning()
+    {
+        var spawner = NeutralSpawner.Instance;
+        if (spawner == null) return;
+
+        while (_nextNeutralConfigIndex < _neutralSpawnConfigs.Count && _elapsedTime >= _neutralSpawnConfigs[_nextNeutralConfigIndex].TimeThreshold)
+        {
+            spawner.EnableSpawning();
+            spawner.SetSpawnInterval(_neutralSpawnConfigs[_nextNeutralConfigIndex].SpawnInterval);
+            _nextNeutralConfigIndex++;
         }
     }
 

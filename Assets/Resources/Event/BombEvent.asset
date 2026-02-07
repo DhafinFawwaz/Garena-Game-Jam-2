@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad26e3095f60844492567250c86b1b5, type: 3}
+  m_Name: BombEvent
+  m_EditorClassIdentifier: Assembly-CSharp::GameEvent
+  _eventName: Bomb Event
+  _description: Bomb Event Happened
+  _icon: {fileID: 21300000, guid: fc5e966f5bd60fc46a533caab3c379e1, type: 3}
+  _signPrefabs:
+  - {fileID: 7823402574549498393, guid: 1cd0451165beaaf49ad4b5f79bd4eaa8, type: 3}
+  _spawnCount: 1
+  _signSpawnRadius: 1

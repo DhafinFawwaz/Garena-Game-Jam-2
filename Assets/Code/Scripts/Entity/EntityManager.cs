@@ -12,11 +12,13 @@ public class EntityManager : MonoBehaviour
     void OnEnable() {
         GameManager.S_OnGameStateChanged += HandleGameStateChanged;
         HerdSpawner.S_OnHerdSpawned += HandleHerdSpawned;
+        NeutralSpawner.S_OnNeutralSpawned += HandleNeutralSpawned;
     }
 
     void OnDisable() {
         GameManager.S_OnGameStateChanged -= HandleGameStateChanged;
         HerdSpawner.S_OnHerdSpawned -= HandleHerdSpawned;
+        NeutralSpawner.S_OnNeutralSpawned -= HandleNeutralSpawned;
     }
 
     public void HandleGameStateChanged(GameState state) {
@@ -29,6 +31,10 @@ public class EntityManager : MonoBehaviour
         foreach(var member in herd.Members) {
             RegisterEntity(member);
         }
+    }
+
+    void HandleNeutralSpawned(SheepCore entity) {
+        RegisterEntity(entity);
     }
 
     void RegisterEntity(SheepCore entity) {
