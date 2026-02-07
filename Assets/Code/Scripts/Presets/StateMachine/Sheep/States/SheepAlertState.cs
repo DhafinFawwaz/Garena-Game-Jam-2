@@ -17,7 +17,7 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
     float _timer = 0f;
     float _alertDuration = 1f;
     float _alertSpeed = 4f;
-    float _minimumTrustToChase = 60f;
+    float _minimumTrustToChase = 50f;
     public override void StateUpdate()
     {
         _timer += Time.deltaTime;
@@ -41,12 +41,12 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
     void handleSignType(Sign sign1, float trust, Action onChase = null, Action onWander = null, Action onRush = null) {
         if(sign1 == null) return;
 
-        if(trust >= _minimumTrustToChase) {
+        if(trust < _minimumTrustToChase) {
             Core.VFX.PlayAlertVFX();
 
             if(sign1.Type == SignType.DontGoHere) {
                 onChase?.Invoke();
-            } else if(sign1.Type == SignType.Combat || sign1.Type == SignType.Cannibal) {
+            } else if(sign1.Type == SignType.NoCombat || sign1.Type == SignType.NoCannibal) {
                 onRush?.Invoke();
             }
         } else {
@@ -55,7 +55,12 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
         }
 
         if(trust >= _minimumTrustToChase) {
-            
+            if(sign1.Type == SignType.GoHere) {
+                onChase?.Invoke();
+            } else {
+                onWander?.Invoke();
+                Core.VFX.PlayAlertConfusedVFX();
+            }
         }
 
 
