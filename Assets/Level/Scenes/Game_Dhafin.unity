@@ -487,11 +487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74ed61df681ab34d84d8ef7aff94110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SheepCore
---- !u!1 &516453820 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 859246075378049005, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
-  m_PrefabInstance: {fileID: 1022118267}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &620089968
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,45 +928,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4721154989096651954, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
-      propertyPath: _currentTrust
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 859246075378049005, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1022118282}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
 --- !u!114 &1022118272 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8634446891496813783, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
   m_PrefabInstance: {fileID: 1022118267}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516453820}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f74ed61df681ab34d84d8ef7aff94110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SheepCore
---- !u!114 &1022118282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516453820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2664c73e5e95bf94fa57f4292980eaf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StateDebugger
-  _core: {fileID: 1022118272}
-  _offset: {x: 0, y: 50}
-  _fontSize: 15
-  _textColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &1043800321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1086,8 +1058,16 @@ PrefabInstance:
       value: '[Sign] DontGoHere'
       objectReference: {fileID: 0}
     - target: {fileID: 3046674469451426049, guid: f9f0c235b9aaa9b4f8c9f72c9dd6dc3c, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046674469451426049, guid: f9f0c235b9aaa9b4f8c9f72c9dd6dc3c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452943413336891421, guid: f9f0c235b9aaa9b4f8c9f72c9dd6dc3c, type: 3}
+      propertyPath: m_Radius
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1814,10 +1794,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[SheepCore] Friendly Tinggi'
       objectReference: {fileID: 0}
-    - target: {fileID: 4081325589051619044, guid: 2e8f2ddc2fc11da47a76308498017613, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1834,10 +1810,6 @@ PrefabInstance:
     - target: {fileID: 1400914901911155460, guid: 1645f2fa9da4ad64685e05fec5b5edd8, type: 3}
       propertyPath: m_Name
       value: '[SheepCore] Friendly Gendut'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1400914901911155460, guid: 1645f2fa9da4ad64685e05fec5b5edd8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2666193366019883496, guid: 1645f2fa9da4ad64685e05fec5b5edd8, type: 3}
       propertyPath: m_LocalPosition.x

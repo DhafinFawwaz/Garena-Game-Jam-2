@@ -126,13 +126,18 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
         Stats.CurrentTrust -= amount;
     }
 
+    [SerializeField] EntityConverter _converter;
     public void ConvertToEnemy() {
         Stats.State = EntityType.Enemy;
-        // TODO: change visual
+        _converter.ConvertToEnemy();
     }
     public void ConvertToFriendly() {
         Stats.State = EntityType.Friendly;
-        // TODO: change visual
+        _converter.ConvertToFriendly();
+    }
+    public void ConvertToNeutral() {
+        Stats.State = EntityType.Neutral;
+        _converter.ConvertToNeutral();
     }
 
     [SerializeField] Collider2D[] _col;

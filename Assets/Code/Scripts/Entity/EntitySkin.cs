@@ -5,6 +5,12 @@ public class EntitySkin : MonoBehaviour
 {
     [SerializeField] Sprite _rightDownSR;
     [SerializeField] Sprite _rightUpSR;
+
+    public void SetSprites(Sprite rightDown, Sprite rightUp) {
+        _rightDownSR = rightDown;
+        _rightUpSR = rightUp;
+    }
+
     [SerializeField] SpriteRenderer _renderer;
     [SerializeField] Transform _skin;
     [SerializeField] Transform _skinAlertAnchor;
