@@ -11,13 +11,15 @@ Material:
   m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHATEST_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   disabledShaderPasses:
   - GRABPASS
   m_LockedProperties: 
@@ -37,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ff55e40b2f49bac4f94ca452e5d22505, type: 3}
+        m_Texture: {fileID: 2800000, guid: b59a2664822eb0b4eb56cf335fed51a4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -67,7 +69,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _FlipbookMode: 0
     - _LightingEnabled: 0
-    - _Mode: 0
+    - _Mode: 1
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0

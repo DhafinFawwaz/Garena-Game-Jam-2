@@ -6,6 +6,8 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
 {
     public EntitySkin Skin;
     public EntityStats Stats;
+    public EntityAttack Attack;
+    public EntityDetector Detector;
 
     Herd _herd;
     public Herd Herd => _herd;
@@ -28,6 +30,11 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
 
     public override HitResult OnHurt(HitRequest hitRequest)
     {
+        Attack.PlayHurtAnimation();
+        Stats.CurrentHealth -= hitRequest.Damage;
+        if(Stats.CurrentHealth <= 0) {
+            Die();
+        }
         return new HitResult();
     }
 
@@ -54,6 +61,10 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
 
     [SerializeField] [ReadOnly] List<Sign> _currentSigns = new ();
     public List<Sign> CurrentSigns => _currentSigns;
+    public Sign GetLatestSign() {
+        if(_currentSigns.Count == 0) return null;
+        return _currentSigns[_currentSigns.Count-1];
+    }
     public void OnSignEnter(Sign sign) {
         _currentSigns.Add(sign);
         if(_currentSigns.Count >= 1) {

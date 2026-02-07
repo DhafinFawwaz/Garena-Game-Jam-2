@@ -55,5 +55,13 @@ public class EntitySkin : MonoBehaviour
         return -4f * (x - 0.5f) * (x - 0.5f) + 1f;
     }
     
-    
+    public Vector2 ForwardDirection {
+        get {
+            if(_renderer.sprite == _rightDownSR) {
+                return new Vector2(_skin.localScale.x, -1f).normalized;
+            } else {
+                return new Vector2(_skin.localScale.x, 1f).normalized;
+            }
+        }
+    }
 }

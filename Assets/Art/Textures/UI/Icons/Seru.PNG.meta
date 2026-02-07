@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f11faf7d5d970e149acc886021f5ad32
+guid: b59a2664822eb0b4eb56cf335fed51a4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6508987712515940887
-    second: netral_0
+      213: 2542574428842168285
+    second: Seru_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: netral_0
+      name: Seru_0
       rect:
         serializedVersion: 2
-        x: 232
-        y: 60
-        width: 535
-        height: 517
+        x: 363
+        y: 41
+        width: 272
+        height: 956
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71225e3a6d1945a50800000000000000
-      internalID: 6508987712515940887
+      spriteID: ddf012ec8f9094320800000000000000
+      internalID: 2542574428842168285
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      netral_0: 6508987712515940887
+      Seru_0: 2542574428842168285
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

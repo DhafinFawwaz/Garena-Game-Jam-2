@@ -10,14 +10,15 @@ public class SheepWanderState : BaseState<SheepCore, SheepStates>
     
     public SheepWanderState(SheepCore contextCore, SheepStates States) : base (contextCore, States)
     {
-        noiseOffsetX = Random.Range(0f, 1000f);
-        noiseOffsetY = Random.Range(0f, 1000f);
+        
     }
 
     float _wanderTimer = 0f;
     float _eatFoodAt = 3f;
     public override void StateEnter()
     {
+        noiseOffsetX = Random.Range(0f, 1000f);
+        noiseOffsetY = Random.Range(0f, 1000f);
         timeOffset = 0f;
         Core.Skin.IsMoving = true;
         _wanderTimer = 0f;
@@ -32,6 +33,7 @@ public class SheepWanderState : BaseState<SheepCore, SheepStates>
     }
     public override void StateFixedUpdate()
     {
+        if(Core == null || Core.Rb == null) return;
         timeOffset += Time.fixedDeltaTime;
         
         float noiseX = Mathf.PerlinNoise(noiseOffsetX + timeOffset * 0.5f, 0f) * 2f - 1f;

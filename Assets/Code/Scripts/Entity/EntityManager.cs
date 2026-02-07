@@ -7,6 +7,8 @@ public class EntityManager : MonoBehaviour
     [SerializeField] [ReadOnly] List<Herd> _herds = new List<Herd>();
     [SerializeField] [ReadOnly] bool _isActive;
 
+    public List<SheepCore> Entities => _entities;
+
     void OnEnable() {
         GameManager.S_OnGameStateChanged += HandleGameStateChanged;
         HerdSpawner.S_OnHerdSpawned += HandleHerdSpawned;
@@ -17,7 +19,7 @@ public class EntityManager : MonoBehaviour
         HerdSpawner.S_OnHerdSpawned -= HandleHerdSpawned;
     }
 
-    void HandleGameStateChanged(GameState state) {
+    public void HandleGameStateChanged(GameState state) {
         _isActive = state == GameState.Playing;
     }
 
