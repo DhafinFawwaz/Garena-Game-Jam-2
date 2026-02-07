@@ -5,7 +5,7 @@ public class SheepStates : States<SheepCore, SheepStates>
     
     enum State
     {
-        Alert, Attack, Chase, Death, Eat, Idle, Jump, Rush, Wander, 
+        Alert, Attack, Chase, Death, Eat, Hurt, Idle, Jump, Rush, Wander, 
     }
     public SheepStates(SheepCore contextCore) : base (contextCore)
     {
@@ -14,6 +14,7 @@ public class SheepStates : States<SheepCore, SheepStates>
         _states[State.Chase] = new SheepChaseState(Core, this);
         _states[State.Death] = new SheepDeathState(Core, this);
         _states[State.Eat] = new SheepEatState(Core, this);
+        _states[State.Hurt] = new SheepHurtState(Core, this);
         _states[State.Idle] = new SheepIdleState(Core, this);
         _states[State.Jump] = new SheepJumpState(Core, this);
         _states[State.Rush] = new SheepRushState(Core, this);
@@ -26,6 +27,7 @@ public class SheepStates : States<SheepCore, SheepStates>
     public BaseState<SheepCore, SheepStates> Chase => _states[State.Chase];
     public BaseState<SheepCore, SheepStates> Death => _states[State.Death];
     public BaseState<SheepCore, SheepStates> Eat => _states[State.Eat];
+    public BaseState<SheepCore, SheepStates> Hurt => _states[State.Hurt];
     public BaseState<SheepCore, SheepStates> Idle => _states[State.Idle];
     public BaseState<SheepCore, SheepStates> Jump => _states[State.Jump];
     public BaseState<SheepCore, SheepStates> Rush => _states[State.Rush];

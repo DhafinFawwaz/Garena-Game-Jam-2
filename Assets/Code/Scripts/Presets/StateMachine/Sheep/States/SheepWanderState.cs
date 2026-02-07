@@ -22,6 +22,7 @@ public class SheepWanderState : BaseState<SheepCore, SheepStates>
         timeOffset = 0f;
         Core.Skin.IsMoving = true;
         _wanderTimer = 0f;
+        _eatFoodAt = Random.Range(2.7f, 3.3f);
     }
 
     public override void StateUpdate()

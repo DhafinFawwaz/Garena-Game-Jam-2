@@ -14,7 +14,10 @@ public class SheepAttackState : BaseState<SheepCore, SheepStates>
     {
         
     }
+    float _attackDuration = 1f;
 
+    float _timerTillHitbox = 0f;
+    float _durationTillHitbox = 0.5f;
     public override void StateUpdate()
     {
     }
@@ -54,14 +57,18 @@ public class SheepAttackState : BaseState<SheepCore, SheepStates>
             }
 
             Core.Skin.LookDirection(Core.Rb.linearVelocity);
+        } else {
+            SwitchState(States.Wander);
+            return;
         }
 
 
         _attackCooldown += Time.deltaTime;
         if(_attackCooldown >= Core.Stats.AttackDelay) {
+            Core.Skin.PlayAttackAnimation();
             GetAttackTargetFunc(sign.Type)(Core.Stats.TeamID, new HitRequest{
                 Damage=Core.Stats.AttackDamage,
-                Direction=(Core.Skin.ForwardDirection),
+                Direction=Core.Skin.ForwardDirection,
             });
             _attackCooldown = 0f;
         }

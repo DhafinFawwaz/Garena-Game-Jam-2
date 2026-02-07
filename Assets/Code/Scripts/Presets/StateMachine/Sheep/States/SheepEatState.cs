@@ -8,16 +8,17 @@ public class SheepEatState : BaseState<SheepCore, SheepStates>
     }
 
     float _eatTimer = 0f;
-    float _eatDuration = 2f;
+    float _eatDuration = 1f;
     float _minEatAmount = 5f;
     float _maxEatAmount = 15f;
     float _minTrustAmount = 5f;
     float _maxTrustAmount = 10f;
     public override void StateEnter()
     {
-        _eatTimer = Random.Range(10f, 20f);
+        _eatTimer = 0;
         Core.Stats.Eat(Random.Range(_minEatAmount, _maxEatAmount));
         Core.Stats.Trust(Random.Range(_minTrustAmount, _maxTrustAmount));
+        Core.Skin.PlayEatAnimation();
     }
 
     public override void StateUpdate()

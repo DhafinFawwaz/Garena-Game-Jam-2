@@ -1,3 +1,4 @@
+using DhafinFawwaz.AnimationUI;
 using UnityEngine;
 
 public class EntitySkin : MonoBehaviour
@@ -63,5 +64,20 @@ public class EntitySkin : MonoBehaviour
                 return new Vector2(_skin.localScale.x, 1f).normalized;
             }
         }
+    }
+
+    [SerializeField] AnimationUI _eatAUI;
+    public void PlayEatAnimation() {
+        _eatAUI.Play();
+    }
+    
+    [SerializeField] AnimationUI _attackAUI;
+    public void PlayAttackAnimation() {
+        _attackAUI.Play();
+    }
+
+    [SerializeField] AnimationUI _deathAUI;
+    public void PlayDeathAnimation() {
+        _deathAUI.Play();
     }
 }
