@@ -50,7 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3046674469451426049, guid: f9f0c235b9aaa9b4f8c9f72c9dd6dc3c, type: 3}
       propertyPath: m_Name
-      value: '[Sign] Combat Variant'
+      value: '[Sign] Combat'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3110188136303710372, guid: f9f0c235b9aaa9b4f8c9f72c9dd6dc3c, type: 3}
+      propertyPath: Type
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

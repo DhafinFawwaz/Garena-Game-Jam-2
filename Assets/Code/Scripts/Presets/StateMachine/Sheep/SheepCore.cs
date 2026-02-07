@@ -6,6 +6,7 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
 {
     public EntitySkin Skin;
     public EntityStats Stats;
+    public EntityVFX VFX;
     void Awake()
     {
         States = new SheepStates(this);
@@ -42,6 +43,7 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
     public void OnSignEnter(Sign sign) {
         _currentSigns.Add(sign);
         if(_currentSigns.Count >= 1) {
+            Debug.Log("SheepCore: Sign entered, switching to Alert state");
             SwitchState(States.Alert);
         }
     }

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EntityStats : MonoBehaviour
 {
-    [SerializeField] float _currentTrust = 50f;
-    [SerializeField] float _currentHunger = 50f;
+    float _currentTrust = 80f;
+    float _currentHunger = 80f;
     public float CurrentTrust { get => _currentTrust; set => _currentTrust = Mathf.Clamp(value, 0f, MaxTrust); }
     public float CurrentHunger { get => _currentHunger; set => _currentHunger = Mathf.Clamp(value, 0f, MaxHunger); }
     public EntityType State = EntityType.Neutral;
