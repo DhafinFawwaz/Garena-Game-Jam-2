@@ -1,5 +1,56 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2838474268755703383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 406997520809896224}
+  - component: {fileID: 3273643098891168531}
+  m_Layer: 5
+  m_Name: '[GhostViewer]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &406997520809896224
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2838474268755703383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6502029593836153098}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3273643098891168531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2838474268755703383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97028356cc93e5c4fa3732e4e981d86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SignDragableGhost
+  _ghostSprite: {fileID: 7482667652216324306, guid: ff55e40b2f49bac4f94ca452e5d22505, type: 3}
+  _ghostAlpha: 0.5
+  _ghostScale: 2
 --- !u!1 &4621529627276774130
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +65,7 @@ GameObject:
   - component: {fileID: 2177774490252466749}
   - component: {fileID: 9187874597045833982}
   m_Layer: 5
-  m_Name: '[SignDragable]'
+  m_Name: '[SignDragable] DontGoHere'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +82,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 406997520809896224}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -93,6 +145,7 @@ MonoBehaviour:
   _canvas: {fileID: 0}
   _canvasGroup: {fileID: 9187874597045833982}
   _rt: {fileID: 6502029593836153098}
+  _ghostViewer: {fileID: 3273643098891168531}
 --- !u!225 &9187874597045833982
 CanvasGroup:
   m_ObjectHideFlags: 0

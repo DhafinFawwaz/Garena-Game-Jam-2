@@ -3,7 +3,13 @@ using UnityEngine;
 public class Sign : MonoBehaviour
 {
     public SignType Type = SignType.DontGoHere;
-    [SerializeField] float _lifeTime = 10f;
+    float _lifeTime = 10f;
+    [SerializeField] float _maxLifetime = 10f;
+
+    void Awake() {
+        _lifeTime = _maxLifetime;
+    }
+
     [SerializeField] LifetimePreviewer _lifetimePreviewer;
     void OnTriggerEnter2D(Collider2D other) {
         if(other.attachedRigidbody == null) return;
@@ -23,6 +29,6 @@ public class Sign : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        _lifetimePreviewer.SetValueNormalized(_lifeTime / 10f);
+        _lifetimePreviewer.SetValueNormalized(_lifeTime / _maxLifetime);
     }
 }

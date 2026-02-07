@@ -16,11 +16,19 @@ public class SheepChaseState : BaseState<SheepCore, SheepStates>
     {
         
     }
+
+
+    Sign _currentTargetSign = null;
     public override void StateFixedUpdate()
     {
         if(Core.CurrentSigns.Count == 0) return;
         Core.Skin.IsMoving = true;
         var sign = Core.CurrentSigns[Core.CurrentSigns.Count-1];
+        if(_currentTargetSign != null && _currentTargetSign != sign) {
+            _currentTargetSign = null;
+            SwitchState(States.Alert);
+        }
+        _currentTargetSign = sign;
         Vector2 direction = (sign.transform.position - Core.transform.position).normalized;
         direction.y *= 0.5f;
         Core.Rb.linearVelocity = direction * Core.MoveSpeed;
