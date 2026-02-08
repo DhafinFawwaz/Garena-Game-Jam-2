@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: _icon
       value: 
       objectReference: {fileID: 21300000, guid: 9d1553f60df195742a183f4c737ffe88, type: 3}
+    - target: {fileID: 3110188136303710372, guid: f9f0c235b9aaa9b4f8c9f72c9dd6dc3c, type: 3}
+      propertyPath: _maxLifetime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3985110878784844718, guid: f9f0c235b9aaa9b4f8c9f72c9dd6dc3c, type: 3}
       propertyPath: m_Sprite
       value: 

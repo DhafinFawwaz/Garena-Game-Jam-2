@@ -347,7 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Sign
   Type: 0
   _icon: {fileID: 21300000, guid: 33d7a6f565c73084f82dfa9f7a0bbeef, type: 3}
-  _maxLifetime: 3
+  _maxLifetime: 4
   _lifetimePreviewer: {fileID: 4933799450050976616}
 --- !u!50 &7987947627656193008
 Rigidbody2D:
