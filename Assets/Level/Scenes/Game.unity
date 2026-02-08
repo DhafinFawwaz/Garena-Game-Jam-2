@@ -4209,6 +4209,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[SheepCore] Friendly'
       objectReference: {fileID: 0}
+    - target: {fileID: 859246075378049005, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4439867342597909761, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.20756
