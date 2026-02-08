@@ -10,6 +10,7 @@ public class HerdSpawner : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField] SheepCore _entityPrefab;
+    [SerializeField] SheepCore[] _sheepPrefabs;
     [SerializeField] Herd _herdPrefab;
 
     [Header("Herd Data")]
@@ -108,6 +109,13 @@ public class HerdSpawner : MonoBehaviour
         return (Vector2)bounds.center;
     }
 
+    SheepCore GetRandomSheepPrefab()
+    {
+        if (_sheepPrefabs.Length == 0) return _entityPrefab;
+        int index = UnityEngine.Random.Range(0, _sheepPrefabs.Length);
+        return _sheepPrefabs[index];
+    }
+
     Herd SpawnHerd(HerdData data, Vector2 position, bool isPlayer)
     {
         Herd herd = Instantiate(_herdPrefab, position, Quaternion.identity);
@@ -116,7 +124,7 @@ public class HerdSpawner : MonoBehaviour
         for (int i = 0; i < data.InitialMemberCount; i++)
         {
             Vector2 spawnPos = position + UnityEngine.Random.insideUnitCircle * data.SpawnRadius;
-            SheepCore entity = Instantiate(_entityPrefab, spawnPos, Quaternion.identity, herd.transform);
+            SheepCore entity = Instantiate(GetRandomSheepPrefab(), spawnPos, Quaternion.identity, herd.transform);
 
             entity.ConvertToNeutral();
 

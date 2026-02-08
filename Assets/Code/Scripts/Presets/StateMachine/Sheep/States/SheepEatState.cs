@@ -31,7 +31,7 @@ public class SheepEatState : BaseState<SheepCore, SheepStates>
     }
     public override void StateFixedUpdate()
     {
-
+        Core.Rb.linearVelocity = Vector2.zero;
     }
 
     public override void StateExit()
