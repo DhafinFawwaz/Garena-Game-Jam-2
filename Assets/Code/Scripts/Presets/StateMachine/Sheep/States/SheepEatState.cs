@@ -19,6 +19,7 @@ public class SheepEatState : BaseState<SheepCore, SheepStates>
         Core.Stats.Eat(Random.Range(_minEatAmount, _maxEatAmount));
         Core.Stats.Trust(Random.Range(_minTrustAmount, _maxTrustAmount));
         Core.Skin.PlayEatAnimation();
+        Core.Rb.linearVelocity = Vector2.zero;
     }
 
     public override void StateUpdate()

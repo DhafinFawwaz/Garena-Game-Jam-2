@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 859246075378049005, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1749131941669854810, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
       propertyPath: _rightUpSR
@@ -36,6 +36,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -5189600029199711112, guid: d6cab16251f3b124083acd3a78d5d9b3, type: 3}
+    - target: {fileID: 4415302464815243112, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+      propertyPath: managedReferences[8059579814261555316]._name
+      value: '0.00 s [[SheepCore] Friendly Gendut Variant] [2s]'
+      objectReference: {fileID: 0}
     - target: {fileID: 4415302464815243112, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
       propertyPath: 'managedReferences[8059579814261555280].Sprites.Array.data[0]'
       value: 
@@ -569,8 +573,20 @@ PrefabInstance:
       value: '0.00 s [[Skin]] [0.5s]'
       objectReference: {fileID: 0}
     - target: {fileID: 6423870078529318064, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+      propertyPath: managedReferences[8059579814261555318]._name
+      value: '0.00 s [0.23s]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423870078529318064, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+      propertyPath: managedReferences[8059579814261555320]._name
+      value: '0.23 s [UnityEvent]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423870078529318064, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
       propertyPath: managedReferences[8059579814261555280].Duration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423870078529318064, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+      propertyPath: managedReferences[8059579814261555318].Duration
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 6423870078529318064, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
       propertyPath: managedReferences[8059579814261555280].Sprites.Array.size
@@ -628,6 +644,14 @@ PrefabInstance:
       propertyPath: 'managedReferences[8059579814261555280].Sprites.Array.data[12]'
       value: 
       objectReference: {fileID: -5189600029199711112, guid: d6cab16251f3b124083acd3a78d5d9b3, type: 3}
+    - target: {fileID: 7544176797952582807, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544176797952582807, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.96
+      objectReference: {fileID: 0}
     - target: {fileID: 9211953998114267633, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
       propertyPath: 'managedReferences[8059579814261555280].Sprites.Array.data[0]'
       value: 

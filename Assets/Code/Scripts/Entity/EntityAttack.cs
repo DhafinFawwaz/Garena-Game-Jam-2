@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DhafinFawwaz.AnimationUI;
 using UnityEngine;
@@ -69,5 +70,11 @@ public class EntityAttack : MonoBehaviour
         if(closestSheepCore == null) return null;
         closestSheepCore.OnHurt(hitRequest);
         return closestSheepCore;
+    }
+
+    public Action CurrentAttackAction;
+    public void AttackCurrent() {
+        CurrentAttackAction?.Invoke();
+        CurrentAttackAction = null;
     }
 }

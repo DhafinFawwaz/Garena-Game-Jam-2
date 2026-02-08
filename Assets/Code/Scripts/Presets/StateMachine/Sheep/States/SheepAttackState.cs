@@ -66,10 +66,12 @@ public class SheepAttackState : BaseState<SheepCore, SheepStates>
         _attackCooldown += Time.deltaTime;
         if(_attackCooldown >= Core.Stats.AttackDelay) {
             Core.Skin.PlayAttackAnimation();
-            GetAttackTargetFunc(sign.Type)(Core.Stats.TeamID, new HitRequest{
-                Damage=Core.Stats.AttackDamage,
-                Direction=Core.Skin.ForwardDirection,
-            });
+            Core.Attack.CurrentAttackAction = () => {
+                GetAttackTargetFunc(sign.Type)(Core.Stats.TeamID, new HitRequest{
+                    Damage=Core.Stats.AttackDamage,
+                    Direction=Core.Skin.ForwardDirection,
+                });
+            };
             _attackCooldown = 0f;
         }
 

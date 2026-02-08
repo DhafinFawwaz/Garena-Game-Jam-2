@@ -90,7 +90,7 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
         _currentSigns.Remove(sign);
         if(_currentSigns.Count == 0) {
             _rb.linearVelocity = Vector2.zero;
-            SwitchState(States.Wander);
+            if(CurrentState != States.Death) SwitchState(States.Wander);
         }
     }
 
