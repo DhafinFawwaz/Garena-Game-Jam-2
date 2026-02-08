@@ -1,11 +1,20 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] SceneTransition _transitionPrefab;
-    [SerializeField] string _firstSceneName = "2";
+    string _firstSceneName = "Game";
     public void ToGameScene() {
-        _transitionPrefab.LoadScene(_firstSceneName);
+        // _transitionPrefab.LoadScene(_firstSceneName);
+        SceneManager.LoadScene(_firstSceneName);
+    }
+
+    void Update() {
+        if(Keyboard.current.anyKey.wasPressedThisFrame) {
+            ToGameScene();
+        }
     }
 
     public void Exit() {

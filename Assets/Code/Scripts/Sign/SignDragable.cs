@@ -25,6 +25,8 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         if (_iconImage != null && signPrefab.Icon != null)
             _iconImage.sprite = signPrefab.Icon;
+
+        _ghostViewer.GhostSprite = signPrefab.Icon;
     }
     
     bool _isDragging = false;
