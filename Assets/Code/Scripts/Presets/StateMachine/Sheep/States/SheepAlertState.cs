@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class SheepAlertState : BaseState<SheepCore, SheepStates>
 {
-    public SheepAlertState(SheepCore contextCore, SheepStates States) : base (contextCore, States)
+    public SheepAlertState(SheepCore contextCore, SheepStates States) : base(contextCore, States)
     {
     }
 
@@ -12,21 +12,27 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
     {
         _timer = 0f;
         _alertDuration += UnityEngine.Random.Range(-0.2f, 0f);
-        
+
         Sign sign1 = null;
-        if(Core.CurrentSigns.Count > 0) sign1 = Core.CurrentSigns[Core.CurrentSigns.Count-1];
+        if (Core.CurrentSigns.Count > 0) sign1 = Core.CurrentSigns[Core.CurrentSigns.Count - 1];
         var trust = Core.Stats.CurrentTrust;
 
 
-        if(sign1.Type == SignType.GoHere && trust >= _minimumTrustToChase) {
+        if (sign1.Type == SignType.GoHere && trust >= _minimumTrustToChase)
+        {
             Core.VFX.PlayAlertVFX();
-        } else if(sign1.Type == SignType.GoHere && trust <= _minimumTrustToChase) {
+        }
+        else if (sign1.Type == SignType.GoHere && trust <= _minimumTrustToChase)
+        {
             Core.VFX.PlayAlertConfusedVFX();
         }
 
-        if(sign1.Type != SignType.GoHere && trust < _minimumTrustToChase) {
+        if (sign1.Type != SignType.GoHere && trust < _minimumTrustToChase)
+        {
             Core.VFX.PlayAlertVFX();
-        } else if(sign1.Type != SignType.GoHere && trust >= _minimumTrustToChase) {
+        }
+        else if (sign1.Type != SignType.GoHere && trust >= _minimumTrustToChase)
+        {
             Core.VFX.PlayAlertConfusedVFX();
         }
 
@@ -35,18 +41,19 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
     float _timer = 0f;
     float _alertDuration = 1f;
     float _alertSpeed = 4f;
-    float _minimumTrustToChase = 50f;
+    float _minimumTrustToChase = 40f;
     public override void StateUpdate()
     {
         _timer += Time.deltaTime;
         var trust = Core.Stats.CurrentTrust;
         Sign sign1 = null;
-        if(Core.CurrentSigns.Count > 0) sign1 = Core.CurrentSigns[Core.CurrentSigns.Count-1];
+        if (Core.CurrentSigns.Count > 0) sign1 = Core.CurrentSigns[Core.CurrentSigns.Count - 1];
 
-        if(_timer >= _alertDuration && Core.CurrentSigns.Count > 0) {
+        if (_timer >= _alertDuration && Core.CurrentSigns.Count > 0)
+        {
             _timer = 0f;
-            handleSignType(sign1, trust, 
-                () => { Core.SwitchState(States.Chase); }, 
+            handleSignType(sign1, trust,
+                () => { Core.SwitchState(States.Chase); },
                 () => { Core.SwitchState(States.Wander); },
                 () => { Core.SwitchState(States.Rush); }
             );
@@ -56,23 +63,34 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
         // handleSignType(sign1, trust);
     }
 
-    void handleSignType(Sign sign1, float trust, Action onChase = null, Action onWander = null, Action onRush = null) {
-        if(sign1 == null) return;
+    void handleSignType(Sign sign1, float trust, Action onChase = null, Action onWander = null, Action onRush = null)
+    {
+        if (sign1 == null) return;
 
-        if(trust < _minimumTrustToChase) {
-            if(sign1.Type == SignType.DontGoHere) {
+        if (trust < _minimumTrustToChase)
+        {
+            if (sign1.Type == SignType.DontGoHere)
+            {
                 onChase?.Invoke();
-            } else if(sign1.Type == SignType.NoCombat || sign1.Type == SignType.NoCannibal) {
+            }
+            else if (sign1.Type == SignType.NoCombat || sign1.Type == SignType.NoCannibal)
+            {
                 onRush?.Invoke();
             }
-        } else {
+        }
+        else
+        {
             onWander?.Invoke();
         }
 
-        if(trust >= _minimumTrustToChase) {
-            if(sign1.Type == SignType.GoHere) {
+        if (trust >= _minimumTrustToChase)
+        {
+            if (sign1.Type == SignType.GoHere)
+            {
                 onChase?.Invoke();
-            } else {
+            }
+            else
+            {
                 onWander?.Invoke();
             }
         }
@@ -88,7 +106,7 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
 
     public override void StateExit()
     {
-        
+
     }
     public override HitResult OnHurt(HitRequest hitRequest)
     {

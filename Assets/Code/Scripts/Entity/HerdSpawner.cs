@@ -134,6 +134,8 @@ public class HerdSpawner : MonoBehaviour
             entity.gameObject.SetActive(true);
             entity.Init(data);
 
+            entity.Stats.CurrentTrust = 85f;
+
             entity.Stats.TeamID = herd.TeamID;
             entity.Stats.CurrentTrust = UnityEngine.Random.Range(0f, 100f);
             herd.AddMember(entity);

@@ -4446,10 +4446,10 @@ MonoBehaviour:
   - TimeThreshold: 40
     Event: {fileID: 11400000, guid: 2909e037b4b6d0c4c8e128ba7604ee69, type: 2}
   _initialSpawnInterval: 1
-  _minSpawnInterval: 0.8
-  _spawnIntervalDecayRate: 0.02
+  _minSpawnInterval: 1.4
+  _spawnIntervalDecayRate: 0.04
   _initialMaxSigns: 3
-  _finalMaxSigns: 8
+  _finalMaxSigns: 5
   _maxSignsScaleTime: 60
 --- !u!4 &1039212297
 Transform:
