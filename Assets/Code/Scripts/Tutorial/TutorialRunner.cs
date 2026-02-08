@@ -88,7 +88,7 @@ public class TutorialRunner : MonoBehaviour
         }
     }
 
-    void EndTutorial()
+    public void EndTutorial()
     {
         _popup.OnNextClicked -= AdvanceStep;
         _popup.Hide();

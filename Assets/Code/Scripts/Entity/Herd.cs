@@ -26,6 +26,11 @@ public class Herd : MonoBehaviour, IHungerable
     float _hungerDecayMultiplier = 1f;
     public float HungerDecayMultiplier { get => _hungerDecayMultiplier; set => _hungerDecayMultiplier = value; }
 
+    private int _teamID = -1;
+    public int TeamID { get => _teamID; }
+
+    private static List<int> _teams = new();
+
     [SerializeField][ReadOnly] List<SheepCore> _members = new List<SheepCore>();
     public List<SheepCore> Members { get => _members; }
     public int MemberCount { get => _members.Count; }
@@ -40,6 +45,13 @@ public class Herd : MonoBehaviour, IHungerable
         _maxHunger = data.MaxHunger;
         _hungerLevel = data.MaxHunger;
         _hungerDecayRate = data.HungerDecayRate;
+
+        _teamID = UnityEngine.Random.Range(0, 100);
+        while (_teams.Contains(_teamID))
+        {
+            _teamID = UnityEngine.Random.Range(0, 100);
+        }
+        _teams.Add(_teamID);
     }
 
     public void AddMember(SheepCore entity)

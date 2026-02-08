@@ -12,7 +12,7 @@ public class TutorialPopup : MonoBehaviour
     [SerializeField] TMP_Text _messageText;
     [SerializeField] Image _image;
     [SerializeField] GameObject _imageContainer;
-    [SerializeField] Button _nextButton;
+    [SerializeField] ButtonAnimationUI _nextButton;
     [SerializeField] TMP_Text _nextButtonText;
 
     public event Action OnNextClicked;

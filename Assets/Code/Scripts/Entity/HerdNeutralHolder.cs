@@ -20,7 +20,7 @@ public class HerdNeutralHolder : MonoBehaviour
         else
             sheep.ConvertToEnemy();
 
-        sheep.Stats.TeamID = _herd.Members.Count > 0 ? _herd.Members[0].Stats.TeamID : 0;
+        sheep.Stats.TeamID = _herd.TeamID;        
         _herd.AddMember(sheep);
     }
 }

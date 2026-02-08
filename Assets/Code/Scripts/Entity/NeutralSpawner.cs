@@ -83,7 +83,7 @@ public class NeutralSpawner : MonoBehaviour
         Vector2 pos = GetRandomPositionInBounds();
         SheepCore entity = Instantiate(_neutralPrefab, pos, Quaternion.identity);
         entity.gameObject.SetActive(true);
-        entity.Stats.State = EntityType.Neutral;
+        entity.ConvertToNeutral();
         entity.PlayFallFromSkyAnimation();
         entity.OnDeath += HandleNeutralDeath;
 

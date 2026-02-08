@@ -20,7 +20,7 @@ public class Tutorial : ScriptableObject
 
     public void MarkCompleted()
     {
-        PlayerPrefs.SetInt("Tutorial_" + _tutorialId, 1);
-        PlayerPrefs.Save();
+        // PlayerPrefs.SetInt("Tutorial_" + _tutorialId, 1);
+        // PlayerPrefs.Save();
     }
 }

@@ -1,4 +1,4 @@
 public enum EntityType
 {
-    Enemy, Neutral, Friendly
+    Enemy = 0, Neutral = 1, Friendly = 2
 }

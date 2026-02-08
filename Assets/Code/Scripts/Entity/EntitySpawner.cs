@@ -11,6 +11,7 @@ public class EntitySpawner : MonoBehaviour
             Vector2 spawnPos = position + Random.insideUnitCircle * spawnRadius;
             SheepCore entity = Instantiate(_entityPrefab, spawnPos, Quaternion.identity);
             entity.Stats.CurrentTrust = Random.Range(0f, 100f);
+            
             entities.Add(entity);
         }
         return entities;

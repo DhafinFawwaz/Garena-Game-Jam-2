@@ -1,6 +1,5 @@
 using System.Linq;
 using DhafinFawwaz.AnimationUI;
-using Mono.Cecil.Cil;
 using UnityEngine;
 
 public class EntityConverter : MonoBehaviour
@@ -17,13 +16,16 @@ public class EntityConverter : MonoBehaviour
     [SerializeField] EntitySkin _skin;
     [SerializeField] SpriteRenderer _skinRenderer;
 
-    public void ConvertToEnemy() {
+    public void ConvertToEnemy()
+    {
         Convert(2);
     }
-    public void ConvertToFriendly() {
+    public void ConvertToFriendly()
+    {
         Convert(0);
     }
-    public void ConvertToNeutral() {
+    public void ConvertToNeutral()
+    {
         Convert(1);
     }
 
@@ -32,15 +34,16 @@ public class EntityConverter : MonoBehaviour
     [SerializeField] AnimationUI _eatAUI;
     [SerializeField] AnimationUI _attackAUI;
     // [SerializeField] AnimationUI _fallAUI;
-    void Convert(int idx) {
+    void Convert(int idx)
+    {
         _skin.SetSprites(DepanBawah[idx], BelakangAtas[idx]);
         _skinRenderer.sprite = DepanBawah[idx];
-        
+
         var tween = _cliffAUI.Get<SpriteFlipbookTween>(1);
         tween.Sprites[0] = DepanBawah[idx];
         tween.Sprites[1] = Fall[idx];
 
-        var tweendie = _dieAUI.Get<SpriteFlipbookTween>(1);
+        var tweendie = _dieAUI.Get<SpriteFlipbookTween>(2);
         tweendie.Sprites[0] = DepanBawah[idx];
         tweendie.Sprites[1] = Fall[idx];
 
@@ -50,6 +53,7 @@ public class EntityConverter : MonoBehaviour
 }
 
 [System.Serializable]
-public class SpriteArray {
+public class SpriteArray
+{
     public Sprite[] Sprites;
 }

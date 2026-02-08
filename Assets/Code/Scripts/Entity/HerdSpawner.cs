@@ -117,8 +117,13 @@ public class HerdSpawner : MonoBehaviour
         {
             Vector2 spawnPos = position + UnityEngine.Random.insideUnitCircle * data.SpawnRadius;
             SheepCore entity = Instantiate(_entityPrefab, spawnPos, Quaternion.identity, herd.transform);
+
+            entity.ConvertToNeutral();
+
             entity.gameObject.SetActive(true);
             entity.Init(data);
+
+            entity.Stats.TeamID = herd.TeamID;
             entity.Stats.CurrentTrust = UnityEngine.Random.Range(0f, 100f);
             herd.AddMember(entity);
         }
