@@ -10831,26 +10831,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SFX
       objectReference: {fileID: 0}
-    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
-      propertyPath: ClipEvents.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
-      propertyPath: ClipEvents.Array.data[6].Clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 1fa0db208f138cf41b438784535d5be6, type: 3}
-    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
-      propertyPath: ClipEvents.Array.data[6].Volume
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
-      propertyPath: ClipEvents.Array.data[6].Action._actionPathString
-      value: HerdNeutralHolder.S_OnConverted
-      objectReference: {fileID: 0}
-    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
-      propertyPath: ClipEvents.Array.data[6].Action._displayActionPathString
-      value: S_OnConverted()
-      objectReference: {fileID: 0}
     - target: {fileID: 7518169596903159757, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 958.2582

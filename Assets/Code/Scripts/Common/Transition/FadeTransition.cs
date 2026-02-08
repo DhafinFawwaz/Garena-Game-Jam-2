@@ -15,6 +15,7 @@ public class FadeTransition : SceneTransition
     }
 
     protected override IEnumerator TransitionInAnimation() {
+        Debug.Log("Transition In Animation");
         yield return FadeToColor(_startColor, _fadeDuration);
     }
 
@@ -24,7 +25,7 @@ public class FadeTransition : SceneTransition
         float elapsedTime = 0f;
         Color initialColor = _fadeImage.color;
         while (elapsedTime < duration && _key == requirement) {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(elapsedTime / duration);
             _fadeImage.color = Color.Lerp(initialColor, targetColor, EaseOutQuartic(t));
             yield return null;

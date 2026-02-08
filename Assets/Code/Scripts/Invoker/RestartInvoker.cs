@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SceneTransitionRunner))]
 public class RestartInvoker : MonoBehaviour
@@ -13,6 +14,7 @@ public class RestartInvoker : MonoBehaviour
     public void Invoke()
     {
         // Restart the game
-        _runner.RestartCurrentScene();
+        // _runner.RestartCurrentScene();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
