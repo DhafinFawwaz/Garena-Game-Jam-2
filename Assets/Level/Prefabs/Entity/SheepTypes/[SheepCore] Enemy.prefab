@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[SheepCore] Enemy'
       objectReference: {fileID: 0}
+    - target: {fileID: 4415302464815243112, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+      propertyPath: managedReferences[8059579814261555316]._name
+      value: '0.00 s [[SheepCore] Enemy] [2s]'
+      objectReference: {fileID: 0}
     - target: {fileID: 4439867342597909761, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.72
@@ -56,8 +60,23 @@ PrefabInstance:
       propertyPath: State
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9065719315741677339, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+      propertyPath: _owner
+      value: 
+      objectReference: {fileID: 1459643897549048075}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+--- !u!114 &1459643897549048075 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8634446891496813783, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+  m_PrefabInstance: {fileID: 7174803579417329116}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74ed61df681ab34d84d8ef7aff94110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SheepCore

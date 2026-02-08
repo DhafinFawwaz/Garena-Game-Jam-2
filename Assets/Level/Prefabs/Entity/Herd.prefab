@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3039128223083677888}
   - component: {fileID: 7331615133650850975}
   - component: {fileID: 4414754125313906654}
-  - component: {fileID: 3045719095477028013}
   m_Layer: 0
   m_Name: Herd
   m_TagString: Untagged
@@ -50,6 +49,9 @@ MonoBehaviour:
   _isPlayerHerd: 0
   _herdName: 
   _members: []
+  _recycleRatio: 0.2
+  _recycleDamageBonus: 5
+  _recycleHealthBonus: 20
 --- !u!61 &7331615133650850975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -109,16 +111,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HerdHolder
   _colliderPadding: 1
---- !u!114 &3045719095477028013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8765528242863420139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9ce36dbd07d2c4438f32616de6ba9b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HerdNeutralHolder
-  _herd: {fileID: 3039128223083677888}

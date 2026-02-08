@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 4721154989096651954}
   - component: {fileID: 5805668069641406738}
   - component: {fileID: 5914595925693175835}
+  - component: {fileID: 9065719315741677339}
   m_Layer: 10
   m_Name: '[SheepCore] Friendly'
   m_TagString: Untagged
@@ -583,7 +584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7036c4056f51da34ca32ef1750736870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
-  _currentTrust: 30
+  _currentTrust: 25
   _currentHunger: 80
   State: 2
   TeamID: 0
@@ -797,6 +798,19 @@ MonoBehaviour:
   _dieAUI: {fileID: 5454472238051129556}
   _eatAUI: {fileID: 9211953998114267633}
   _attackAUI: {fileID: 6423870078529318064}
+--- !u!114 &9065719315741677339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859246075378049005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ce36dbd07d2c4438f32616de6ba9b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HerdNeutralHolder
+  _owner: {fileID: 8634446891496813783}
 --- !u!1 &1310285408994992832
 GameObject:
   m_ObjectHideFlags: 0

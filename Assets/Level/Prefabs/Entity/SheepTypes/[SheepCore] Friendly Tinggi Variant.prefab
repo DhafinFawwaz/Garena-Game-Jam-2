@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: AttackDamage
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4721154989096651954, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+      propertyPath: _currentTrust
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5454472238051129556, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
       propertyPath: 'managedReferences[8059579814261555280].Sprites.Array.data[0]'
       value: 

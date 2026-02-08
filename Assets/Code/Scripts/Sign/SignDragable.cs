@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -8,6 +9,7 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public Sign SignPrefab => _signPrefab;
     [SerializeField] Canvas _canvas;
     [SerializeField] CanvasGroup _canvasGroup;
+    [SerializeField] Image _iconImage;
 
     [SerializeField] RectTransform _rt;
     Vector2 _originalPosition;
@@ -19,6 +21,9 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         _canvas = canvas;
         _notDropableArea = notDropableArea;
         _signPrefab = signPrefab;
+
+        if (_iconImage != null && signPrefab.Icon != null)
+            _iconImage.sprite = signPrefab.Icon;
     }
     
     bool _isDragging = false;

@@ -1,26 +1,35 @@
 using System;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class HerdNeutralHolder : MonoBehaviour
 {
     public static Action<SheepCore> S_OnNeutralConverted;
 
-    [SerializeField] Herd _herd;
+    [SerializeField] SheepCore _owner;
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (_owner.Herd == null) return;
+        if (_owner.Stats.State == EntityType.Neutral) return;
+
+
         if (other.attachedRigidbody == null) return;
         if (!other.attachedRigidbody.TryGetComponent<SheepCore>(out var sheep)) return;
         if (sheep.Stats.State != EntityType.Neutral) return;
+        if (sheep.Herd != null) return;
+
+        Herd herd = _owner.Herd;
 
         S_OnNeutralConverted?.Invoke(sheep);
 
-        if (_herd.IsPlayerHerd)
+        if (herd.IsPlayerHerd)
             sheep.ConvertToFriendly();
         else
             sheep.ConvertToEnemy();
 
-        sheep.Stats.TeamID = _herd.TeamID;        
-        _herd.AddMember(sheep);
+        sheep.Stats.TeamID = herd.TeamID;
+        sheep.transform.SetParent(herd.transform);
+        herd.AddMember(sheep);
     }
 }
