@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SignDragableGhost
   _ghostSprite: {fileID: 7482667652216324306, guid: ff55e40b2f49bac4f94ca452e5d22505, type: 3}
   _ghostAlpha: 0.5
-  _ghostScale: 2
+  _ghostScale: 0.15
 --- !u!1 &4621529627276774130
 GameObject:
   m_ObjectHideFlags: 0
