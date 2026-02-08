@@ -26,6 +26,8 @@ public class SheepChaseState : BaseState<SheepCore, SheepStates>
         var sign = Core.CurrentSigns[Core.CurrentSigns.Count-1];
         if(_currentTargetSign != null && _currentTargetSign != sign) {
             _currentTargetSign = null;
+            if(Core.LastSignThatCausedAlert == sign) return;
+            Core.LastSignThatCausedAlert = sign;
             SwitchState(States.Alert);
         }
         _currentTargetSign = sign;

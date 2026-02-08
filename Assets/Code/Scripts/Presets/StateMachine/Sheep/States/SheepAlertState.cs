@@ -12,12 +12,30 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
     {
         _timer = 0f;
         _alertDuration += UnityEngine.Random.Range(-0.2f, 0f);
+        
+        Sign sign1 = null;
+        if(Core.CurrentSigns.Count > 0) sign1 = Core.CurrentSigns[Core.CurrentSigns.Count-1];
+        var trust = Core.Stats.CurrentTrust;
+
+
+        if(sign1.Type == SignType.GoHere && trust >= _minimumTrustToChase) {
+            Core.VFX.PlayAlertVFX();
+        } else if(sign1.Type == SignType.GoHere && trust <= _minimumTrustToChase) {
+            Core.VFX.PlayAlertConfusedVFX();
+        }
+
+        if(sign1.Type != SignType.GoHere && trust < _minimumTrustToChase) {
+            Core.VFX.PlayAlertVFX();
+        } else if(sign1.Type != SignType.GoHere && trust >= _minimumTrustToChase) {
+            Core.VFX.PlayAlertConfusedVFX();
+        }
+
     }
 
     float _timer = 0f;
     float _alertDuration = 1f;
     float _alertSpeed = 4f;
-    float _minimumTrustToChase = 60f;
+    float _minimumTrustToChase = 50f;
     public override void StateUpdate()
     {
         _timer += Time.deltaTime;
@@ -35,27 +53,28 @@ public class SheepAlertState : BaseState<SheepCore, SheepStates>
         }
         Core.Skin.AlertJump(Mathf.Min(1f, _timer * _alertSpeed));
 
-        handleSignType(sign1, trust);
+        // handleSignType(sign1, trust);
     }
 
     void handleSignType(Sign sign1, float trust, Action onChase = null, Action onWander = null, Action onRush = null) {
         if(sign1 == null) return;
 
-        if(trust >= _minimumTrustToChase) {
-            Core.VFX.PlayAlertVFX();
-
+        if(trust < _minimumTrustToChase) {
             if(sign1.Type == SignType.DontGoHere) {
                 onChase?.Invoke();
-            } else if(sign1.Type == SignType.Combat || sign1.Type == SignType.Cannibal) {
+            } else if(sign1.Type == SignType.NoCombat || sign1.Type == SignType.NoCannibal) {
                 onRush?.Invoke();
             }
         } else {
             onWander?.Invoke();
-            Core.VFX.PlayAlertConfusedVFX();
         }
 
         if(trust >= _minimumTrustToChase) {
-
+            if(sign1.Type == SignType.GoHere) {
+                onChase?.Invoke();
+            } else {
+                onWander?.Invoke();
+            }
         }
 
 

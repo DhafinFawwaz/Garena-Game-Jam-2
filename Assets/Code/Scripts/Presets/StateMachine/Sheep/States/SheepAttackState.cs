@@ -23,17 +23,17 @@ public class SheepAttackState : BaseState<SheepCore, SheepStates>
     }
 
     Func<int, SheepCore> GetClosestSheepCore(SignType type) {
-        if(type == SignType.Combat) {
+        if(type == SignType.NoCombat) {
             return Core.Detector.GetClosestSheepCoreWithDifferentTeamID;
-        } else if(type == SignType.Cannibal) {
+        } else if(type == SignType.NoCannibal) {
             return Core.Detector.GetClosestSheepCoreWithSameTeamID;
         }
         return null;
     }
     Func<int, HitRequest, SheepCore> GetAttackTargetFunc(SignType type) {
-        if(type == SignType.Combat) {
+        if(type == SignType.NoCombat) {
             return Core.Attack.HitClosestSheepCoreWithDifferent;
-        } else if(type == SignType.Cannibal) {
+        } else if(type == SignType.NoCannibal) {
             return Core.Attack.HitClosestSheepCoreWithSameTeamID;
         }
         return null;

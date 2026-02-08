@@ -1,8 +1,8 @@
 public enum SignType
 {
     DontGoHere, GoHere,
-    NoNoise,
-    Cannibal,
-    Combat,
+    NoNoise, // same as no combat. dont ever use this.
+    NoCannibal,
+    NoCombat,
     Recycle
 }
