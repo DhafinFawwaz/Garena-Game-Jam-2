@@ -151,7 +151,7 @@ MonoBehaviour:
   _neutralPrefab: {fileID: 2433393653334052469, guid: 4b334987087ddee478c7b9c98a7050ac, type: 3}
   _spawnBoundary: {fileID: 1295117356}
   _spawnPadding: 6
-  _initialSpawnCount: 5
+  _initialSpawnCount: 10
   _spawnInterval: 5
   _maxNeutrals: 15
   AliveCount: 0
@@ -981,8 +981,8 @@ MonoBehaviour:
   _playerHerdData: {fileID: 11400000, guid: 9f9a0b95426c9af4b91880d4ef3d7b06, type: 2}
   _enemyHerdDataList:
   - {fileID: 11400000, guid: 6e5ae6138633cfd4d9ee6cada6743386, type: 2}
-  - {fileID: 11400000, guid: 6e5ae6138633cfd4d9ee6cada6743386, type: 2}
-  - {fileID: 11400000, guid: 6e5ae6138633cfd4d9ee6cada6743386, type: 2}
+  - {fileID: 11400000, guid: 5a2ada17a8371884789f1bc8aef10068, type: 2}
+  - {fileID: 11400000, guid: 5ee823e0ffc16a748a63070eee1e1a0c, type: 2}
   _spawnBoundary: {fileID: 1295117356}
   _spawnPadding: 2
   _minHerdDistance: 5
@@ -4445,7 +4445,7 @@ MonoBehaviour:
     Event: {fileID: 11400000, guid: 18e5012443c59af489ffa40aa7ecbd57, type: 2}
   - TimeThreshold: 40
     Event: {fileID: 11400000, guid: 2909e037b4b6d0c4c8e128ba7604ee69, type: 2}
-  _initialSpawnInterval: 4
+  _initialSpawnInterval: 1
   _minSpawnInterval: 0.8
   _spawnIntervalDecayRate: 0.02
   _initialMaxSigns: 3

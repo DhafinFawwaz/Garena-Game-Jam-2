@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _herdName: Enemy
   _herdColor: {r: 1, g: 0.39937097, b: 0.39937097, a: 1}
-  _initialMemberCount: 3
+  _initialMemberCount: 5
   _spawnRadius: 3
   _maxHunger: 80
   _hungerDecayRate: 1.5

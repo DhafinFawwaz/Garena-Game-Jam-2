@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _herdName: Player
   _herdColor: {r: 0.2, g: 0.6, b: 1, a: 1}
-  _initialMemberCount: 3
+  _initialMemberCount: 6
   _spawnRadius: 3
   _maxHunger: 100
   _hungerDecayRate: 1
