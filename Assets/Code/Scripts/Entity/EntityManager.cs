@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EntityManager : MonoBehaviour
 {
-    [SerializeField] [ReadOnly] List<SheepCore> _entities = new List<SheepCore>();
+    [SerializeField] List<SheepCore> _entities = new List<SheepCore>();
     [SerializeField] [ReadOnly] List<Herd> _herds = new List<Herd>();
     [SerializeField] [ReadOnly] bool _isActive;
 
