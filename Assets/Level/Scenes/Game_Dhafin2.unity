@@ -10702,23 +10702,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
       propertyPath: ClipEvents.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
       propertyPath: ClipEvents.Array.data[4].Clip
       value: 
-      objectReference: {fileID: 8300000, guid: 56b6ff77f5abb424da996e088bd3dc3b, type: 3}
+      objectReference: {fileID: 8300000, guid: e0e708c798ce8924e8f18bb5df5ebe51, type: 3}
+    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
+      propertyPath: ClipEvents.Array.data[5].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a7689f57a714114cad30271aa6f740c, type: 3}
+    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
+      propertyPath: ClipEvents.Array.data[6].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: dcfc2efc964cc0244a5e1e5d067d9498, type: 3}
     - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
       propertyPath: ClipEvents.Array.data[4].Volume
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
+      propertyPath: ClipEvents.Array.data[5].Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
+      propertyPath: ClipEvents.Array.data[6].Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
       propertyPath: ClipEvents.Array.data[4].Action._actionPathString
-      value: GameStateObserver.s_OnLose
+      value: SignDragable.s_OnBeginDrag
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
+      propertyPath: ClipEvents.Array.data[5].Action._actionPathString
+      value: SignDragable.s_OnEndDrag
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
+      propertyPath: ClipEvents.Array.data[6].Action._actionPathString
+      value: GameStateObserver.s_OnWin
       objectReference: {fileID: 0}
     - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
       propertyPath: ClipEvents.Array.data[4].Action._displayActionPathString
-      value: s_OnLose()
+      value: s_OnBeginDrag()
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
+      propertyPath: ClipEvents.Array.data[5].Action._displayActionPathString
+      value: s_OnEndDrag()
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739200875612018645, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
+      propertyPath: ClipEvents.Array.data[6].Action._displayActionPathString
+      value: s_OnWin()
       objectReference: {fileID: 0}
     - target: {fileID: 7518169596903159757, guid: 8a02100e4af2bee43b3ad6cdcf2c2df4, type: 3}
       propertyPath: m_LocalPosition.x

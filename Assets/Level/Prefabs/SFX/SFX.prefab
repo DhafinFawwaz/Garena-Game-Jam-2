@@ -70,6 +70,16 @@ MonoBehaviour:
       _displayActionPathString: s_OnLose()
     Clip: {fileID: 8300000, guid: 56b6ff77f5abb424da996e088bd3dc3b, type: 3}
     Volume: 0.4
+  - Action:
+      _actionPathString: SignDragable.s_OnBeginDrag
+      _displayActionPathString: s_OnBeginDrag()
+    Clip: {fileID: 8300000, guid: e0e708c798ce8924e8f18bb5df5ebe51, type: 3}
+    Volume: 0.4
+  - Action:
+      _actionPathString: SignDragable.s_OnEndDrag
+      _displayActionPathString: s_OnEndDrag()
+    Clip: {fileID: 8300000, guid: 0a7689f57a714114cad30271aa6f740c, type: 3}
+    Volume: 0.4
 --- !u!114 &598635654482131631
 MonoBehaviour:
   m_ObjectHideFlags: 0
