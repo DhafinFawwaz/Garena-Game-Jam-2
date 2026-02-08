@@ -635,6 +635,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: abbd3366f3c51894cb81fbd707ea334e, type: 3}
   Attack:
   - Sprites:
+    - {fileID: 21300000, guid: 3604c5e4ce6d2c7419507e0183bddba5, type: 3}
     - {fileID: 21300000, guid: 852f2c4a43f0c95438eacbb5fac3977f, type: 3}
     - {fileID: 21300000, guid: 555fc94fe6a0a524098afaa305613d8d, type: 3}
     - {fileID: 21300000, guid: c57c8776fead6f647ad83d020d46b8cd, type: 3}
@@ -657,7 +658,9 @@ MonoBehaviour:
     - {fileID: 21300000, guid: fc230d324eb92c0468fb4a9456485675, type: 3}
     - {fileID: 21300000, guid: 2487742a8cf494643a53a839c94c449d, type: 3}
     - {fileID: 21300000, guid: 5f81d5a74c7ddb24484752f2dd1257c4, type: 3}
+    - {fileID: 21300000, guid: 3604c5e4ce6d2c7419507e0183bddba5, type: 3}
   - Sprites:
+    - {fileID: 21300000, guid: ae8cc8ae71dc82040a83f06655668354, type: 3}
     - {fileID: 21300000, guid: 2dcbeaf755d29e442985a64e7cdcb209, type: 3}
     - {fileID: 21300000, guid: b19bb83098bf0c1419e6513555c3b94f, type: 3}
     - {fileID: 21300000, guid: 92f5e1f71df15914c90ff332f576fb1c, type: 3}
@@ -680,7 +683,9 @@ MonoBehaviour:
     - {fileID: 21300000, guid: ac58e5a2a7de13c43955ec32fc717c1b, type: 3}
     - {fileID: 21300000, guid: d333a71d06b6d574d8ff34104af696b8, type: 3}
     - {fileID: 21300000, guid: e97c43d6d6ff332488d4b3b6df22d349, type: 3}
+    - {fileID: 21300000, guid: ae8cc8ae71dc82040a83f06655668354, type: 3}
   - Sprites:
+    - {fileID: 21300000, guid: 5c4eee342883c004ab9b6ffbb10b8556, type: 3}
     - {fileID: 21300000, guid: 08b04885378d2ea449429d00f54ae34f, type: 3}
     - {fileID: 21300000, guid: def8ea95546b0a8448aecf92cb94724b, type: 3}
     - {fileID: 21300000, guid: fb25f4b040438e54ca2b43f28ec7023e, type: 3}
@@ -703,8 +708,10 @@ MonoBehaviour:
     - {fileID: 21300000, guid: f147c8900aab8184a8f90957bf1b6edb, type: 3}
     - {fileID: 21300000, guid: 3637f7a835ca13048ae669070fc830c2, type: 3}
     - {fileID: 21300000, guid: 364ede21d64b1be44af0c14b7d3eebb5, type: 3}
+    - {fileID: 21300000, guid: 5c4eee342883c004ab9b6ffbb10b8556, type: 3}
   Eat:
   - Sprites:
+    - {fileID: 21300000, guid: 3604c5e4ce6d2c7419507e0183bddba5, type: 3}
     - {fileID: 21300000, guid: 09c19de61a3f6434da200b873ee770a2, type: 3}
     - {fileID: 21300000, guid: 8c54c56ea17040d46b86286247d3aafd, type: 3}
     - {fileID: 21300000, guid: a49cf14d57a74e34d8d59344488e6552, type: 3}
@@ -729,7 +736,9 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 47f161c403cc6df4e9f0476d289b6604, type: 3}
     - {fileID: 21300000, guid: a2e245b7c300b9843a745516972b4c84, type: 3}
     - {fileID: 21300000, guid: 3c6ddbdc0cb57c44f8c1ffd8088ebbbf, type: 3}
+    - {fileID: 21300000, guid: 3604c5e4ce6d2c7419507e0183bddba5, type: 3}
   - Sprites:
+    - {fileID: 21300000, guid: ae8cc8ae71dc82040a83f06655668354, type: 3}
     - {fileID: 21300000, guid: 15c320e52f601594db82a5450da6cf44, type: 3}
     - {fileID: 21300000, guid: 953fc3b9fa30c7c4292682ddc4f87cfb, type: 3}
     - {fileID: 21300000, guid: 1a4ed5aa75c05c04eb46a3919ec676c5, type: 3}
@@ -754,7 +763,9 @@ MonoBehaviour:
     - {fileID: 21300000, guid: b198c5a494003e94290d2ec512c7fa12, type: 3}
     - {fileID: 21300000, guid: 009bfdb02e61a1143b564180d82e367a, type: 3}
     - {fileID: 21300000, guid: 7846b753b40f6a04bad7bd009d70d842, type: 3}
+    - {fileID: 21300000, guid: ae8cc8ae71dc82040a83f06655668354, type: 3}
   - Sprites:
+    - {fileID: 21300000, guid: 5c4eee342883c004ab9b6ffbb10b8556, type: 3}
     - {fileID: 21300000, guid: 9c81df72b2a58ed41b358788a09d5616, type: 3}
     - {fileID: 21300000, guid: 55915675e5cafb545a9729272457065c, type: 3}
     - {fileID: 21300000, guid: 51cc46a518e669347a2761f741412438, type: 3}
@@ -779,6 +790,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: f40e0bae5785e3a45b6634b7f432e790, type: 3}
     - {fileID: 21300000, guid: bbaf6872e3936844b8139f9fc20bef61, type: 3}
     - {fileID: 21300000, guid: f0f7dcf983f21cb448ad0e80ae367bc2, type: 3}
+    - {fileID: 21300000, guid: 5c4eee342883c004ab9b6ffbb10b8556, type: 3}
   _skin: {fileID: 1749131941669854810}
   _skinRenderer: {fileID: 1925681052867277654}
   _cliffAUI: {fileID: 4415302464815243112}
@@ -1093,7 +1105,7 @@ MonoBehaviour:
                 m_StringArgument: 
                 m_BoolArgument: 0
               m_CallState: 2
-            - m_Target: {fileID: 0}
+            - m_Target: {fileID: 2738212858973759016}
               m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
               m_MethodName: Play
               m_Mode: 1
