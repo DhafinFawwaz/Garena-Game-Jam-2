@@ -373,7 +373,7 @@ MonoBehaviour:
   _panSpeed: 1
   _zoomStep: 0.1
   _minZoom: 1
-  _maxZoom: 5
+  _maxZoom: 8
   _zoomSmoothSpeed: 10
   _boundaryCollider: {fileID: 1295117356}
 --- !u!1 &32890164
@@ -1611,7 +1611,7 @@ MonoBehaviour:
   - {fileID: 6322077100540990382, guid: 9a7af378a29973b4a96bb456c10bacaa, type: 3}
   - {fileID: 5329665066965998266, guid: b18f802b0f797ad46b4e6e5447d857ef, type: 3}
   _speed: 2
-  _spawnInterval: 2
+  _spawnInterval: 4
   _maxActiveSigns: 5
   _deletePosRt: {fileID: 1857426263}
   _spawnPointRt: {fileID: 1897732872}
@@ -4445,7 +4445,7 @@ MonoBehaviour:
     Event: {fileID: 11400000, guid: 18e5012443c59af489ffa40aa7ecbd57, type: 2}
   - TimeThreshold: 40
     Event: {fileID: 11400000, guid: 2909e037b4b6d0c4c8e128ba7604ee69, type: 2}
-  _initialSpawnInterval: 10
+  _initialSpawnInterval: 4
   _minSpawnInterval: 0.8
   _spawnIntervalDecayRate: 0.02
   _initialMaxSigns: 3
