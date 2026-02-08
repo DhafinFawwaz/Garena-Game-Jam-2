@@ -972,6 +972,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HerdSpawner
   _entityPrefab: {fileID: 1600275356}
+  _sheepPrefabs:
+  - {fileID: 8634446891496813783, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+  - {fileID: 8020379725377378366, guid: 1645f2fa9da4ad64685e05fec5b5edd8, type: 3}
+  - {fileID: 4944063488349183454, guid: 2e8f2ddc2fc11da47a76308498017613, type: 3}
   _herdPrefab: {fileID: 3039128223083677888, guid: b483689774ca5bc45a6005b24d105eb3, type: 3}
   _playerHerdData: {fileID: 11400000, guid: 9f9a0b95426c9af4b91880d4ef3d7b06, type: 2}
   _enemyHerdDataList:
