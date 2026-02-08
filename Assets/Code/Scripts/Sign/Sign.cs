@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Sign : MonoBehaviour
 {
+    public Action OnLifetimeEnd;
     public SignType Type = SignType.DontGoHere;
     [SerializeField] Sprite _icon;
     public Sprite Icon => _icon;
@@ -34,6 +36,7 @@ public class Sign : MonoBehaviour
     void Update() {
         _lifeTime -= Time.deltaTime;
         if(_lifeTime <= 0f) {
+            OnLifetimeEnd?.Invoke();
             Destroy(gameObject);
             return;
         }
