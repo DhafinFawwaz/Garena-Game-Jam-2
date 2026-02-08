@@ -3,6 +3,7 @@ using UnityEngine;
 public class SignDragableGhost : MonoBehaviour
 {
     [SerializeField] Sprite _ghostSprite;
+    public Sprite GhostSprite { get => _ghostSprite; set => _ghostSprite = value; }
     [SerializeField] float _ghostAlpha = 0.5f;
     [SerializeField] float _ghostScale = 1f;
 
