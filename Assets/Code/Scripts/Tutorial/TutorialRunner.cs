@@ -71,7 +71,7 @@ public class TutorialRunner : MonoBehaviour
         AdvanceStep();
     }
 
-    void AdvanceStep()
+    public void AdvanceStep()
     {
         TutorialStep currentStep = _tutorial.Steps[_currentStepIndex];
         if (currentStep.PauseGame)

@@ -6,11 +6,13 @@ public class TutorialStep : ScriptableObject
     [SerializeField] string _title;
     public string Title => _title;
 
-    [SerializeField] [TextArea(3, 5)] string _message;
+    [SerializeField][TextArea(3, 5)] string _message;
     public string Message => _message;
 
     [SerializeField] Sprite _image;
     public Sprite Image => _image;
+    [SerializeField] Sprite _contentImage;
+    public Sprite ContentImage => _contentImage;
 
     [SerializeField] bool _pauseGame = true;
     public bool PauseGame => _pauseGame;

@@ -11,6 +11,7 @@ public class TutorialPopup : MonoBehaviour
     [SerializeField] TMP_Text _titleText;
     [SerializeField] TMP_Text _messageText;
     [SerializeField] Image _image;
+    [SerializeField] Image _contentImage;
     [SerializeField] GameObject _imageContainer;
     [SerializeField] ButtonAnimationUI _nextButton;
     [SerializeField] TMP_Text _nextButtonText;
@@ -19,7 +20,8 @@ public class TutorialPopup : MonoBehaviour
 
     void Awake()
     {
-        _nextButton.onClick.AddListener(() => OnNextClicked?.Invoke());
+        if (_nextButton)
+            _nextButton.onClick.AddListener(() => OnNextClicked?.Invoke());
     }
 
     public void Show(TutorialStep step, bool isLastStep)
@@ -37,6 +39,9 @@ public class TutorialPopup : MonoBehaviour
 
         if (_nextButtonText != null)
             _nextButtonText.text = isLastStep ? "Got it!" : "Next";
+
+        if (_contentImage != null)
+            _contentImage.sprite = step.ContentImage;
 
         _hideAnimation.Stop();
         _showAnimation.Stop();
