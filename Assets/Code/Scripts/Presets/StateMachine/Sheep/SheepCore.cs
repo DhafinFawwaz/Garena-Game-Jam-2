@@ -129,17 +129,21 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
     }
 
     [SerializeField] EntityConverter _converter;
+    [SerializeField] ParticleSystem _convertVFX;
     public void ConvertToEnemy() {
         Stats.State = EntityType.Enemy;
         _converter.ConvertToEnemy();
+        _convertVFX.Play();
     }
     public void ConvertToFriendly() {
         Stats.State = EntityType.Friendly;
         _converter.ConvertToFriendly();
+        _convertVFX.Play();
     }
     public void ConvertToNeutral() {
         Stats.State = EntityType.Neutral;
         _converter.ConvertToNeutral();
+        _convertVFX.Play();
     }
 
     [SerializeField] Collider2D[] _col;

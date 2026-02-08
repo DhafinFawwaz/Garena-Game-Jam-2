@@ -483,7 +483,6 @@ GameObject:
   - component: {fileID: 4721154989096651954}
   - component: {fileID: 5805668069641406738}
   - component: {fileID: 5914595925693175835}
-  - component: {fileID: 9065719315741677339}
   m_Layer: 10
   m_Name: '[SheepCore] Friendly'
   m_TagString: Untagged
@@ -507,6 +506,7 @@ Transform:
   - {fileID: 197762034516683725}
   - {fileID: 3018743269729138541}
   - {fileID: 5878441626408024206}
+  - {fileID: 1313281410488944995}
   - {fileID: 7398274341129784621}
   - {fileID: 7958213092925738560}
   - {fileID: 5000373543606377515}
@@ -564,6 +564,7 @@ MonoBehaviour:
   _trustOnWitnessDeath: 10
   _witnessRadius: 5
   _converter: {fileID: 5914595925693175835}
+  _convertVFX: {fileID: 7391700313931747132}
   _col:
   - {fileID: 6035925408210202595}
   - {fileID: 7666057148887872216}
@@ -584,7 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7036c4056f51da34ca32ef1750736870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
-  _currentTrust: 25
+  _currentTrust: 0
   _currentHunger: 80
   State: 2
   TeamID: 0
@@ -798,20 +799,6 @@ MonoBehaviour:
   _dieAUI: {fileID: 5454472238051129556}
   _eatAUI: {fileID: 9211953998114267633}
   _attackAUI: {fileID: 6423870078529318064}
---- !u!114 &9065719315741677339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859246075378049005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9ce36dbd07d2c4438f32616de6ba9b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HerdNeutralHolder
-  _owner: {fileID: 8634446891496813783}
-  _convertVFX: {fileID: 7391700313931747132}
 --- !u!1 &1310285408994992832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,6 +1480,88 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &4196548286832870178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1313281410488944995}
+  - component: {fileID: 5272648729217517441}
+  - component: {fileID: 4190967488334809857}
+  m_Layer: 10
+  m_Name: '[Collider] [HerdNeutralHolder]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1313281410488944995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4196548286832870178}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4439867342597909761}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &5272648729217517441
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4196548286832870178}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.33485252}
+  m_Radius: 0.33485252
+--- !u!114 &4190967488334809857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4196548286832870178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ce36dbd07d2c4438f32616de6ba9b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HerdNeutralHolder
+  _owner: {fileID: 8634446891496813783}
 --- !u!1 &4533959911780136872
 GameObject:
   m_ObjectHideFlags: 0
