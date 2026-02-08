@@ -1,3 +1,4 @@
+using System;
 using DhafinFawwaz.AnimationUI;
 using UnityEngine;
 
@@ -15,13 +16,16 @@ public class GameStateObserver : MonoBehaviour
     void OnDisable() {
         GameManager.S_OnGameStateChanged -= HandleGameStateChanged;
     }
-
+    public static Action s_OnWin;
+    public static Action s_OnLose;
     void HandleGameStateChanged(GameState state) {
         if (state == GameState.Win) {
+            s_OnWin?.Invoke();
             _winShowAnimation.Stop();
             _winShowAnimation.SetAllTweenTargetValueAsFrom();
             _winShowAnimation.Play();
         } else if (state == GameState.Lose) {
+            s_OnLose?.Invoke();
             _loseShowAnimation.Stop();
             _loseShowAnimation.SetAllTweenTargetValueAsFrom();
             _loseShowAnimation.Play();

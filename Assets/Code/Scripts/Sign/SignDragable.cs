@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -23,6 +24,7 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     
     bool _isDragging = false;
     public bool IsDragging => _isDragging;
+    public static Action s_OnBeginDrag;
     public void OnBeginDrag(PointerEventData e)
     {
         _isDragging = true;
@@ -34,6 +36,7 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         
         transform.SetParent(_canvas.transform);
         _ghostViewer.SpawnGhost(GetWorldPositionFromMousePosition());
+        s_OnBeginDrag?.Invoke();
     }
 
 
@@ -56,6 +59,7 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         _ghostViewer.MoveGhost(GetWorldPositionFromMousePosition());
     }
     
+    public static Action s_OnEndDrag;
     public void OnEndDrag(PointerEventData e)
     {
         _isDragging = false;
@@ -72,6 +76,7 @@ public class SignDragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             }
             
             Destroy(gameObject);
+            s_OnEndDrag?.Invoke();
         }
         else {
             transform.SetParent(_originalParent);

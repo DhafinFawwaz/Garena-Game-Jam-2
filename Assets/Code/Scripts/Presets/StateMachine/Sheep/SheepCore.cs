@@ -38,9 +38,11 @@ public class SheepCore : Core<SheepCore, SheepStates>, ISignInteractable
             if(hitRequest.Element == Element.Bomb) {
                 ApplyTrustToWitness();
             }
+            s_OnSheepDeath();
         }
         return new HitResult();
     }
+    public static Action s_OnSheepDeath;
 
     public void OnEnterIdle()
     {

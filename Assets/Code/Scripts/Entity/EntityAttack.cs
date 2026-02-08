@@ -73,8 +73,10 @@ public class EntityAttack : MonoBehaviour
     }
 
     public Action CurrentAttackAction;
+    public static Action s_OnAttackHit;
     public void AttackCurrent() {
         CurrentAttackAction?.Invoke();
         CurrentAttackAction = null;
+        s_OnAttackHit?.Invoke();
     }
 }
