@@ -24,8 +24,9 @@ public class TutorialPopup : MonoBehaviour
 
     public void Show(TutorialStep step, bool isLastStep)
     {
-        _titleText.text = step.Title;
-        _messageText.text = step.Message;
+        if (_titleText) _titleText.text = step.Title;
+
+        if (_messageText) _messageText.text = step.Message;
 
         if (_imageContainer != null)
         {

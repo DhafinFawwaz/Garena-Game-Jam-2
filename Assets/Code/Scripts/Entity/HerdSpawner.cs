@@ -126,7 +126,10 @@ public class HerdSpawner : MonoBehaviour
             Vector2 spawnPos = position + UnityEngine.Random.insideUnitCircle * data.SpawnRadius;
             SheepCore entity = Instantiate(GetRandomSheepPrefab(), spawnPos, Quaternion.identity, herd.transform);
 
-            entity.ConvertToNeutral();
+            if (isPlayer)
+                entity.ConvertToFriendly();
+            else
+                entity.ConvertToEnemy();
 
             entity.gameObject.SetActive(true);
             entity.Init(data);

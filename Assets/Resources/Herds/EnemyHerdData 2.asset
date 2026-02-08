@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f4ffad6c15a8754eab6d192ad465737, type: 3}
-  m_Name: PlayerHerdData
+  m_Name: EnemyHerdData 2
   m_EditorClassIdentifier: 
-  _herdName: Player
-  _herdColor: {r: 0.2, g: 0.6, b: 1, a: 1}
-  _initialMemberCount: 3
+  _herdName: Enemy
+  _herdColor: {r: 1, g: 0.39937097, b: 0.39937097, a: 1}
+  _initialMemberCount: 7
   _spawnRadius: 3
-  _maxHunger: 100
-  _hungerDecayRate: 1
-  _moveSpeed: 5
-  _initialTrustLevel: 1
+  _maxHunger: 80
+  _hungerDecayRate: 1.5
+  _moveSpeed: 2
+  _initialTrustLevel: 0

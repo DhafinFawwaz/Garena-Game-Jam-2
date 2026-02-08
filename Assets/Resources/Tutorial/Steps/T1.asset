@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
   _title: 
   _message: 
-  _image: {fileID: 0}
+  _image: {fileID: -855298285791758126, guid: c5c7bce369d7ea8419fdc8ff41917cf3, type: 3}
   _pauseGame: 1
   _autoAdvanceDelay: 0

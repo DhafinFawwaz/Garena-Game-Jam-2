@@ -15,4 +15,5 @@ MonoBehaviour:
   _tutorialId: GameTutorial
   _steps:
   - {fileID: 11400000, guid: ea7d03d5072d89741bd09efe6c286cf1, type: 2}
+  - {fileID: 11400000, guid: ebce55c2ba6d73d49b2c2aaa91fe3e92, type: 2}
   _showOnlyOnce: 0
