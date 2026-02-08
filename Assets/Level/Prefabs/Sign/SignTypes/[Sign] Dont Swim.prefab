@@ -220,7 +220,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: fd0fa35f974cde545a85cc059caaf1d5, type: 3}
-  m_Color: {r: 0.49411762, g: 0.5906779, b: 1, a: 0.16470589}
+  m_Color: {r: 0.29559743, g: 0.29559743, b: 0.29559743, a: 0.3882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 7987947627656193008}
   - component: {fileID: 6452943413336891421}
   m_Layer: 13
-  m_Name: '[Sign] DontGoHere'
+  m_Name: '[Sign] Dont Swim'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sign
   Type: 0
-  _icon: {fileID: 21300000, guid: 33d7a6f565c73084f82dfa9f7a0bbeef, type: 3}
+  _icon: {fileID: 21300000, guid: bb03a0a9458d80a46b869ce793a71b70, type: 3}
   _maxLifetime: 3
   _lifetimePreviewer: {fileID: 4933799450050976616}
 --- !u!50 &7987947627656193008
@@ -525,7 +525,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 33d7a6f565c73084f82dfa9f7a0bbeef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb03a0a9458d80a46b869ce793a71b70, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

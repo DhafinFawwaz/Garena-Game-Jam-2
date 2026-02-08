@@ -4,6 +4,9 @@ using UnityEngine;
 public class Sign : MonoBehaviour
 {
     public SignType Type = SignType.DontGoHere;
+    [SerializeField] Sprite _icon;
+    public Sprite Icon => _icon;
+
     float _lifeTime = 10f;
     [SerializeField] float _maxLifetime = 10f;
 

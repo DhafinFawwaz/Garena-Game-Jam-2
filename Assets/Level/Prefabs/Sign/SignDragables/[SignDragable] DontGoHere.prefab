@@ -144,6 +144,7 @@ MonoBehaviour:
   _signPrefab: {fileID: 3110188136303710372, guid: f9f0c235b9aaa9b4f8c9f72c9dd6dc3c, type: 3}
   _canvas: {fileID: 0}
   _canvasGroup: {fileID: 9187874597045833982}
+  _iconImage: {fileID: 5514613668164211018}
   _rt: {fileID: 6502029593836153098}
   _ghostViewer: {fileID: 3273643098891168531}
 --- !u!225 &9187874597045833982

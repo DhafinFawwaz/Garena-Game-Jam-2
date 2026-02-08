@@ -13,22 +13,16 @@ public class HerdCounterObserver : MonoBehaviour
     [Header("Neutral")]
     [SerializeField] Counter _neutralCounter;
 
-    int _neutralCount;
-
     void OnEnable()
     {
         HerdSpawner.S_OnHerdSpawned += HandleHerdSpawned;
         Herd.S_OnMemberCountChanged += HandleMemberCountChanged;
-        NeutralSpawner.S_OnNeutralSpawned += HandleNeutralSpawned;
-        HerdNeutralHolder.S_OnNeutralConverted += HandleNeutralConverted;
     }
 
     void OnDisable()
     {
         HerdSpawner.S_OnHerdSpawned -= HandleHerdSpawned;
         Herd.S_OnMemberCountChanged -= HandleMemberCountChanged;
-        NeutralSpawner.S_OnNeutralSpawned -= HandleNeutralSpawned;
-        HerdNeutralHolder.S_OnNeutralConverted -= HandleNeutralConverted;
     }
 
     void HandleHerdSpawned(Herd herd)
@@ -66,25 +60,10 @@ public class HerdCounterObserver : MonoBehaviour
             counter.SetCount(e.Count);
     }
 
-    void HandleNeutralSpawned(SheepCore entity)
+    void Update()
     {
-        _neutralCount++;
-        _neutralCounter.SetCount(_neutralCount);
-        entity.OnDeath += HandleNeutralDeath;
-    }
-
-    void HandleNeutralDeath(SheepCore entity)
-    {
-        entity.OnDeath -= HandleNeutralDeath;
-        _neutralCount--;
-        _neutralCounter.SetCount(_neutralCount);
-    }
-
-    void HandleNeutralConverted(SheepCore entity)
-    {
-        entity.OnDeath -= HandleNeutralDeath;
-        _neutralCount--;
-        _neutralCounter.SetCount(_neutralCount);
+        if (NeutralSpawner.Instance != null)
+            _neutralCounter.SetCount(NeutralSpawner.Instance.AliveCount);
     }
 
     Counter GetEnemyCounter(int index)

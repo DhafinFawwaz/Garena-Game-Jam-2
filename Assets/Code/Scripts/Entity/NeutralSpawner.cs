@@ -17,7 +17,7 @@ public class NeutralSpawner : MonoBehaviour
     [SerializeField] int _maxNeutrals = 15;
 
     float _spawnTimer;
-    int _aliveCount;
+    [ReadOnly] public int AliveCount;
     bool _isActive;
 
     void Awake()
@@ -66,7 +66,7 @@ public class NeutralSpawner : MonoBehaviour
     void Update()
     {
         if (!_isActive) return;
-        if (_aliveCount >= _maxNeutrals) return;
+        if (AliveCount >= _maxNeutrals) return;
 
         _spawnTimer += Time.deltaTime;
         if (_spawnTimer >= _spawnInterval)
@@ -87,20 +87,20 @@ public class NeutralSpawner : MonoBehaviour
         entity.PlayFallFromSkyAnimation();
         entity.OnDeath += HandleNeutralDeath;
 
-        _aliveCount++;
+        AliveCount++;
         S_OnNeutralSpawned?.Invoke(entity);
     }
 
     void HandleNeutralDeath(SheepCore entity)
     {
         entity.OnDeath -= HandleNeutralDeath;
-        _aliveCount--;
+        AliveCount = Mathf.Max(0, AliveCount - 1);
     }
 
     void HandleNeutralConverted(SheepCore entity)
     {
         entity.OnDeath -= HandleNeutralDeath;
-        _aliveCount--;
+        AliveCount = Mathf.Max(0, AliveCount - 1);
     }
 
     Vector2 GetRandomPositionInBounds()

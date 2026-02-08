@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[SheepCore] Neutral'
       objectReference: {fileID: 0}
+    - target: {fileID: 4415302464815243112, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
+      propertyPath: managedReferences[8059579814261555316]._name
+      value: '0.00 s [[SheepCore] Neutral] [2s]'
+      objectReference: {fileID: 0}
     - target: {fileID: 4439867342597909761, guid: e5a68272de7fd1b42bd30495c81ec181, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
