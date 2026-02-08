@@ -12,9 +12,12 @@ public class NeutralSpawner : MonoBehaviour
     [Header("Spawn Settings")]
     [SerializeField] Collider2D _spawnBoundary;
     [SerializeField] float _spawnPadding = 2f;
-    [SerializeField] float _spawnInterval = 5f;
+    [SerializeField] int _initialSpawnCount = 5;
+    [SerializeField] float _spawnInterval = 10f;
+    [SerializeField] int _maxNeutrals = 15;
 
     float _spawnTimer;
+    int _aliveCount;
     bool _isActive;
 
     void Awake()
@@ -30,21 +33,40 @@ public class NeutralSpawner : MonoBehaviour
     void OnEnable()
     {
         GameManager.S_OnGameStateChanged += HandleGameStateChanged;
+        HerdNeutralHolder.S_OnNeutralConverted += HandleNeutralConverted;
     }
 
     void OnDisable()
     {
         GameManager.S_OnGameStateChanged -= HandleGameStateChanged;
+        HerdNeutralHolder.S_OnNeutralConverted -= HandleNeutralConverted;
     }
 
     void HandleGameStateChanged(GameState state)
     {
-        _isActive = state == GameState.Playing;
+        if (state == GameState.Playing && !_isActive)
+        {
+            _isActive = true;
+            SpawnInitialBatch();
+        }
+        else if (state != GameState.Playing)
+        {
+            _isActive = false;
+        }
+    }
+
+    void SpawnInitialBatch()
+    {
+        for (int i = 0; i < _initialSpawnCount; i++)
+        {
+            SpawnNeutral();
+        }
     }
 
     void Update()
     {
         if (!_isActive) return;
+        if (_aliveCount >= _maxNeutrals) return;
 
         _spawnTimer += Time.deltaTime;
         if (_spawnTimer >= _spawnInterval)
@@ -63,8 +85,22 @@ public class NeutralSpawner : MonoBehaviour
         entity.gameObject.SetActive(true);
         entity.Stats.State = EntityType.Neutral;
         entity.PlayFallFromSkyAnimation();
+        entity.OnDeath += HandleNeutralDeath;
 
+        _aliveCount++;
         S_OnNeutralSpawned?.Invoke(entity);
+    }
+
+    void HandleNeutralDeath(SheepCore entity)
+    {
+        entity.OnDeath -= HandleNeutralDeath;
+        _aliveCount--;
+    }
+
+    void HandleNeutralConverted(SheepCore entity)
+    {
+        entity.OnDeath -= HandleNeutralDeath;
+        _aliveCount--;
     }
 
     Vector2 GetRandomPositionInBounds()
