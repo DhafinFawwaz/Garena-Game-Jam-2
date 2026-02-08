@@ -15,5 +15,6 @@ MonoBehaviour:
   _title: 
   _message: 
   _image: {fileID: -855298285791758126, guid: c5c7bce369d7ea8419fdc8ff41917cf3, type: 3}
+  _contentImage: {fileID: -8548831567545442631, guid: 35cae5c2a990dc6498c079a5109c7f9a, type: 3}
   _pauseGame: 1
   _autoAdvanceDelay: 0
