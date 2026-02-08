@@ -34,11 +34,7 @@ public class RandomEventScheduler : MonoBehaviour
     float _elapsedTime;
     float _nextEventTime;
     bool _isActive;
-
-    void Start()
-    {
-        _nextEventTime = _initialInterval;
-    }
+    bool _scheduled;
 
     void OnEnable()
     {
@@ -57,9 +53,11 @@ public class RandomEventScheduler : MonoBehaviour
 
     void Update()
     {
-        if (!_isActive || _eventPool.Count == 0) return;
+        if (!_isActive) return;
 
         _elapsedTime += Time.deltaTime;
+
+        if (!_scheduled || _eventPool.Count == 0) return;
 
         if (_elapsedTime >= _nextEventTime)
         {
@@ -163,13 +161,12 @@ public class RandomEventScheduler : MonoBehaviour
     {
         if (_eventPool.Contains(evt)) return;
 
-        bool wasEmpty = _eventPool.Count == 0;
         _eventPool.Add(evt);
 
-        if (wasEmpty)
+        if (!_scheduled)
         {
-            _elapsedTime = 0f;
-            _nextEventTime = _initialInterval;
+            _scheduled = true;
+            _nextEventTime = _elapsedTime + _initialInterval;
         }
     }
 }

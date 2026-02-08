@@ -76,14 +76,14 @@ public class HerdCounterObserver : MonoBehaviour
     void HandleNeutralDeath(SheepCore entity)
     {
         entity.OnDeath -= HandleNeutralDeath;
-        _neutralCount--;
+        _neutralCount = Mathf.Max(0, _neutralCount - 1);
         _neutralCounter.SetCount(_neutralCount);
     }
 
     void HandleNeutralConverted(SheepCore entity)
     {
         entity.OnDeath -= HandleNeutralDeath;
-        _neutralCount--;
+        _neutralCount = Mathf.Max(0, _neutralCount - 1);
         _neutralCounter.SetCount(_neutralCount);
     }
 

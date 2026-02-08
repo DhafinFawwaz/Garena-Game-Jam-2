@@ -234,7 +234,7 @@ Camera:
   far clip plane: 2000
   field of view: 60
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -372,7 +372,7 @@ MonoBehaviour:
   _panSpeed: 1
   _zoomStep: 0.1
   _minZoom: 1
-  _maxZoom: 9
+  _maxZoom: 5
   _zoomSmoothSpeed: 10
   _boundaryCollider: {fileID: 1295117356}
 --- !u!1 &32890164
@@ -7184,7 +7184,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.09931183, y: -0.037116528}
+  m_Offset: {x: -0.09931183, y: -0.47175646}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7194,7 +7194,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 40.761375, y: 17.986279}
+  m_Size: {x: 40.761375, y: 18.855556}
   m_EdgeRadius: 0
 --- !u!4 &1295117357
 Transform:
@@ -7385,7 +7385,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2909e037b4b6d0c4c8e128ba7604ee69, type: 2}
   - {fileID: 11400000, guid: 18e5012443c59af489ffa40aa7ecbd57, type: 2}
   - {fileID: 11400000, guid: 0fdfd8e5a8192584384ece929ee54aff, type: 2}
-  _initialInterval: 3
+  _initialInterval: 0
   _minInterval: 20
   _intervalDecayRate: 0.5
   _initialEventCount: 1
