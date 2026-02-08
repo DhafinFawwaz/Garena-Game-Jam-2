@@ -20,6 +20,9 @@ public class RandomEventScheduler : MonoBehaviour
     [SerializeField] int _maxEventCount = 3;
     [SerializeField] float _eventCountScaleTime = 180f;
 
+    [Header("Meteor")]
+    [SerializeField] MeteorEvent _meteorPrefab;
+
     [Header("Spawn Boundary")]
     [SerializeField] Collider2D _spawnBoundary;
     [SerializeField] float _spawnPadding = 2f;
@@ -112,11 +115,21 @@ public class RandomEventScheduler : MonoBehaviour
 
         for (int i = 0; i < evt.SpawnCount; i++)
         {
-            Sign prefab = evt.SignPrefabs[UnityEngine.Random.Range(0, evt.SignPrefabs.Count)];
-            if (prefab == null) continue;
+            Sign signPrefab = evt.SignPrefabs[UnityEngine.Random.Range(0, evt.SignPrefabs.Count)];
+            if (signPrefab == null) continue;
 
             Vector2 pos = GetRandomPositionInBounds();
-            Instantiate(prefab, pos, Quaternion.identity);
+
+            if (_meteorPrefab != null)
+            {
+                Quaternion rot = Quaternion.Euler(-60f, _meteorPrefab.transform.rotation.y, -60f);
+                MeteorEvent meteor = Instantiate(_meteorPrefab, pos, Quaternion.identity);
+                meteor.Init(signPrefab);
+            }
+            else
+            {
+                Instantiate(signPrefab, pos, Quaternion.identity);
+            }
         }
     }
 

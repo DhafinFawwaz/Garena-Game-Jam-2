@@ -9818,13 +9818,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847034538265817898}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.035024643, y: 0, z: 0}
+  m_LocalRotation: {x: 0.07543532, y: 0.31289363, z: -0.03339736, w: 0.9461985}
+  m_LocalPosition: {x: -0.17, y: 0.11, z: -0.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3712651213781342910}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 170.581, y: -143.48, z: -180.929}
 --- !u!198 &4352702067058158770
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -19612,6 +19612,105 @@ Transform:
   - {fileID: 3712651213781342910}
   m_Father: {fileID: 1131943079985390569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7114753663019383449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5808102874025670075}
+  - component: {fileID: 1654179923070192277}
+  m_Layer: 0
+  m_Name: AnimationUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5808102874025670075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114753663019383449}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.014376914, y: 0.012983702, z: 0.2517687, w: 0.9675936}
+  m_LocalPosition: {x: 13.1141205, y: -1.4430423, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1131943079985390569}
+  m_LocalEulerAnglesHint: {x: 2.22, y: 0, z: -27.5}
+--- !u!114 &1654179923070192277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114753663019383449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17dbaed680fd7194d9cc7297932b7691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DhafinFawwaz.AnimationUI.AnimationUI
+  PlayOnStart: 1
+  IgnoreTimeScale: 0
+  CurrentAnimationTime: 0
+  _sequence:
+  - rid: 8059579814261555304
+  - rid: 8059579814261555308
+  - rid: 8059579814261555306
+  references:
+    version: 2
+    RefIds:
+    - rid: 8059579814261555304
+      type: {class: PositionTween, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [FireBall Variant] [2s]'
+        Target: {fileID: 1131943079985390569}
+        Duration: 2
+        EaseType: 0
+        From: {x: -6, y: 11.75, z: 0}
+        To: {x: 0, y: -3, z: 0}
+    - rid: 8059579814261555306
+      type: {class: Event, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '2.00 s [UnityEvent]'
+        UnityEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 6110838481860594186}
+              m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+              m_MethodName: SetActive
+              m_Mode: 6
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
+            - m_Target: {fileID: 6231155337761736383}
+              m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+              m_MethodName: Play
+              m_Mode: 1
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 1
+              m_CallState: 2
+    - rid: 8059579814261555308
+      type: {class: Wait, ns: DhafinFawwaz.AnimationUI, asm: Assembly-CSharp}
+      data:
+        _name: '0.00 s [2s]'
+        Duration: 2
 --- !u!1 &8322630979353626093
 GameObject:
   m_ObjectHideFlags: 0
@@ -24514,17 +24613,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 814324097584844813, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 814324097584844813, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.24
+      objectReference: {fileID: 0}
     - target: {fileID: 5945302964002960728, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       propertyPath: m_Name
       value: FireBall Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.34338
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.94832
+      value: 11.75
       objectReference: {fileID: 0}
     - target: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24532,23 +24639,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.76226485
       objectReference: {fileID: 0}
     - target: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.44009382
       objectReference: {fileID: 0}
     - target: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.23731296
       objectReference: {fileID: 0}
     - target: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.4110381
       objectReference: {fileID: 0}
     - target: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -24556,7 +24663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -56.67
       objectReference: {fileID: 0}
     - target: {fileID: 7318391464649250600, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       propertyPath: m_IsActive
@@ -24568,10 +24675,40 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
       insertIndex: 4
       addedObject: {fileID: 9164993794059933339}
-    m_AddedComponents: []
+    - targetCorrespondingSourceObject: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5808102874025670075}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5945302964002960728, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 475240594381619650}
   m_SourcePrefab: {fileID: 100100000, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
 --- !u!4 &1131943079985390569 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5945302964002960730, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
+  m_PrefabInstance: {fileID: 6716148732293060275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1131943079985390571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5945302964002960728, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
+  m_PrefabInstance: {fileID: 6716148732293060275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &475240594381619650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131943079985390571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125a777dab6a6d9479e2f7ffb00fb0af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeteorEvent
+  _meteorAUI: {fileID: 1654179923070192277}
+  _spawnEventStepIndex: 2
+--- !u!198 &6231155337761736383 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 814324097584844812, guid: 4ea41758b3b60d04090ebd1d31b6c278, type: 3}
   m_PrefabInstance: {fileID: 6716148732293060275}
   m_PrefabAsset: {fileID: 0}

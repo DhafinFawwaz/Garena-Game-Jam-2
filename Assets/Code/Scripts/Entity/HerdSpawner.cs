@@ -62,6 +62,7 @@ public class HerdSpawner : MonoBehaviour
         Vector2 playerPos = GetRandomSpawnPosition(usedPositions);
         usedPositions.Add(playerPos);
         _playerHerd = SpawnHerd(_playerHerdData, playerPos, true);
+        S_OnHerdSpawned?.Invoke(_playerHerd);
 
         foreach (var enemyData in _enemyHerdDataList)
         {
@@ -69,6 +70,7 @@ public class HerdSpawner : MonoBehaviour
             usedPositions.Add(enemyPos);
             var enemyHerd = SpawnHerd(enemyData, enemyPos, false);
             _enemyHerds.Add(enemyHerd);
+            S_OnHerdSpawned?.Invoke(enemyHerd);
         }
     }
 
@@ -121,7 +123,6 @@ public class HerdSpawner : MonoBehaviour
             herd.AddMember(entity);
         }
 
-        S_OnHerdSpawned?.Invoke(herd);
         return herd;
     }
 
@@ -138,6 +139,7 @@ public class HerdSpawner : MonoBehaviour
         Vector2 pos = GetRandomSpawnPosition(usedPositions);
         var herd = SpawnHerd(data, pos, false);
         _enemyHerds.Add(herd);
+        S_OnHerdSpawned?.Invoke(herd);
     }
 
     public bool AreAllEnemyHerdsEmpty()

@@ -1,33 +1,100 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HerdCounterObserver : MonoBehaviour
 {
-    [SerializeField] Counter _playerCounterPrefab;
-    [SerializeField] Counter _enemyCounterPrefab;
-    [SerializeField] Transform _counterParent;
+    [Header("Player")]
+    [SerializeField] Counter _playerCounter;
 
-    Dictionary<Herd, Counter> _counters = new Dictionary<Herd, Counter>();
+    [Header("Enemies (fixed 3)")]
+    [SerializeField] Counter _enemyCounter0;
+    [SerializeField] Counter _enemyCounter1;
+    [SerializeField] Counter _enemyCounter2;
 
-    void OnEnable() {
+    [Header("Neutral")]
+    [SerializeField] Counter _neutralCounter;
+
+    int _neutralCount;
+
+    void OnEnable()
+    {
         HerdSpawner.S_OnHerdSpawned += HandleHerdSpawned;
         Herd.S_OnMemberCountChanged += HandleMemberCountChanged;
+        NeutralSpawner.S_OnNeutralSpawned += HandleNeutralSpawned;
+        HerdNeutralHolder.S_OnNeutralConverted += HandleNeutralConverted;
     }
 
-    void OnDisable() {
+    void OnDisable()
+    {
         HerdSpawner.S_OnHerdSpawned -= HandleHerdSpawned;
         Herd.S_OnMemberCountChanged -= HandleMemberCountChanged;
+        NeutralSpawner.S_OnNeutralSpawned -= HandleNeutralSpawned;
+        HerdNeutralHolder.S_OnNeutralConverted -= HandleNeutralConverted;
     }
 
-    void HandleHerdSpawned(Herd herd) {
-        Counter prefab = herd.IsPlayerHerd ? _playerCounterPrefab : _enemyCounterPrefab;
-        Counter counter = Instantiate(prefab, _counterParent);
-        counter.SetCount(herd.MemberCount);
-        _counters[herd] = counter;
+    void HandleHerdSpawned(Herd herd)
+    {
+        if (herd.IsPlayerHerd)
+        {
+            _playerCounter.SetCount(herd.MemberCount);
+        }
+        else
+        {
+            var spawner = HerdSpawner.Instance;
+            if (spawner == null) return;
+
+            int index = spawner.EnemyHerds.IndexOf(herd);
+            Counter counter = GetEnemyCounter(index);
+            if (counter != null)
+                counter.SetCount(herd.MemberCount);
+        }
     }
 
-    void HandleMemberCountChanged(MemberCountEvent e) {
-        if (!_counters.ContainsKey(e.Herd)) return;
-        _counters[e.Herd].SetCount(e.Count);
+    void HandleMemberCountChanged(MemberCountEvent e)
+    {
+        if (e.Herd.IsPlayerHerd)
+        {
+            _playerCounter.SetCount(e.Count);
+            return;
+        }
+
+        var spawner = HerdSpawner.Instance;
+        if (spawner == null) return;
+
+        int index = spawner.EnemyHerds.IndexOf(e.Herd);
+        Counter counter = GetEnemyCounter(index);
+        if (counter != null)
+            counter.SetCount(e.Count);
+    }
+
+    void HandleNeutralSpawned(SheepCore entity)
+    {
+        _neutralCount++;
+        _neutralCounter.SetCount(_neutralCount);
+        entity.OnDeath += HandleNeutralDeath;
+    }
+
+    void HandleNeutralDeath(SheepCore entity)
+    {
+        entity.OnDeath -= HandleNeutralDeath;
+        _neutralCount--;
+        _neutralCounter.SetCount(_neutralCount);
+    }
+
+    void HandleNeutralConverted(SheepCore entity)
+    {
+        entity.OnDeath -= HandleNeutralDeath;
+        _neutralCount--;
+        _neutralCounter.SetCount(_neutralCount);
+    }
+
+    Counter GetEnemyCounter(int index)
+    {
+        return index switch
+        {
+            0 => _enemyCounter0,
+            1 => _enemyCounter1,
+            2 => _enemyCounter2,
+            _ => null
+        };
     }
 }
