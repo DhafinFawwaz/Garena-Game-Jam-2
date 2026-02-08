@@ -811,6 +811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HerdNeutralHolder
   _owner: {fileID: 8634446891496813783}
+  _convertVFX: {fileID: 7391700313931747132}
 --- !u!1 &1310285408994992832
 GameObject:
   m_ObjectHideFlags: 0
@@ -17002,5 +17003,10 @@ PrefabInstance:
 --- !u!4 &7391700313931747074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6714889517562001518, guid: e7c83be5e39aff74ca2aadd05ebaee02, type: 3}
+  m_PrefabInstance: {fileID: 4297714106805090156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7391700313931747132 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6714889517562001488, guid: e7c83be5e39aff74ca2aadd05ebaee02, type: 3}
   m_PrefabInstance: {fileID: 4297714106805090156}
   m_PrefabAsset: {fileID: 0}
