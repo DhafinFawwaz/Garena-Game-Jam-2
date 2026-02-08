@@ -23,6 +23,6 @@ public class WinUI : MonoBehaviour
         int count = spawner != null && spawner.PlayerHerd != null ? spawner.PlayerHerd.transform.childCount : 0;
 
         if (_armyCountText != null)
-            _armyCountText.text = count.ToString();
+            _armyCountText.text = count.ToString();        
     }
 }

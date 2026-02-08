@@ -11,7 +11,7 @@ public class RandomEventScheduler : MonoBehaviour
     [SerializeField][ReadOnly] List<GameEvent> _eventPool = new();
 
     [Header("Scheduling")]
-    [SerializeField] float _initialInterval = 30f;
+    [SerializeField] float _initialInterval = 10f;
     [SerializeField] float _minInterval = 10f;
     [SerializeField] float _intervalDecayRate = 0.5f;
 
@@ -32,9 +32,15 @@ public class RandomEventScheduler : MonoBehaviour
     [SerializeField] float _popupDuration = 3f;
 
     float _elapsedTime;
+    float _eventElapsedTime;
     float _nextEventTime;
     bool _isActive;
     bool _scheduled;
+
+    void Awake()
+    {
+        _eventPool.Clear();
+    }
 
     void OnEnable()
     {
@@ -58,6 +64,8 @@ public class RandomEventScheduler : MonoBehaviour
         _elapsedTime += Time.deltaTime;
 
         if (!_scheduled || _eventPool.Count == 0) return;
+
+        _eventElapsedTime += Time.deltaTime;
 
         if (_elapsedTime >= _nextEventTime)
         {
@@ -90,7 +98,7 @@ public class RandomEventScheduler : MonoBehaviour
 
     int GetCurrentEventCount()
     {
-        float t = Mathf.Clamp01(_elapsedTime / _eventCountScaleTime);
+        float t = Mathf.Clamp01(_eventElapsedTime / _eventCountScaleTime);
         return Mathf.RoundToInt(Mathf.Lerp(_initialEventCount, _maxEventCount, t));
     }
 
@@ -103,7 +111,7 @@ public class RandomEventScheduler : MonoBehaviour
 
     void ScheduleNextEvent()
     {
-        float currentInterval = Mathf.Max(_minInterval, _initialInterval - (_elapsedTime * _intervalDecayRate));
+        float currentInterval = Mathf.Max(_minInterval, _initialInterval - (_eventElapsedTime * _intervalDecayRate));
         _nextEventTime = _elapsedTime + currentInterval;
     }
 
